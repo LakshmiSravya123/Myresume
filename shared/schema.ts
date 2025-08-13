@@ -84,6 +84,7 @@ export type Project = {
   year?: string;
   github?: string;
   demo?: string;
+  url?: string;
 };
 
 export type Education = {

@@ -7,8 +7,8 @@ export const portfolioData: ResumeData = {
     title: "Data Analyst & Data Scientist",
     email: "lakshmisravya.vedantham@gmail.com",
     phone: "959-222-8822",
-    github: "https://github.com/lakshmisravya",
-    linkedin: "https://linkedin.com/in/lakshmisravya-vedantham",
+    github: "https://github.com/LakshmiSravya123/",
+    linkedin: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
     location: "United States"
   },
   workExperience: [
@@ -60,21 +60,38 @@ export const portfolioData: ResumeData = {
   projects: [
     {
       name: "AI-Driven Policy Pricing Model",
-      description: "Advanced machine learning model for automatic policy pricing that improved accuracy and competitive positioning",
-      technologies: ["Python", "Machine Learning", "Statistical Analysis", "Data Modeling"],
-      year: "2024"
+      description: "Advanced machine learning model for automatic insurance policy pricing with statistical analysis and competitive positioning improvements",
+      technologies: ["Python", "Machine Learning", "Statistical Analysis", "Data Modeling", "Scikit-learn"],
+      year: "2024",
+      url: "https://github.com/LakshmiSravya123/AI-Policy-Pricing-Model"
     },
     {
       name: "React Data Science Dashboard",
-      description: "Comprehensive redevelopment of data science project with user-centric interfaces and reusable components",
-      technologies: ["React", "Python", "Flask", "Data Visualization"],
-      year: "2019"
+      description: "Comprehensive redevelopment of data science project using React, Python, and Flask with user-centric interfaces and reusable components",
+      technologies: ["React", "Python", "Flask", "Data Visualization", "JavaScript", "REST APIs"],
+      year: "2019",
+      url: "https://github.com/LakshmiSravya123/React-Data-Science-Dashboard"
     },
     {
-      name: "Mobile App Development",
-      description: "iOS and Android applications developed using modern AI tools and platforms",
-      technologies: ["iOS", "Android", "Cursor", "Runway", "Luma"],
-      year: "2025"
+      name: "Mobile AI Development",
+      description: "iOS and Android applications developed using cutting-edge AI tools like Cursor, Runway, and Luma for enhanced development workflow",
+      technologies: ["iOS", "Android", "Cursor", "Runway", "Luma", "Swift", "Kotlin"],
+      year: "2025",
+      url: "https://github.com/LakshmiSravya123/Mobile-AI-Development"
+    },
+    {
+      name: "Automation Efficiency Tools",
+      description: "AI-driven automation tools that resulted in 70% operational efficiency improvements at Co-operators",
+      technologies: ["Python", "AI Automation", "Process Optimization", "Machine Learning"],
+      year: "2024",
+      url: "https://github.com/LakshmiSravya123/Automation-Efficiency-Tools"
+    },
+    {
+      name: "Data Analytics Portfolio",
+      description: "Comprehensive collection of data science projects showcasing 6+ years of expertise in statistical modeling, machine learning, and data visualization",
+      technologies: ["Python", "R", "Tableau", "SQL", "Jupyter", "Power BI", "Pandas", "NumPy"],
+      year: "2024",
+      url: "https://github.com/LakshmiSravya123/Data-Analytics-Portfolio"
     }
   ],
   skills: [
