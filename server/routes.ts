@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertResumeSchema, insertMessageSchema } from "@shared/schema";
 import { generateChatResponse, analyzeResume, generateQuickResponse } from "./services/openai";
+import { generateChatResponseWithOllama, analyzeResumeWithOllama, checkOllamaAvailability } from "./services/ollama";
 import { parseResumeText } from "./services/resumeParser";
 import { portfolioData } from "./services/portfolioData";
 import multer from "multer";
@@ -42,7 +43,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Parse resume in background
       try {
         const basicParsed = parseResumeText(content);
-        const aiAnalysis = await analyzeResume(content);
+        // Use Ollama for AI analysis instead of OpenAI
+        const aiAnalysis = await analyzeResumeWithOllama(content);
         
         const combinedParsedData = {
           ...basicParsed,
@@ -146,7 +148,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
             content: m.content
           }));
 
-          const aiResponse = await generateChatResponse(messageHistory, resumeContext);
+          // Use Ollama instead of OpenAI for chat responses
+          const aiResponse = await generateChatResponseWithOllama(messageHistory);
 
           // Save AI response
           const aiMessage = await storage.createMessage({
@@ -181,12 +184,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Query is required" });
       }
 
-      const resume = await storage.getLatestResume();
-      const resumeContext = resume?.parsedData || {};
+      // Use Ollama for local AI processing (no API key required)
+      console.log("Processing query with Ollama:", query);
+      const response = await generateChatResponseWithOllama([{ role: "user", content: query }]);
       
-      const response = await generateQuickResponse(query, resumeContext);
-      
-      res.json({ response });
+      res.json({ 
+        response,
+        timestamp: new Date().toISOString()
+      });
     } catch (error) {
       console.error("Quick action error:", error);
       res.status(500).json({ message: "Failed to process quick action: " + (error as any).message });

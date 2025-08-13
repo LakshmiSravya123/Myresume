@@ -44,11 +44,13 @@ The application uses a hybrid storage approach:
 - **Migration**: Drizzle Kit for database schema management and migrations
 
 ### AI Integration
-OpenAI GPT-4o integration for intelligent resume analysis and conversation:
+Local AI processing using Ollama for privacy-focused intelligent responses:
 
-- **Resume Analysis**: AI-powered parsing and extraction of structured data from resume content
-- **Conversational AI**: Context-aware responses that reference specific details from the user's resume
-- **Dual Processing**: Basic text parsing combined with AI analysis for comprehensive resume understanding
+- **Ollama Integration**: Local LLM processing using models like llama3.2:3b for resume Q&A
+- **Intelligent Fallbacks**: Smart rule-based responses when Ollama is not available
+- **Privacy-First**: No external API calls required - all processing happens locally
+- **Conversational AI**: Context-aware responses about Lakshmi's experience, skills, and projects
+- **No API Keys**: Completely self-contained solution without external dependencies
 
 ### Authentication and File Handling
 - **File Upload**: Secure file upload with validation for PDF, DOCX, and TXT formats
@@ -59,7 +61,7 @@ OpenAI GPT-4o integration for intelligent resume analysis and conversation:
 
 ### Core Dependencies
 - **Database**: PostgreSQL (via Neon serverless) with Drizzle ORM for type-safe database operations
-- **AI Services**: OpenAI API (GPT-4o model) for resume analysis and conversational responses
+- **AI Services**: Ollama for local LLM processing (no API keys required) with intelligent fallbacks
 - **UI Components**: Radix UI primitives for accessible, unstyled components
 - **Styling**: Tailwind CSS for utility-first styling with custom design tokens
 
