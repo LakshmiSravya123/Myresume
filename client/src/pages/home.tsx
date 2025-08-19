@@ -6,11 +6,9 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
-import ChatModal from "@/components/ChatModal";
+import AIQuestionnaire from "@/components/AIQuestionnaire";
 
 export default function Home() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -19,10 +17,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-inter">
       <Navigation 
         onSectionClick={scrollToSection}
-        onChatToggle={() => setIsChatOpen(true)}
+        onChatToggle={() => {}}
       />
       
       <main>
@@ -30,14 +28,10 @@ export default function Home() {
         <AboutSection />
         <ExperienceSection />
         <ProjectsSection />
+        <AIQuestionnaire />
         <SkillsSection />
         <ContactSection />
       </main>
-
-      <ChatModal 
-        isOpen={isChatOpen}
-        onClose={() => setIsChatOpen(false)}
-      />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">

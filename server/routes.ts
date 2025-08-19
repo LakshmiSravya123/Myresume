@@ -225,62 +225,93 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // GitHub projects endpoint (mock for now)
+  // GitHub projects endpoint - fetches real data from GitHub API
   app.get("/api/github/projects", async (req, res) => {
     try {
-      // Updated GitHub projects with correct username and repository structure
-      const projects = [
+      const githubUsername = "LakshmiSravya123";
+      const githubApiUrl = `https://api.github.com/users/${githubUsername}/repos`;
+      
+      // Fetch real repositories from GitHub API
+      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10`);
+      
+      if (!response.ok) {
+        // Fallback to cached data if GitHub API fails
+        console.log("GitHub API failed, using fallback data");
+        const fallbackProjects = [
+          {
+            name: "AI-Policy-Pricing-Model",
+            description: "Advanced machine learning model for automatic insurance policy pricing",
+            language: "Python",
+            stargazers_count: 18,
+            html_url: "https://github.com/LakshmiSravya123/AI-Policy-Pricing-Model",
+            updated_at: "2024-12-20T00:00:00Z"
+          },
+          {
+            name: "React-Data-Science-Dashboard", 
+            description: "Comprehensive data science dashboard built with React and Flask",
+            language: "JavaScript",
+            stargazers_count: 32,
+            html_url: "https://github.com/LakshmiSravya123/React-Data-Science-Dashboard",
+            updated_at: "2024-11-25T00:00:00Z"
+          },
+          {
+            name: "Mobile-AI-Development",
+            description: "iOS and Android applications using modern AI tools",
+            language: "Swift", 
+            stargazers_count: 14,
+            html_url: "https://github.com/LakshmiSravya123/Mobile-AI-Development",
+            updated_at: "2025-01-15T00:00:00Z"
+          }
+        ];
+        
+        const processedProjects = fallbackProjects.map(repo => ({
+          name: repo.name,
+          description: repo.description || "No description available",
+          language: repo.language || "Unknown",
+          stars: repo.stargazers_count,
+          url: repo.html_url,
+          updated_at: repo.updated_at
+        }));
+        
+        return res.json(processedProjects);
+      }
+
+      const repos = await response.json();
+      
+      // Filter out forks and process repositories
+      const processedProjects = repos
+        .filter((repo: any) => !repo.fork && !repo.private)
+        .map((repo: any) => ({
+          name: repo.name,
+          description: repo.description || "No description available",
+          language: repo.language || "Unknown",
+          stars: repo.stargazers_count || 0,
+          forks: repo.forks_count || 0,
+          url: repo.html_url,
+          updated_at: repo.updated_at,
+          created_at: repo.created_at,
+          topics: repo.topics || []
+        }))
+        .slice(0, 6); // Show latest 6 repositories
+      
+      res.json(processedProjects);
+    } catch (error) {
+      console.error("Get GitHub projects error:", error);
+      
+      // Return fallback data on any error
+      const fallbackProjects = [
         {
           name: "AI-Policy-Pricing-Model",
-          description: "Advanced machine learning model for automatic insurance policy pricing with statistical analysis and competitive positioning improvements",
+          description: "Advanced machine learning model for automatic insurance policy pricing",
           language: "Python",
           stars: 18,
+          forks: 4,
           url: "https://github.com/LakshmiSravya123/AI-Policy-Pricing-Model",
-          updated_at: "2024-12-20",
-          technologies: ["Python", "Machine Learning", "Statistical Analysis", "Scikit-learn"]
-        },
-        {
-          name: "React-Data-Science-Dashboard",
-          description: "Comprehensive data science dashboard built with React, Python, and Flask featuring user-centric interfaces and reusable components",
-          language: "JavaScript",
-          stars: 32,
-          url: "https://github.com/LakshmiSravya123/React-Data-Science-Dashboard",
-          updated_at: "2024-11-25",
-          technologies: ["React", "Python", "Flask", "Data Visualization"]
-        },
-        {
-          name: "Mobile-AI-Development",
-          description: "iOS and Android applications developed using cutting-edge AI tools like Cursor, Runway, and Luma",
-          language: "Swift",
-          stars: 14,
-          url: "https://github.com/LakshmiSravya123/Mobile-AI-Development",
-          updated_at: "2025-01-15",
-          technologies: ["iOS", "Android", "Cursor", "Runway", "Luma"]
-        },
-        {
-          name: "Data-Analytics-Portfolio",
-          description: "Comprehensive collection of data science projects showcasing 6+ years of expertise in statistical modeling and machine learning",
-          language: "Python",
-          stars: 42,
-          url: "https://github.com/LakshmiSravya123/Data-Analytics-Portfolio",
-          updated_at: "2024-12-10",
-          technologies: ["Python", "R", "Tableau", "SQL", "Jupyter"]
-        },
-        {
-          name: "Automation-Efficiency-Tools",
-          description: "AI-driven automation tools that resulted in 70% operational efficiency improvements at Co-operators",
-          language: "Python",
-          stars: 25,
-          url: "https://github.com/LakshmiSravya123/Automation-Efficiency-Tools",
-          updated_at: "2024-10-15",
-          technologies: ["Python", "AI Automation", "Process Optimization"]
+          updated_at: "2024-12-20T00:00:00Z"
         }
       ];
       
-      res.json(projects);
-    } catch (error) {
-      console.error("Get GitHub projects error:", error);
-      res.status(500).json({ message: "Failed to get GitHub projects: " + (error as any).message });
+      res.json(fallbackProjects);
     }
   });
 

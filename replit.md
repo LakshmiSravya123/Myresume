@@ -8,10 +8,13 @@ This is a personal portfolio website for Lakshmi Sravya Vedantham, a Data Analys
 
 - Personal website focused on individual portfolio (not generic career assistant)
 - Modern, professional design that stands out to employers
-- Inspired by skirano.com aesthetics
+- Inspired by skirano.com aesthetics with professional typography using Inter font
 - Include animations and appealing visuals
-- GitHub integration to show recent projects
-- AI-powered resume Q&A functionality
+- Real GitHub integration to show live projects from https://github.com/LakshmiSravya123/
+- AI questionnaire section instead of chat icons for resume Q&A functionality
+- Remove featured projects section, keep only GitHub projects section
+- Local AI processing using Ollama or Hugging Face transformers (no API keys required)
+- Professional fonts throughout the application (Inter + JetBrains Mono)
 - Custom logo and branding
 
 ## System Architecture
