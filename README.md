@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a personal portfolio website for Lakshmi Sravya Vedantham, a Data Analyst and Data Scientist with 6+ years of experience. The website showcases professional experience, technical skills, projects, and provides an AI-powered chat assistant to answer questions about the resume and career background. The design is inspired by skirano.com with modern animations and professional aesthetics to stand out among employers.
+This is a personal portfolio website. The website showcases professional experience, technical skills, projects, and provides an AI-powered chat assistant to answer questions about the resume and career background. The design is inspired by skirano.com with modern animations and professional aesthetics to stand out among employers.
 
 ## User Preferences
 
