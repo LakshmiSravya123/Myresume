@@ -66,7 +66,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => window.open('https://github.com/lakshmisravya', '_blank')}
+              onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
               className="text-gray-600 hover:text-blue-600"
               data-testid="button-github"
             >
@@ -75,7 +75,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => window.open('https://linkedin.com/in/lakshmisravya-vedantham', '_blank')}
+              onClick={() => window.open('https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/', '_blank')}
               className="text-gray-600 hover:text-blue-600"
               data-testid="button-linkedin"
             >
@@ -130,7 +130,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => window.open('https://github.com/lakshmisravya', '_blank')}
+                  onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
                   data-testid="mobile-button-github"
                 >
                   <Github className="h-5 w-5" />
@@ -138,7 +138,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => window.open('https://linkedin.com/in/lakshmisravya-vedantham', '_blank')}
+                  onClick={() => window.open('https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/', '_blank')}
                   data-testid="mobile-button-linkedin"
                 >
                   <Linkedin className="h-5 w-5" />

@@ -61,13 +61,13 @@ export default function ContactSection() {
     {
       icon: <Github className="h-5 w-5" />,
       label: "GitHub",
-      href: "https://github.com/lakshmisravya",
+      href: "https://github.com/LakshmiSravya123/",
       color: "hover:bg-gray-800",
     },
     {
       icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/lakshmisravya-vedantham",
+      href: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
       color: "hover:bg-blue-600",
     },
   ];

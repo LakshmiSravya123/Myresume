@@ -111,7 +111,7 @@ export default function HeroSection() {
                   variant="outline"
                   size="icon"
                   className="hover:bg-gray-100"
-                  onClick={() => window.open('https://github.com/lakshmisravya', '_blank')}
+                  onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
                   data-testid="hero-button-github"
                 >
                   <Github className="h-5 w-5" />
@@ -120,7 +120,7 @@ export default function HeroSection() {
                   variant="outline"
                   size="icon"
                   className="hover:bg-gray-100"
-                  onClick={() => window.open('https://linkedin.com/in/lakshmisravya-vedantham', '_blank')}
+                  onClick={() => window.open('https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/', '_blank')}
                   data-testid="hero-button-linkedin"
                 >
                   <Linkedin className="h-5 w-5" />
