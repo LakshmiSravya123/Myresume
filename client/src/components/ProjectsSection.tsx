@@ -81,7 +81,7 @@ export default function ProjectsSection() {
 
         {/* GitHub Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {githubProjects?.map((project, index) => (
+          {githubProjects?.slice(0, 3).map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -104,16 +104,6 @@ export default function ProjectsSection() {
               
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-4 text-sm text-gray-500">
-                  <div className="flex items-center space-x-1">
-                    <Star className="w-4 h-4" />
-                    <span>{project.stars}</span>
-                  </div>
-                  {project.forks !== undefined && (
-                    <div className="flex items-center space-x-1">
-                      <GitFork className="w-4 h-4" />
-                      <span>{project.forks}</span>
-                    </div>
-                  )}
                   <div className="flex items-center space-x-1">
                     <Clock className="w-4 h-4" />
                     <span>{formatDate(project.updated_at)}</span>
@@ -162,6 +152,30 @@ export default function ProjectsSection() {
             </div>
           )}
         </div>
+
+        {/* View More Button */}
+        {githubProjects && githubProjects.length > 3 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Button
+              asChild
+              size="lg"
+              className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 text-lg font-medium rounded-xl"
+              data-testid="button-view-more-projects"
+            >
+              <a href="https://github.com/LakshmiSravya123/" target="_blank" rel="noopener noreferrer">
+                <Github className="w-5 h-5 mr-2" />
+                View More Projects on GitHub
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
