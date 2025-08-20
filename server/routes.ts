@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertResumeSchema, insertMessageSchema } from "@shared/schema";
-import { generateChatResponse, analyzeResume, generateQuickResponse } from "./services/openai";
+import { generateChatResponseWithOpenAI, analyzeResumeWithOpenAI, checkOpenAIAvailability } from "./services/openai";
 import { generateChatResponseWithOllama, analyzeResumeWithOllama, checkOllamaAvailability } from "./services/ollama";
 import { parseResumeText } from "./services/resumeParser";
 import { portfolioData } from "./services/portfolioData";
@@ -43,8 +43,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Parse resume in background
       try {
         const basicParsed = parseResumeText(content);
-        // Use Ollama for AI analysis instead of OpenAI
-        const aiAnalysis = await analyzeResumeWithOllama(content);
+        // Use OpenAI for AI analysis
+        const aiAnalysis = await analyzeResumeWithOpenAI(content);
         
         const combinedParsedData = {
           ...basicParsed,
@@ -148,8 +148,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
             content: m.content
           }));
 
-          // Use Ollama instead of OpenAI for chat responses
-          const aiResponse = await generateChatResponseWithOllama(messageHistory);
+          // Use OpenAI for chat responses
+          const aiResponse = await generateChatResponseWithOpenAI(messageHistory);
 
           // Save AI response
           const aiMessage = await storage.createMessage({
@@ -184,9 +184,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Query is required" });
       }
 
-      // Use Ollama for local AI processing (no API key required)
-      console.log("Processing query with Ollama:", query);
-      const response = await generateChatResponseWithOllama([{ role: "user", content: query }]);
+      // Use OpenAI for AI processing
+      console.log("Processing query with OpenAI:", query);
+      const response = await generateChatResponseWithOpenAI([{ role: "user", content: query }]);
       
       res.json({ 
         response,
