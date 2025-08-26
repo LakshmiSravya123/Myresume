@@ -66,6 +66,7 @@ export type PersonalInfo = {
   github?: string;
   linkedin?: string;
   location?: string;
+  summary?: string;
 };
 
 export type WorkExperience = {
@@ -93,12 +94,19 @@ export type Education = {
   year: string;
 };
 
+export type Achievement = {
+  title: string;
+  duration: string;
+  description: string;
+};
+
 export type ResumeData = {
   personalInfo: PersonalInfo;
   workExperience: WorkExperience[];
   projects: Project[];
   skills: string[];
   education: Education[];
+  achievements?: Achievement[];
   analysis?: {
     completeness: number;
     strengths: string[];

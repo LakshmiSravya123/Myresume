@@ -9,18 +9,20 @@ export const portfolioData: ResumeData = {
     phone: "959-222-8822",
     github: "https://github.com/LakshmiSravya123/",
     linkedin: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
-    location: "United States"
+    location: "United States",
+    summary: "Highly adaptable Data Analyst and Data Scientist with 6+ years of experience in both software development and advanced analytics. Proficient in Python, SQL, and Machine Learning, with a track record of delivering actionable insights through statistical modeling and visualization. Eager to apply skills in data-driven innovation and process optimization to a mission-driven organization."
   },
   workExperience: [
     {
       company: "Relocation & Immigration Transition",
-      position: "AI/App Developer",
+      position: "Data Scientist & AI Developer",
       duration: "Mar 2025 - Present",
       location: "United States",
       description: [
-        "Proactively leveraged AI tools and platforms (e.g., Cursor, Runway, Luma etc.) to develop and launch iOS and Android applications while awaiting work authorization."
+        "Developed a Python-based application to analyze dreams and moods, incorporating simulated EEG data to mimic brain-computer interface (BCI) inputs for enhanced emotional pattern detection using NLP techniques (e.g., NLTK/spaCy) and visualized insights with Matplotlib/Seaborn.",
+        "Developed a Retrieval-Augmented Generation (RAG) chatbot using Python and Streamlit, integrating LangChain and Hugging Face transformers to enable context-aware responses by retrieving relevant information from a knowledge base."
       ],
-      technologies: ["Cursor", "Runway", "Luma", "iOS Development", "Android Development", "AI Tools"]
+      technologies: ["Python", "NLP", "NLTK", "spaCy", "Matplotlib", "Seaborn", "Streamlit", "LangChain", "Hugging Face", "RAG", "EEG Data Analysis", "BCI"]
     },
     {
       company: "Co-operators",
@@ -32,7 +34,7 @@ export const portfolioData: ResumeData = {
         "Developed advanced auto policy pricing models using statistical methods, significantly improving pricing accuracy and competitive positioning.",
         "Mentored and trained junior analysts and supervised two interns annually, demonstrating leadership and knowledge-sharing abilities."
       ],
-      technologies: ["Python", "SQL", "Machine Learning", "Statistical Modeling", "Data Analysis", "AI Automation"]
+      technologies: ["Python", "SQL", "Machine Learning", "Statistical Modeling", "Data Analysis", "AI Automation", "Policy Pricing Models"]
     },
     {
       company: "StackUp Technologies",
@@ -43,7 +45,7 @@ export const portfolioData: ResumeData = {
         "Developed APIs for seamless system integration and built responsive front-end applications, enhancing code efficiency.",
         "Led the redevelopment of a data science project using React, Python, and Flask, designing user-centric interfaces and reusable components."
       ],
-      technologies: ["React", "Python", "Flask", "APIs", "JavaScript", "Front-end Development"]
+      technologies: ["React", "Python", "Flask", "APIs", "JavaScript", "Front-end Development", "System Integration"]
     },
     {
       company: "Tata Consultancy Services",
@@ -58,6 +60,20 @@ export const portfolioData: ResumeData = {
     }
   ],
   projects: [
+    {
+      name: "Dream & Mood Analysis with EEG",
+      description: "Python-based application analyzing dreams and moods using simulated EEG data for brain-computer interface inputs with NLP emotional pattern detection",
+      technologies: ["Python", "NLP", "NLTK", "spaCy", "Matplotlib", "Seaborn", "EEG Data", "BCI"],
+      year: "2025",
+      url: "https://github.com/LakshmiSravya123/DreamAnalysis"
+    },
+    {
+      name: "RAG Chatbot with LangChain",
+      description: "Context-aware chatbot using Retrieval-Augmented Generation with Python, Streamlit, LangChain and Hugging Face transformers",
+      technologies: ["Python", "Streamlit", "LangChain", "Hugging Face", "RAG", "NLP"],
+      year: "2025",
+      url: "https://github.com/LakshmiSravya123/langchain"
+    },
     {
       name: "AI-Driven Policy Pricing Model",
       description: "Advanced machine learning model for automatic insurance policy pricing with statistical analysis and competitive positioning improvements",
@@ -96,17 +112,25 @@ export const portfolioData: ResumeData = {
   ],
   skills: [
     "Python", "R", "SQL", "JavaScript", "Java", "C++",
-    "Tableau", "Power BI", "MicroStrategy",
+    "Tableau", "Power BI", "MicroStrategy", 
     "Scikit-learn", "TensorFlow", "PyTorch", "Streamlit", "Pandas", "NumPy",
+    "NLTK", "spaCy", "LangChain", "Hugging Face", "RAG Systems",
     "MySQL", "PostgreSQL", "Azure", "Google Cloud",
-    "Git", "Jupyter", "VS Code", "Excel", "Cursor", "Runway", "Luma", "Stable Diffusion",
-    "React", "AngularJS", "Flask", "Spring"
+    "Git", "Jupyter", "VS Code", "Excel (Advanced)", "Cursor", "Runway", "Luma", "Stable Diffusion", "Replit", "Copilot",
+    "React", "AngularJS", "Flask", "Spring", "NLP", "EEG Data Analysis", "BCI"
   ],
   education: [
     {
       institution: "Graduate Studies",
       degree: "Advanced Analytics & Data Science",
       year: "2021-2025"
+    }
+  ],
+  achievements: [
+    {
+      title: "Part-time Coding Instructor",
+      duration: "Sep 2021 – Aug 2025", 
+      description: "Mentored and taught coding and AI concepts (Python, R, Tableau) to graduate students, demonstrating strong leadership and an ability to distill complex technical topics for diverse audiences"
     }
   ],
   analysis: {
