@@ -1,3 +1,21 @@
+# Lakshmi Sravya Vedantham - Personal Portfolio
+
+## Overview
+
+This is a personal portfolio website. The website showcases professional experience, technical skills, projects, and provides an AI-powered chat assistant to answer questions about the resume and career background. The design is inspired by skirano.com with modern animations and professional aesthetics to stand out among employers.
+
+## User Preferences
+
+- Personal website focused on individual portfolio (not generic career assistant)
+- Modern, professional design that stands out to employers
+- Inspired by skirano.com aesthetics with professional typography using Inter font
+- Include animations and appealing visuals
+- Real GitHub integration to show live projects from https://github.com/LakshmiSravya123/
+- AI questionnaire section instead of chat icons for resume Q&A functionality
+- Remove featured projects section, keep only GitHub projects section
+- Local AI processing using Ollama or Hugging Face transformers (no API keys required)
+- Professional fonts throughout the application (Inter + JetBrains Mono)
+- Custom logo and branding
 
 ## System Architecture
 
