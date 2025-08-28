@@ -41,13 +41,7 @@ export default function ContactSection() {
       href: "mailto:lakshmisravya.vedantham@gmail.com",
       color: "from-blue-500 to-blue-600",
     },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      label: "Phone",
-      value: "959-222-8822",
-      href: "tel:9592228822",
-      color: "from-green-500 to-green-600",
-    },
+
     {
       icon: <MapPin className="h-6 w-6" />,
       label: "Location",
