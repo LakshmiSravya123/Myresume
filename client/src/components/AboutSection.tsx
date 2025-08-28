@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { User, MapPin, Mail, Phone, Award, TrendingUp } from "lucide-react";
+import { User, MapPin, Mail, Award, TrendingUp } from "lucide-react";
 import type { ResumeData } from "@shared/schema";
 
 export default function AboutSection() {
@@ -65,10 +65,7 @@ export default function AboutSection() {
                     <Mail className="h-4 w-4 mr-2" />
                     <span>{personalInfo.email}</span>
                   </div>
-                  <div className="flex items-center justify-center text-gray-600">
-                    <Phone className="h-4 w-4 mr-2" />
-                    <span>{personalInfo.phone}</span>
-                  </div>
+
                 </div>
               </div>
             </div>
