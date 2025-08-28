@@ -12,7 +12,6 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "About", id: "about" },
     { label: "Experience", id: "experience" },
     { label: "Projects", id: "projects" },
     { label: "Skills", id: "skills" },
