@@ -110,9 +110,9 @@ function generateFallbackResponse(query: string): string {
   const lowerQuery = query.toLowerCase();
   
   if (lowerQuery.includes("experience") || lowerQuery.includes("work") || lowerQuery.includes("job")) {
-    return `Lakshmi has 6+ years of comprehensive experience in data science and software development. She currently works as an AI/App Developer focusing on iOS and Android applications using cutting-edge AI tools like Cursor, Runway, and Luma. 
+    return `Lakshmi has comprehensive experience in data science and software development. She currently works as an AI/App Developer focusing on iOS and Android applications using cutting-edge AI tools like Cursor, Runway, and Luma. 
 
-Previously, she served as a Senior Data Modeling & Reporting Analyst at Co-operators where she led AI-driven automation initiatives that resulted in a 70% increase in operational efficiency. She also has experience as a Software Developer at StackUp Technologies and as a System Engineer at Tata Consultancy Services, giving her a well-rounded technical background.`;
+Previously, she served as a Senior Data Modeling & Reporting Analyst at Co-operators where she led AI-driven automation initiatives that resulted in significant operational efficiency improvements. She also has experience as a Software Developer at StackUp Technologies and as a System Engineer at Tata Consultancy Services, giving her a well-rounded technical background.`;
   }
 
   if (lowerQuery.includes("skill") || lowerQuery.includes("technolog") || lowerQuery.includes("programming")) {

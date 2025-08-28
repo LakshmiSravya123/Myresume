@@ -30,7 +30,7 @@ export const portfolioData: ResumeData = {
       duration: "Oct 2022 – Feb 2025",
       location: "Toronto, ON",
       description: [
-        "Led AI-driven automation initiatives to redesign applications, resulting in a 70% increase in operational efficiency by automating BAU tasks.",
+        "Led AI-driven automation initiatives to redesign applications, resulting in significant operational efficiency improvements by automating BAU tasks.",
         "Developed advanced auto policy pricing models using statistical methods, significantly improving pricing accuracy and competitive positioning.",
         "Mentored and trained junior analysts and supervised two interns annually, demonstrating leadership and knowledge-sharing abilities."
       ],

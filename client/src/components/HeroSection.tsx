@@ -144,18 +144,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1.1 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
           >
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">6+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">70%</div>
-              <div className="text-gray-600">Efficiency Improvement</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-pink-600 mb-2">15+</div>
-              <div className="text-gray-600">Technologies Mastered</div>
-            </div>
+
           </motion.div>
 
           {/* Scroll Indicator */}

@@ -124,9 +124,9 @@ function generateFallbackResponse(query: string): string {
   const lowerQuery = query.toLowerCase();
   
   if (lowerQuery.includes("experience") || lowerQuery.includes("work") || lowerQuery.includes("job")) {
-    return `Lakshmi has 6+ years of comprehensive experience in data science and software development. She currently works as an AI/App Developer focusing on iOS and Android applications using cutting-edge AI tools like Cursor, Runway, and Luma. 
+    return `Lakshmi has comprehensive experience in data science and software development. She currently works as an AI/App Developer focusing on iOS and Android applications using cutting-edge AI tools like Cursor, Runway, and Luma. 
 
-Previously, she served as a Senior Data Modeling & Reporting Analyst at Co-operators where she led AI-driven automation initiatives that resulted in a 70% increase in operational efficiency. She also has experience as a Software Developer at StackUp Technologies and as a System Engineer at Tata Consultancy Services, giving her a well-rounded technical background.`;
+Previously, she served as a Senior Data Modeling & Reporting Analyst at Co-operators where she led AI-driven automation initiatives that resulted in significant operational efficiency improvements. She also has experience as a Software Developer at StackUp Technologies and as a System Engineer at Tata Consultancy Services, giving her a well-rounded technical background.`;
   }
 
   if (lowerQuery.includes("skill") || lowerQuery.includes("technolog") || lowerQuery.includes("programming")) {
@@ -151,15 +151,15 @@ Her diverse skill set spans from traditional data analysis to cutting-edge AI de
 
 **Mobile App Development (2025)**: Currently developing iOS and Android applications using modern AI tools like Cursor, Runway, and Luma, demonstrating her adaptability to emerging technologies.
 
-Her most notable achievement was leading automation initiatives that resulted in a 70% increase in operational efficiency at Co-operators.`;
+Her most notable achievement was leading automation initiatives that resulted in significant operational efficiency improvements at Co-operators.`;
   }
 
   if (lowerQuery.includes("education") || lowerQuery.includes("background")) {
-    return `Lakshmi is currently pursuing Graduate Studies in Advanced Analytics & Data Science (2021-2025), which complements her extensive practical experience in the field. Her educational background, combined with 6+ years of hands-on experience, provides her with both theoretical knowledge and practical expertise in data science and machine learning.`;
+    return `Lakshmi is currently pursuing Graduate Studies in Advanced Analytics & Data Science (2021-2025), which complements her extensive practical experience in the field. Her educational background, combined with hands-on experience, provides her with both theoretical knowledge and practical expertise in data science and machine learning.`;
   }
 
   // Default response
-  return `Lakshmi Sravya Vedantham is a highly skilled Data Analyst and Data Scientist with 6+ years of experience. She specializes in machine learning, statistical modeling, and AI-driven solutions. Currently working as an AI/App Developer, she has a proven track record of delivering significant results, including a 70% efficiency improvement through automation initiatives.
+  return `Lakshmi Sravya Vedantham is a highly skilled Data Analyst and Data Scientist with comprehensive experience. She specializes in machine learning, statistical modeling, and AI-driven solutions. Currently working as an AI/App Developer, she has a proven track record of delivering significant results, including operational efficiency improvements through automation initiatives.
 
 Her expertise spans programming languages like Python, R, and SQL, along with modern AI tools such as Cursor, Runway, and Luma. She has experience across multiple industries and has demonstrated strong leadership skills by mentoring junior analysts and managing teams.
 
