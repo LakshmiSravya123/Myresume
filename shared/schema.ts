@@ -75,7 +75,7 @@ export type WorkExperience = {
   duration: string;
   location?: string;
   description: string[];
-  technologies: string[];
+  technologies?: string[];
 };
 
 export type Project = {

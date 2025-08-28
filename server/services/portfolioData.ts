@@ -10,7 +10,7 @@ export const portfolioData: ResumeData = {
     github: "https://github.com/LakshmiSravya123/",
     linkedin: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
     location: "United States",
-    summary: "Highly adaptable Data Analyst and Data Scientist with 6+ years of experience in both software development and advanced analytics. Proficient in Python, SQL, and Machine Learning, with a track record of delivering actionable insights through statistical modeling and visualization. Eager to apply skills in data-driven innovation and process optimization to a mission-driven organization."
+    summary: "Highly adaptable Data Analyst and Data Scientist with almost a decade of experience in both software development and advanced analytics. Proficient in Python, SQL, and Machine Learning, with a track record of delivering actionable insights through statistical modeling and visualization. Eager to apply skills in data-driven innovation and process optimization to a mission-driven organization."
   },
   workExperience: [
     {
@@ -100,7 +100,7 @@ export const portfolioData: ResumeData = {
     },
     {
       name: "Data Analytics Portfolio",
-      description: "Comprehensive collection of data science projects showcasing 6+ years of expertise in statistical modeling, machine learning, and data visualization",
+      description: "Comprehensive collection of data science projects showcasing almost a decade of expertise in statistical modeling, machine learning, and data visualization",
       technologies: ["Python", "R", "Tableau", "SQL", "Jupyter", "Power BI", "Pandas", "NumPy"],
       year: "2024",
       url: "https://github.com/LakshmiSravya123/Data-Analytics-Portfolio"
