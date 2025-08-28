@@ -82,60 +82,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Summary</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Highly adaptable Data Analyst and Data Scientist with 6+ years of experience in both software development and
-                advanced analytics. Proficient in Python, SQL, and Machine Learning, with a track record of delivering actionable
-                insights through statistical modeling and visualization. Eager to apply skills in data-driven innovation and process
-                optimization to a mission-driven organization.
-              </p>
-            </div>
 
-            {/* Key Strengths */}
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">Key Strengths</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {analysis?.strengths?.map((strength, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start space-x-3 p-3 rounded-lg bg-blue-50 border border-blue-100"
-                  >
-                    <TrendingUp className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{strength}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Resume Completeness */}
-            {analysis && (
-              <div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-4">Portfolio Completeness</h4>
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-700 font-medium">Overall Score</span>
-                    <span className="text-2xl font-bold text-blue-600">{analysis.completeness}%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
-                    <motion.div
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${analysis.completeness}%` }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                      viewport={{ once: true }}
-                    />
-                  </div>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Comprehensive profile showcasing technical expertise and professional experience
-                  </p>
-                </div>
-              </div>
-            )}
           </motion.div>
         </div>
       </div>
