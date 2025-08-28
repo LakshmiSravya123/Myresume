@@ -6,7 +6,7 @@ export const portfolioData: ResumeData = {
     name: "Lakshmi Sravya Vedantham",
     title: "Data Analyst & Data Scientist",
     email: "lakshmisravya.vedantham@gmail.com",
-    phone: "959-222-8822",
+    phone: "000-000-0000",
     github: "https://github.com/LakshmiSravya123/",
     linkedin: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
     location: "United States",
