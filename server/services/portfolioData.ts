@@ -21,8 +21,7 @@ export const portfolioData: ResumeData = {
       description: [
         "Developed a Python-based application to analyze dreams and moods, incorporating simulated EEG data to mimic brain-computer interface (BCI) inputs for enhanced emotional pattern detection using NLP techniques (e.g., NLTK/spaCy) and visualized insights with Matplotlib/Seaborn.",
         "Developed a Retrieval-Augmented Generation (RAG) chatbot using Python and Streamlit, integrating LangChain and Hugging Face transformers to enable context-aware responses by retrieving relevant information from a knowledge base."
-      ],
-      technologies: ["Python", "NLP", "NLTK", "spaCy", "Matplotlib", "Seaborn", "Streamlit", "LangChain", "Hugging Face", "RAG", "EEG Data Analysis", "BCI"]
+      ]
     },
     {
       company: "Co-operators",
@@ -33,8 +32,7 @@ export const portfolioData: ResumeData = {
         "Led AI-driven automation initiatives to redesign applications, resulting in a 70% increase in operational efficiency by automating BAU tasks.",
         "Developed advanced auto policy pricing models using statistical methods, significantly improving pricing accuracy and competitive positioning.",
         "Mentored and trained junior analysts and supervised two interns annually, demonstrating leadership and knowledge-sharing abilities."
-      ],
-      technologies: ["Python", "SQL", "Machine Learning", "Statistical Modeling", "Data Analysis", "AI Automation", "Policy Pricing Models"]
+      ]
     },
     {
       company: "StackUp Technologies",
@@ -44,8 +42,7 @@ export const portfolioData: ResumeData = {
       description: [
         "Developed APIs for seamless system integration and built responsive front-end applications, enhancing code efficiency.",
         "Led the redevelopment of a data science project using React, Python, and Flask, designing user-centric interfaces and reusable components."
-      ],
-      technologies: ["React", "Python", "Flask", "APIs", "JavaScript", "Front-end Development", "System Integration"]
+      ]
     },
     {
       company: "Tata Consultancy Services",
@@ -55,8 +52,7 @@ export const portfolioData: ResumeData = {
       description: [
         "Led module development with AngularJS, Spring, and Selenium, directing a remote team to improve collaboration and productivity.",
         "Designed custom directives and optimized performance using browser debugging tools."
-      ],
-      technologies: ["AngularJS", "Spring", "Selenium", "Java", "JavaScript", "Team Leadership"]
+      ]
     }
   ],
   projects: [
@@ -111,13 +107,7 @@ export const portfolioData: ResumeData = {
     }
   ],
   skills: [
-    "Python", "R", "SQL", "JavaScript", "Java", "C++",
-    "Tableau", "Power BI", "MicroStrategy", 
-    "Scikit-learn", "TensorFlow", "PyTorch", "Streamlit", "Pandas", "NumPy",
-    "NLTK", "spaCy", "LangChain", "Hugging Face", "RAG Systems",
-    "MySQL", "PostgreSQL", "Azure", "Google Cloud",
-    "Git", "Jupyter", "VS Code", "Excel (Advanced)", "Cursor", "Runway", "Luma", "Stable Diffusion", "Replit", "Copilot",
-    "React", "AngularJS", "Flask", "Spring", "NLP", "EEG Data Analysis", "BCI"
+    "Python", "SQL", "Machine Learning", "React"
   ],
   education: [
     {
