@@ -90,18 +90,6 @@ export default function ExperienceSection() {
                       ))}
                     </div>
 
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900 mb-3">Technologies & Skills</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {job.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="secondary" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
                     {/* Decorative element */}
                     <div className={`absolute -top-2 ${
                       index % 2 === 0 ? '-right-2' : '-left-2'
