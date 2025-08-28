@@ -84,8 +84,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
             >
-              Data Analyst & Data Scientist with{' '}
-              <span className="font-semibold text-blue-600">6+ years</span> of experience transforming data into
+              Data Analyst & Data Scientist transforming data into
               actionable insights through{' '}
               <span className="font-semibold text-purple-600">machine learning</span> and{' '}
               <span className="font-semibold text-pink-600">AI-driven solutions</span>
