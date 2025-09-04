@@ -161,12 +161,38 @@ export default function ContactSection() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3"
-                onClick={() => {
-                  // In a real implementation, this would download the actual resume PDF
-                  toast({
-                    title: "Resume Download",
-                    description: "Resume download functionality would be implemented here.",
-                  });
+                onClick={async () => {
+                  try {
+                    // Trigger the download
+                    const response = await fetch('/api/resume/download');
+                    
+                    if (!response.ok) {
+                      throw new Error('Failed to download resume');
+                    }
+                    
+                    // Create blob and download link
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Lakshmi_Sravya_Vedantham_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                    
+                    toast({
+                      title: "Resume Downloaded",
+                      description: "Resume has been successfully downloaded to your device.",
+                    });
+                  } catch (error) {
+                    console.error('Download error:', error);
+                    toast({
+                      title: "Download Failed",
+                      description: "Sorry, there was an error downloading the resume. Please try again.",
+                      variant: "destructive",
+                    });
+                  }
                 }}
                 data-testid="download-resume"
               >
