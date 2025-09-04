@@ -225,6 +225,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Download resume endpoint
+  app.get("/api/resume/download", async (req, res) => {
+    try {
+      const fs = await import('fs/promises');
+      const path = await import('path');
+      
+      // Use the most recent resume file
+      const resumePath = path.resolve(import.meta.dirname, '../attached_assets/Sravya Resume August 2025_1756251207975.pdf');
+      
+      // Check if file exists
+      try {
+        await fs.access(resumePath);
+      } catch {
+        return res.status(404).json({ message: "Resume file not found" });
+      }
+      
+      // Set headers for file download
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="Lakshmi_Sravya_Vedantham_Resume.pdf"');
+      
+      // Stream the file
+      const fileBuffer = await fs.readFile(resumePath);
+      res.send(fileBuffer);
+    } catch (error) {
+      console.error("Resume download error:", error);
+      res.status(500).json({ message: "Failed to download resume: " + (error as any).message });
+    }
+  });
+
   // GitHub projects endpoint - fetches real data from GitHub API
   app.get("/api/github/projects", async (req, res) => {
     try {
