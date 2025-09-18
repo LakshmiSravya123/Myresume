@@ -82,12 +82,19 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed"
             >
-              Data Analyst & Data Scientist transforming data into
-              actionable insights through{' '}
-              <span className="font-semibold text-purple-600">machine learning</span> and{' '}
-              <span className="font-semibold text-pink-600">AI-driven solutions</span>
+              Welcome to my world, where code meets soul, and data dances with nature! I'm a data scientist and AI enthusiast with a passion for turning patterns into insights, blending technology with spirituality and creativity.
+              <br /><br />
+              Skilled in{' '}
+              <span className="font-semibold text-purple-600">Python, machine learning</span>, and{' '}
+              <span className="font-semibold text-pink-600">AI tools like Retrieval-Augmented Generation (RAG)</span>, I build innovative solutions like EEG-based brain-computer interfaces (BCI) to explore moods and dreams. My work aims to harmonize tech with the human experience, shared through GitHub, Hugging Face, or no-code platforms like Glide.
+              <br /><br />
+              Spirituality shapes my life. Meditation grounds me, fueling clarity in my projects. My love for plants—my thriving indoor jungle—mirrors my approach to nurturing data into insights. Singing, from mantras to melodies, is my soul's expression, infusing my work with authenticity.
+              <br /><br />
+              I'm driven to create meaningful technology, from AI chatbots to intuitive dashboards, that inspires and connects. When not coding or meditating, I'm exploring AI ethics, MLOps, or singing to my plants, envisioning a future where innovation and human connection thrive.
+              <br /><br />
+              Thanks for stopping by! I'm excited to share my journey of data, spirit, and growth. Stay tuned for more!
             </motion.p>
 
             <motion.div
