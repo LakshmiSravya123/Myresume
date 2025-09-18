@@ -10,10 +10,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
+    <section id="hero" className="py-20 md:py-32 bg-white">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Photo Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -46,7 +46,7 @@ export default function HeroSection() {
               Available for opportunities
             </motion.div>
 
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -62,21 +62,10 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="mb-8"
             >
-              <h2 className="text-xl font-medium text-gray-900 mb-4">Data Scientist & AI Engineer</h2>
-              <p className="text-base text-gray-600 mb-6 leading-relaxed">
-                Masters in AI from Northeastern University with a passion for transforming complex data into actionable insights. 
-                Specialized in machine learning, AI automation, and innovative solutions that bridge technology with real-world impact.
+              <h2 className="text-xl md:text-2xl font-medium text-gray-600 mb-6">Data Scientist & AI Engineer</h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+                Masters in AI from Northeastern University. Transforming complex data into actionable insights through machine learning and innovative AI solutions.
               </p>
-              <div className="space-y-3">
-                <div className="flex items-center text-sm text-gray-600">
-                  <span className="font-medium text-gray-900 mr-2">Education:</span>
-                  Masters in AI • Northeastern University • 2020-2022
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <span className="font-medium text-gray-900 mr-2">Specialties:</span>
-                  Python, Machine Learning, RAG, EEG-BCI, Data Analytics
-                </div>
-              </div>
             </motion.div>
 
             <motion.div

@@ -1,35 +1,12 @@
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import { User, MapPin, Mail, Award, TrendingUp } from "lucide-react";
-import type { ResumeData } from "@shared/schema";
+import professionalPhoto from "@assets/stock_images/professional_headsho_563743ba.jpg";
 
 export default function AboutSection() {
-  const { data: portfolioData } = useQuery<ResumeData>({
-    queryKey: ["/api/portfolio"],
-  });
-
-  if (!portfolioData) {
-    return <div>Loading...</div>;
-  }
-
-  const { personalInfo, analysis } = portfolioData;
-
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Me</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image and Info */}
+    <section id="about" className="py-20 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,49 +14,49 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl p-8 relative overflow-hidden">
-              {/* Profile placeholder with initials */}
-              <div className="w-48 h-48 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-6xl font-bold text-white">LSV</span>
-              </div>
-              
-              {/* Floating elements */}
-              <motion.div
-                className="absolute top-4 right-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <Award className="h-6 w-6 text-blue-600" />
-              </motion.div>
-              
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{personalInfo.name}</h3>
-                <p className="text-lg text-gray-600 mb-4">{personalInfo.title}</p>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center justify-center text-gray-600">
-                    <MapPin className="h-4 w-4 mr-2" />
-                    <span>{personalInfo.location}</span>
-                  </div>
-                  <div className="flex items-center justify-center text-gray-600">
-                    <Mail className="h-4 w-4 mr-2" />
-                    <span>{personalInfo.email}</span>
-                  </div>
-
-                </div>
-              </div>
+            <div className="relative">
+              <img
+                src={professionalPhoto}
+                alt="Lakshmi Sravya Vedantham"
+                className="w-full max-w-md mx-auto rounded-2xl object-cover shadow-2xl"
+                data-testid="about-profile-image"
+              />
             </div>
           </motion.div>
 
-          {/* Description and Highlights */}
+          {/* About Content */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">About Me</h2>
+              
+              <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
+                <p>
+                  Welcome to my world, where code meets soul, and data dances with nature! I'm a data scientist and AI enthusiast with a passion for turning patterns into insights, blending technology with spirituality and creativity.
+                </p>
+                
+                <p>
+                  Skilled in Python, machine learning, and AI tools like Retrieval-Augmented Generation (RAG), I build innovative solutions like EEG-based brain-computer interfaces (BCI) to explore moods and dreams. My work aims to harmonize tech with the human experience, shared through GitHub, Hugging Face, or no-code platforms like Glide.
+                </p>
+                
+                <p>
+                  Spirituality shapes my life. Meditation grounds me, fueling clarity in my projects. My love for plants—my thriving indoor jungle—mirrors my approach to nurturing data into insights. Singing, from mantras to melodies, is my soul's expression, infusing my work with authenticity.
+                </p>
+                
+                <p>
+                  I'm driven to create meaningful technology, from AI chatbots to intuitive dashboards, that inspires and connects. When not coding or meditating, I'm exploring AI ethics, MLOps, or singing to my plants, envisioning a future where innovation and human connection thrive.
+                </p>
+                
+                <p>
+                  Thanks for stopping by! I'm excited to share my journey of data, spirit, and growth. Stay tuned for more!
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
