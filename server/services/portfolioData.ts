@@ -12,53 +12,7 @@ export const portfolioData: ResumeData = {
     location: "United States",
     summary: "Highly adaptable Data Analyst and Data Scientist transforming data into actionable insights through machine learning and AI-driven solutions in both software development and advanced analytics. Proficient in Python, SQL, and Machine Learning, with a track record of delivering actionable insights through statistical modeling and visualization. Eager to apply skills in data-driven innovation and process optimization to a mission-driven organization."
   },
-  workExperience: [
-    {
-      company: "Relocation & Immigration Transition",
-      position: "Data Scientist & AI Developer",
-      duration: "Mar 2025 - Present",
-      location: "United States",
-      description: [
-        "Developed a Python-based application to analyze dreams and moods, incorporating simulated EEG data to mimic brain-computer interface (BCI) inputs for enhanced emotional pattern detection using NLP techniques (e.g., NLTK/spaCy) and visualized insights with Matplotlib/Seaborn.",
-        "Developed a Retrieval-Augmented Generation (RAG) chatbot using Python and Streamlit, integrating LangChain and Hugging Face transformers to enable context-aware responses by retrieving relevant information from a knowledge base."
-      ],
-      technologies: ["Python", "NLP", "NLTK", "spaCy", "Matplotlib", "Seaborn", "Streamlit", "LangChain", "Hugging Face", "RAG", "EEG Data Analysis", "BCI"]
-    },
-    {
-      company: "Co-operators",
-      position: "Senior Data Modeling & Reporting Analyst",
-      duration: "Oct 2022 – Feb 2025",
-      location: "Toronto, ON",
-      description: [
-        "Led AI-driven automation initiatives to redesign applications, resulting in significant operational efficiency improvements by automating BAU tasks.",
-        "Developed advanced auto policy pricing models using statistical methods, significantly improving pricing accuracy and competitive positioning.",
-        "Mentored and trained junior analysts and supervised two interns annually, demonstrating leadership and knowledge-sharing abilities."
-      ],
-      technologies: ["Python", "SQL", "Machine Learning", "Statistical Modeling", "Data Analysis", "AI Automation", "Policy Pricing Models"]
-    },
-    {
-      company: "StackUp Technologies",
-      position: "Software Developer",
-      duration: "Oct 2018 – June 2019",
-      location: "Chennai, India",
-      description: [
-        "Developed APIs for seamless system integration and built responsive front-end applications, enhancing code efficiency.",
-        "Led the redevelopment of a data science project using React, Python, and Flask, designing user-centric interfaces and reusable components."
-      ],
-      technologies: ["React", "Python", "Flask", "APIs", "JavaScript", "Front-end Development", "System Integration"]
-    },
-    {
-      company: "Tata Consultancy Services",
-      position: "System Engineer",
-      duration: "June 2015 – March 2018",
-      location: "Nagpur, India",
-      description: [
-        "Led module development with AngularJS, Spring, and Selenium, directing a remote team to improve collaboration and productivity.",
-        "Designed custom directives and optimized performance using browser debugging tools."
-      ],
-      technologies: ["AngularJS", "Spring", "Selenium", "Java", "JavaScript", "Team Leadership"]
-    }
-  ],
+  workExperience: [],
   projects: [
     {
       name: "Dream & Mood Analysis with EEG",
@@ -115,9 +69,14 @@ export const portfolioData: ResumeData = {
   ],
   education: [
     {
-      institution: "Graduate Studies",
-      degree: "Advanced Analytics & Data Science",
-      year: "2021-2025"
+      institution: "Northeastern University",
+      degree: "Masters in AI",
+      year: "2020-2022"
+    },
+    {
+      institution: "Sastra University",
+      degree: "Bachelors of Technology in Chemical Engineering",
+      year: "2011-2015"
     }
   ],
   achievements: [

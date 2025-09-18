@@ -71,7 +71,7 @@ export default function ProjectsSection() {
         >
           <div className="flex items-center justify-center mb-6">
             <Github className="w-12 h-12 text-gray-900 mr-4" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Latest GitHub Projects</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Latest Projects</h2>
           </div>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
