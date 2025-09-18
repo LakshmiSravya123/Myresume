@@ -24,8 +24,8 @@ export default function Home() {
       
       <main>
         <HeroSection />
-        <ProjectsSection />
         <AIQuestionnaire />
+        <ProjectsSection />
         <ContactSection />
       </main>
 

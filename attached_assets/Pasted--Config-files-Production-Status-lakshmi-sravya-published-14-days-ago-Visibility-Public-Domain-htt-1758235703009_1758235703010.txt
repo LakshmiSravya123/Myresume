@@ -1,0 +1,198 @@
+
+Config files
+/
+
+Production
+Status
+lakshmi sravya published 14 days ago
+Visibility
+Public
+Domain
+https://resume-mind-lakshmisravyave.replit.app
+https://sravyavedantham.com
+Type
+Autoscale
+(4 vCPU / 8 GiB RAM / 3 Max)
+See all usage
+cc99622c
+LS
+
+lakshmisravyave
+lakshmi sravya
+published 21 days ago
+6c182b50
+LS
+
+lakshmisravyave
+lakshmi sravya
+published 22 days ago
+c9483e8f
+LS
+
+lakshmisravyave
+lakshmi sravya
+published 23 days ago
+2c139dfb
+LS
+
+lakshmisravyave
+lakshmi sravya
+published 29 days ago
+e982c5b1
+LS
+
+lakshmisravyave
+lakshmi sravya
+published about 1 month ago
+d929f053
+LS
+
+lakshmisravyave
+lakshmi sravya
+published about 1 month ago
+01280b0d
+LS
+
+lakshmisravyave
+lakshmi sravya
+published about 1 month ago
+2m
+ • 
+2 minutes ago
+Enable "Accessible Terminal" in Workspace Settings to use a screen reader with the shell.
+Commit
+Add skills below professional experience in every experience
+Adds a 'technologies' field to each job in portfolioData.ts and displays them as badges below the professional experience in ExperienceSection.tsx.
+
+LA
+
+lakshmisravyave
+lakshmisravyave
+committed
+21 days ago
+1 parent 
+Filter changed files
+Showing 2 changed files.
+
+
+Unified
+
+Split
+ExperienceSection.tsx
+client/src/components
+Modified
+portfolioData.ts
+server/services
+Modified
+Enhance the personal AI assistant with a chat feature
+Perfect! I've successfully added the skills back to each work experience entry:
+
+✅ Portfolio Data Updated: Added technologies arrays to all four work experience positions
+✅ Component Updated: Modified ExperienceSection to display the technologies with conditional rendering
+✅ Skills Display: Each position now shows relevant technologies and skills below the job description
+
+The skills are now displayed as badges under each work experience entry:
+
+Data Scientist & AI Developer: Python, NLP, NLTK, spaCy, Matplotlib, Seaborn, Streamlit, LangChain, Hugging Face, RAG, EEG Data Analysis, BCI
+Senior Data Modeling & Reporting Analyst: Python, SQL, Machine Learning, Statistical Modeling, Data Analysis, AI Automation, Policy Pricing Models
+Software Developer: React, Python, Flask, APIs, JavaScript, Front-end Development, System Integration
+System Engineer: AngularJS, Spring, Selenium, Java, JavaScript, Team Leadership
+This provides context-specific technical skills for each role while maintaining the clean portfolio layout you requested.
+
+Checkpoint made
+21 days ago
+Add skills below professional experience in every experience
+36 seconds of work
+its not reflected yet
+
+21 days ago
+
+2 messages & 2 actions
+Let me check if the changes were properly applied and restart the server to ensure the updates are reflected:
+replace phone number 000-000-0000
+
+21 days ago
+
+2 messages & 1 action
+I'll update the phone number to 000-000-0000 in the portfolio data:
+Checkpoint made
+21 days ago
+Update contact information with a new phone number
+31 seconds of work
+Remove 6+ , 70% effieciency and 15+ technologies section
+
+21 days ago
+
+5 messages & 10 actions
+I'll remove those specific references from the portfolio. Let me find and update them:
+Checkpoint made
+21 days ago
+Update experience and skills descriptions to be more general
+57 seconds of work
+Phone number is not changed please remove phone number every where
+
+21 days ago
+
+6 messages & 11 actions
+I'll remove the phone number from everywhere in the portfolio. Let me search for all occurrences and remove them:
+Checkpoint made
+21 days ago
+Remove phone number details from the user interface and data
+47 seconds of work
+
+2 messages & 1 action
+Optimizing agent memory
+Checkpoint made
+14 days ago
+Add job application tracking and management features
+8 seconds of work
+The download functionality is not working
+
+14 days ago
+
+8 messages & 11 actions
+I'll help you fix the download functionality. Let me first search for the download-related code to understand how it's currently implemented.
+Checkpoint made
+14 days ago
+Enable users to download resume files directly from the application
+1 minute of work
+✓ Added resume download backend route
+✓ Updated download button to trigger actual file download
+✓ Added proper error handling and user feedback
+✓ Server restarted with new functionality
+
+I've fixed the download functionality! The Download Resume button should now properly download your PDF resume file. Can you try clicking the "Download Resume" button to test if it's working?
+
+Checkpoint made
+14 days ago
+Fix issue preventing users from downloading their career reports
+0 seconds of work
+Can yo add "Welcome to my world, where code meets soul, and data dances with nature! I’m a data scientist and AI enthusiast with a passion for turning patterns into insights, blending technology with spirituality and creativity.
+
+Skilled in Python, machine learning, and AI tools like Retrieval-Augmented Generation (RAG), I build innovative solutions like EEG-based brain-computer interfaces (BCI) to explore moods and dreams. My work aims to harmonize tech with the human experience, shared through GitHub, Hugging Face, or no-code platforms like Glide.
+
+Spirituality shapes my life. Meditation grounds me, fueling clarity in my projects. My love for plants—my thriving indoor jungle—mirrors my approach to nurturing data into insights. Singing, from mantras to melodies, is my soul’s expression, infusing my work with authenticity.
+
+I’m driven to create meaningful technology, from AI chatbots to intuitive dashboards, that inspires and connects. When not coding or meditating, I’m exploring AI ethics, MLOps, or singing to my plants, envisioning a future where innovation and human connection thrive.
+
+Thanks for stopping by! I’m excited to share my journey of data, spirit, and growth. Stay tuned for more!" instead of top two lines. Its not professional
+
+18 minutes ago
+
+2 messages & 9 actions
+I'll help you update the hero section with your new personal bio. Let me find where the current description is stored and replace it with your new content.
+Checkpoint made
+17 minutes ago
+Update the hero section with a personalized introduction and updated text styling
+1 minute of work
+Also try to add a photo make it more professiona;. The name font is super big . DOnt highlight any words. Remove center alignment.
+
+16 minutes ago
+
+5 messages & 24 actions
+I'll help you make the hero section more professional by adding a photo, reducing the name font size, removing word highlights, and changing the alignment. Let me start by updating the hero section:
+Checkpoint made
+13 minutes ago
+Add professional photo and adjust text formatting for a cleaner appearance
+2 minutes of work
+https://sharon-yi.com/ 

@@ -125,7 +125,7 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
                   <Bot className="text-white h-5 w-5" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">AI Resume Assistant</h2>
+                  <h2 className="text-xl font-bold text-gray-900">Know about Me</h2>
                   <p className="text-sm text-gray-600">Ask me about Lakshmi's experience</p>
                 </div>
               </div>
