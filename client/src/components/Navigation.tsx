@@ -120,7 +120,10 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={onChatToggle}
+                  onClick={() => {
+                    onChatToggle();
+                    setIsOpen(false);
+                  }}
                   data-testid="mobile-button-chat"
                 >
                   <MessageCircle className="h-5 w-5" />
