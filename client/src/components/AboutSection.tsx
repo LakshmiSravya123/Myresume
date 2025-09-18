@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import professionalPhoto from "@assets/stock_images/professional_headsho_563743ba.jpg";
+import professionalPhoto from "@assets/6F3E376A-FD9E-4A42-BAC0-69D9A66F2453_1_201_a_1758236938466.jpeg";
 
 export default function AboutSection() {
   return (
@@ -37,23 +37,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
                 <p>
-                  Welcome to my world, where code meets soul, and data dances with nature! I'm a data scientist and AI enthusiast with a passion for turning patterns into insights, blending technology with spirituality and creativity.
+                  Hey there! I'm a data scientist and AI enthusiast who loves spinning data into stories that spark connection. Using Python, machine learning, and creative AI tools, I build projects like chatbots and dashboards that make tech feel human and approachable. From sharing code on GitHub and Hugging Face to crafting intuitive apps on platforms like Glide, I'm all about blending innovation with accessibility, always with a dash of curiosity.
                 </p>
                 
                 <p>
-                  Skilled in Python, machine learning, and AI tools like Retrieval-Augmented Generation (RAG), I build innovative solutions like EEG-based brain-computer interfaces (BCI) to explore moods and dreams. My work aims to harmonize tech with the human experience, shared through GitHub, Hugging Face, or no-code platforms like Glide.
+                  Spirituality is my anchor, guiding both my life and work. Meditation keeps me grounded, sharpening my focus for coding and problem-solving while bringing calm to my days. My indoor plants—my thriving green companions—remind me to nurture growth, whether it's cultivating datasets or tending to my leafy friends. Singing, whether it's soulful mantras or just vibing to a favorite tune, lets my spirit shine, infusing my projects with authenticity and joy.
                 </p>
                 
                 <p>
-                  Spirituality shapes my life. Meditation grounds me, fueling clarity in my projects. My love for plants—my thriving indoor jungle—mirrors my approach to nurturing data into insights. Singing, from mantras to melodies, is my soul's expression, infusing my work with authenticity.
-                </p>
-                
-                <p>
-                  I'm driven to create meaningful technology, from AI chatbots to intuitive dashboards, that inspires and connects. When not coding or meditating, I'm exploring AI ethics, MLOps, or singing to my plants, envisioning a future where innovation and human connection thrive.
-                </p>
-                
-                <p>
-                  Thanks for stopping by! I'm excited to share my journey of data, spirit, and growth. Stay tuned for more!
+                  I'm passionate about creating technology that uplifts and connects. When I'm not coding or meditating, I'm exploring AI ethics, tinkering with new tools, or singing to my plants, dreaming of a world where tech and human connection flow in harmony. Thanks for stopping by—I'm excited to share more of my journey blending AI, spirit, and song!
                 </p>
               </div>
             </div>
