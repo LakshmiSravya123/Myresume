@@ -13,6 +13,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
 
   const navItems = [
     { label: "About", id: "about" },
+    { label: "Analytics", id: "analytics" },
     { label: "Projects", id: "projects" },
     { label: "Contact", id: "contact" }
   ];
