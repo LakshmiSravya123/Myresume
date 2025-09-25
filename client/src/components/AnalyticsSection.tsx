@@ -97,10 +97,10 @@ export default function AnalyticsSection() {
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <BarChart3 className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard Available in New Tab</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Analytics Dashboard Ready</h3>
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    Due to Grafana Cloud security policies, the dashboard cannot be embedded directly. 
-                    Click below to view the full interactive dashboard in a new tab.
+                    Your Grafana dashboard with live data is ready to view! Click below to open the 
+                    interactive dashboard showing revenue trends, trip analytics, and performance metrics.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                     <button
