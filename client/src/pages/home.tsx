@@ -35,8 +35,8 @@ export default function Home() {
       
       <main>
         <AboutSection />
-        <AnalyticsSection />
         <AIQuestionnaire />
+        <AnalyticsSection />
         <ProjectsSection />
         <ContactSection />
       </main>
