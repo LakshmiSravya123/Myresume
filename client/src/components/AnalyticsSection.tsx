@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
 import { BarChart3, TrendingUp, Activity } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function AnalyticsSection() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
 
-  const handleIframeLoad = () => {
-    setIsLoading(false);
-    setHasError(false);
-  };
+  // For Grafana Cloud, embedding is typically blocked by X-Frame-Options
+  // Show the fallback UI after a short delay since iframe events are unreliable
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('Analytics: Showing fallback UI for Grafana Cloud');
+      setShowFallback(true);
+    }, 2000); // Show fallback after 2 seconds
 
-  const handleIframeError = () => {
-    setIsLoading(false);
-    setHasError(true);
-  };
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="analytics" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
@@ -76,8 +76,8 @@ export default function AnalyticsSection() {
 
           {/* Dashboard Content */}
           <div className="relative">
-            {/* Loading State */}
-            {isLoading && (
+            {/* Loading State - Show initially */}
+            {!showFallback && (
               <div className="absolute inset-0 bg-gray-50 flex items-center justify-center z-10">
                 <div className="text-center">
                   <div className="inline-flex items-center space-x-2 mb-4">
@@ -90,39 +90,48 @@ export default function AnalyticsSection() {
               </div>
             )}
 
-            {/* Error State */}
-            {hasError && !isLoading && (
-              <div className="h-96 bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center">
-                <div className="text-center p-8 max-w-md">
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Activity className="w-8 h-8 text-red-600" />
+            {/* Fallback State - Show after timeout */}
+            {showFallback && (
+              <div className="h-96 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
+                <div className="text-center p-8 max-w-lg">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BarChart3 className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Grafana Service Not Running</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard Available in New Tab</h3>
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    The Grafana dashboard requires a local Grafana service running on <code className="bg-gray-200 px-2 py-1 rounded text-xs">localhost:3000</code>. 
-                    Please start your Grafana service and refresh this page.
+                    Due to Grafana Cloud security policies, the dashboard cannot be embedded directly. 
+                    Click below to view the full interactive dashboard in a new tab.
                   </p>
-                  <div className="text-xs text-gray-500 mb-4 bg-gray-100 p-3 rounded-lg text-left">
-                    <strong>Quick Start:</strong><br/>
-                    1. Install Grafana locally<br/>
-                    2. Start with: <code>grafana-server</code><br/>
-                    3. Access at: <code>http://localhost:3000</code>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <button
+                      onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/dez61z2j0k1dsd?orgId=1', '_blank')}
+                      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                      data-testid="analytics-open-dashboard"
+                    >
+                      <BarChart3 className="w-5 h-5" />
+                      <span>Open Full Dashboard</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowFallback(false);
+                        // Force reload the iframe
+                        const iframe = document.getElementById('grafana-iframe') as HTMLIFrameElement;
+                        if (iframe) {
+                          iframe.src = iframe.src;
+                        }
+                        // Reset the timeout
+                        setTimeout(() => setShowFallback(true), 2000);
+                      }}
+                      className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors text-sm"
+                      data-testid="analytics-retry-button"
+                    >
+                      Try Embedding Again
+                    </button>
                   </div>
-                  <button
-                    onClick={() => {
-                      setHasError(false);
-                      setIsLoading(true);
-                      // Force reload the iframe
-                      const iframe = document.getElementById('grafana-iframe') as HTMLIFrameElement;
-                      if (iframe) {
-                        iframe.src = iframe.src;
-                      }
-                    }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    data-testid="analytics-retry-button"
-                  >
-                    Retry Connection
-                  </button>
+                  <div className="text-xs text-gray-500 mt-4 bg-gray-100 p-3 rounded-lg">
+                    <strong>Note:</strong> Grafana Cloud blocks iframe embedding by default for security. 
+                    This is normal behavior for cloud-hosted dashboards.
+                  </div>
                 </div>
               </div>
             )}
@@ -131,7 +140,7 @@ export default function AnalyticsSection() {
             <div className="relative" style={{ paddingBottom: '56.25%', height: 0 }}>
               <iframe
                 id="grafana-iframe"
-                src="http://localhost:3000/public-dashboards/48c6faa0d11c4297b466f5ea082523eb?kiosk=true&theme=light"
+                src="https://lakshmisravyavedantham.grafana.net/goto/dez61z2j0k1dsd?orgId=1&kiosk=true&theme=light"
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -142,8 +151,6 @@ export default function AnalyticsSection() {
                   minHeight: '600px'
                 }}
                 title="Grafana Analytics Dashboard"
-                onLoad={handleIframeLoad}
-                onError={handleIframeError}
                 data-testid="analytics-dashboard-iframe"
               />
             </div>
