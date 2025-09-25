@@ -93,14 +93,21 @@ export default function AnalyticsSection() {
             {/* Error State */}
             {hasError && !isLoading && (
               <div className="h-96 bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center">
-                <div className="text-center p-8">
+                <div className="text-center p-8 max-w-md">
                   <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Activity className="w-8 h-8 text-red-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard Temporarily Unavailable</h3>
-                  <p className="text-gray-600 mb-4">
-                    The analytics dashboard is currently offline. This may be due to the Grafana service not running locally.
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Grafana Service Not Running</h3>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                    The Grafana dashboard requires a local Grafana service running on <code className="bg-gray-200 px-2 py-1 rounded text-xs">localhost:3000</code>. 
+                    Please start your Grafana service and refresh this page.
                   </p>
+                  <div className="text-xs text-gray-500 mb-4 bg-gray-100 p-3 rounded-lg text-left">
+                    <strong>Quick Start:</strong><br/>
+                    1. Install Grafana locally<br/>
+                    2. Start with: <code>grafana-server</code><br/>
+                    3. Access at: <code>http://localhost:3000</code>
+                  </div>
                   <button
                     onClick={() => {
                       setHasError(false);
@@ -114,7 +121,7 @@ export default function AnalyticsSection() {
                     className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                     data-testid="analytics-retry-button"
                   >
-                    Retry
+                    Retry Connection
                   </button>
                 </div>
               </div>
