@@ -104,7 +104,7 @@ export default function AnalyticsSection() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                     <button
-                      onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/dez61z2j0k1dsd?orgId=1', '_blank')}
+                      onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/dashboard/snapshot/GZkCR08gQEFF4J06CaeBQkfhvWYNTT46', '_blank')}
                       className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
                       data-testid="analytics-open-dashboard"
                     >
@@ -140,7 +140,7 @@ export default function AnalyticsSection() {
             <div className="relative" style={{ paddingBottom: '56.25%', height: 0 }}>
               <iframe
                 id="grafana-iframe"
-                src="https://lakshmisravyavedantham.grafana.net/goto/dez61z2j0k1dsd?orgId=1&kiosk=true&theme=light"
+                src="https://lakshmisravyavedantham.grafana.net/dashboard/snapshot/GZkCR08gQEFF4J06CaeBQkfhvWYNTT46?kiosk=true&theme=light"
                 style={{
                   position: 'absolute',
                   top: 0,
