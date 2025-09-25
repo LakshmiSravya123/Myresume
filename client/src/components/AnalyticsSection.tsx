@@ -131,7 +131,7 @@ export default function AnalyticsSection() {
             <div className="relative" style={{ paddingBottom: '56.25%', height: 0 }}>
               <iframe
                 id="grafana-iframe"
-                src="http://localhost:3000/goto/fez489u0j356oc?orgId=1&kiosk=true&theme=light"
+                src="http://localhost:3000/public-dashboards/48c6faa0d11c4297b466f5ea082523eb?kiosk=true&theme=light"
                 style={{
                   position: 'absolute',
                   top: 0,
