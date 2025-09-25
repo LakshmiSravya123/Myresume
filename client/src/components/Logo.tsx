@@ -1,4 +1,4 @@
-import logoImage from "@assets/image_1758836311675.png";
+import logoImage from "@assets/image_1758836612074.png";
 
 export default function Logo({ className = "h-8 w-8" }: { className?: string }) {
   return (
