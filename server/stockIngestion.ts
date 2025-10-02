@@ -10,6 +10,7 @@ interface FinnhubQuote {
 }
 
 interface StockDocument {
+  '@timestamp': string;
   symbol: string;
   timestamp: string;
   open: number;
@@ -49,11 +50,14 @@ async function fetchQuote(symbol: string): Promise<StockDocument | null> {
 
     const data: FinnhubQuote = await response.json();
     
+    const timestamp = new Date(data.t * 1000).toISOString();
+    
     // Finnhub returns current price, not historical OHLCV
     // We'll use current price as close, and simulate volume based on trading activity
     return {
+      '@timestamp': timestamp, // Required for Elasticsearch data streams
       symbol,
-      timestamp: new Date(data.t * 1000).toISOString(),
+      timestamp,
       open: data.o,
       high: data.h,
       low: data.l,
@@ -72,8 +76,13 @@ async function ensureIndexExists() {
     const exists = await esClient.indices.exists({ index: INDEX_NAME });
     
     if (!exists) {
+      console.log(`Index ${INDEX_NAME} does not exist, creating...`);
       await esClient.indices.create({
         index: INDEX_NAME,
+        settings: {
+          number_of_shards: 1,
+          number_of_replicas: 0,
+        },
         mappings: {
           properties: {
             symbol: { type: 'keyword' },
@@ -88,17 +97,53 @@ async function ensureIndexExists() {
         },
       });
       console.log(`Created index: ${INDEX_NAME}`);
+    } else {
+      console.log(`Index ${INDEX_NAME} already exists`);
     }
-  } catch (error) {
-    console.error('Error ensuring index exists:', error);
+  } catch (error: any) {
+    console.error('Error ensuring index exists:', error?.message || error);
+    
+    // If there's a data stream conflict, try to delete and recreate
+    if (error?.message?.includes('data stream')) {
+      console.log('Attempting to delete conflicting data stream...');
+      try {
+        await esClient.indices.delete({ index: INDEX_NAME });
+        console.log('Deleted conflicting index/data stream');
+        
+        // Retry creation
+        await esClient.indices.create({
+          index: INDEX_NAME,
+          settings: {
+            number_of_shards: 1,
+            number_of_replicas: 0,
+          },
+          mappings: {
+            properties: {
+              symbol: { type: 'keyword' },
+              timestamp: { type: 'date' },
+              open: { type: 'float' },
+              high: { type: 'float' },
+              low: { type: 'float' },
+              close: { type: 'float' },
+              volume: { type: 'long' },
+              previousClose: { type: 'float' },
+            },
+          },
+        });
+        console.log(`Successfully created index: ${INDEX_NAME} after resolving conflict`);
+      } catch (deleteError) {
+        console.error('Failed to resolve data stream conflict:', deleteError);
+      }
+    }
   }
 }
 
 async function bulkIndexStocks(stocks: StockDocument[]) {
   if (stocks.length === 0) return;
 
+  // Use 'create' op_type for data streams
   const body = stocks.flatMap(doc => [
-    { index: { _index: INDEX_NAME } },
+    { create: { _index: INDEX_NAME } },
     doc,
   ]);
 
