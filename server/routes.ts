@@ -344,6 +344,124 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Elasticsearch Stock Data endpoints
+  app.get("/api/stocks/latest", async (req, res) => {
+    try {
+      const { Client } = await import('@elastic/elasticsearch');
+      const es = new Client({
+        cloud: { id: process.env.ES_CLOUD_ID! },
+        auth: {
+          username: process.env.ES_USERNAME!,
+          password: process.env.ES_PASSWORD!
+        }
+      });
+
+      const index = process.env.ELASTIC_INDEX || 'stocks_real_time';
+      const size = parseInt(req.query.size as string) || 50;
+
+      const response = await es.search({
+        index,
+        body: {
+          query: { match_all: {} },
+          aggs: {
+            by_symbol: {
+              terms: { field: "symbol.keyword", size },
+              aggs: {
+                latest_doc: {
+                  top_hits: {
+                    sort: [{ "@timestamp": { order: "desc" } }],
+                    size: 1
+                  }
+                }
+              }
+            }
+          },
+          size: 0
+        }
+      });
+
+      const buckets = (response.aggregations as any).by_symbol.buckets;
+      const data = buckets.map((bucket: any) => bucket.latest_doc.hits.hits[0]._source);
+      
+      res.json(data);
+    } catch (error) {
+      console.error("Elasticsearch error:", error);
+      res.status(500).json({ message: "Failed to fetch stock data: " + (error as any).message });
+    }
+  });
+
+  app.get("/api/stocks/timeseries", async (req, res) => {
+    try {
+      const { Client } = await import('@elastic/elasticsearch');
+      const es = new Client({
+        cloud: { id: process.env.ES_CLOUD_ID! },
+        auth: {
+          username: process.env.ES_USERNAME!,
+          password: process.env.ES_PASSWORD!
+        }
+      });
+
+      const index = process.env.ELASTIC_INDEX || 'stocks_real_time';
+      const symbols = (req.query.symbols as string)?.split(',') || [];
+      const hours = parseInt(req.query.hours as string) || 1;
+
+      const response = await es.search({
+        index,
+        body: {
+          query: {
+            bool: {
+              filter: [
+                { terms: { "symbol.keyword": symbols } },
+                { range: { "@timestamp": { gte: `now-${hours}h` } } }
+              ]
+            }
+          },
+          sort: [{ "@timestamp": { order: "asc" } }],
+          size: 1000
+        }
+      });
+
+      const data = response.hits.hits.map((hit: any) => hit._source);
+      res.json(data);
+    } catch (error) {
+      console.error("Elasticsearch timeseries error:", error);
+      res.status(500).json({ message: "Failed to fetch timeseries data: " + (error as any).message });
+    }
+  });
+
+  app.get("/api/stocks/symbols", async (req, res) => {
+    try {
+      const { Client } = await import('@elastic/elasticsearch');
+      const es = new Client({
+        cloud: { id: process.env.ES_CLOUD_ID! },
+        auth: {
+          username: process.env.ES_USERNAME!,
+          password: process.env.ES_PASSWORD!
+        }
+      });
+
+      const index = process.env.ELASTIC_INDEX || 'stocks_real_time';
+
+      const response = await es.search({
+        index,
+        body: {
+          aggs: {
+            symbols: {
+              terms: { field: "symbol.keyword", size: 1000 }
+            }
+          },
+          size: 0
+        }
+      });
+
+      const symbols = (response.aggregations as any).symbols.buckets.map((b: any) => b.key);
+      res.json(symbols);
+    } catch (error) {
+      console.error("Elasticsearch symbols error:", error);
+      res.status(500).json({ message: "Failed to fetch symbols: " + (error as any).message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
