@@ -15,10 +15,10 @@ export default function StocksPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/">
-              <a className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors" data-testid="link-home">
+              <span className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors cursor-pointer" data-testid="link-home">
                 <ArrowLeft className="w-5 h-5" />
                 <span className="font-medium">Back to Portfolio</span>
-              </a>
+              </span>
             </Link>
             <div className="flex items-center gap-2 text-emerald-400">
               <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>

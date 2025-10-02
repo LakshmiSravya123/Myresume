@@ -85,13 +85,13 @@ export default function Home() {
               
               {/* CTA Button */}
               <Link href="/stocks">
-                <a 
+                <button 
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-purple-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl hover:shadow-white/50"
                   data-testid="button-view-stock-dashboard"
                 >
                   View Live Stock Dashboard
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </button>
               </Link>
               
               <p className="mt-6 text-sm text-white/70">
