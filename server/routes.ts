@@ -350,8 +350,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { Client } = await import('@elastic/elasticsearch');
       
       const cloudId = process.env.ES_CLOUD_ID;
-      const username = process.env.ES_USERNAME;
-      const password = process.env.ES_PASSWORD;
+      const username = process.env.ELASTICSEARCH_USERNAME;
+      const password = process.env.ELASTICSEARCH_PASSWORD;
       
       if (!cloudId || !username || !password) {
         return res.status(500).json({ 
@@ -367,6 +367,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const index = process.env.ELASTIC_INDEX || 'stocks_real_time';
       const size = parseInt(req.query.size as string) || 50;
+      
+      // Test connection
+      const pingResult = await es.ping();
+      console.log('Elasticsearch ping successful:', pingResult);
 
       const response = await es.search({
         index,
@@ -393,16 +397,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(data);
     } catch (error: any) {
       console.error("Elasticsearch latest error:", error);
-      
-      // Return mock data if Elasticsearch is not accessible
-      const mockData = [
-        { symbol: "AAPL", "@timestamp": new Date().toISOString(), open: 150.25, high: 152.30, low: 149.80, close: 151.50, volume: 52000000 },
-        { symbol: "GOOGL", "@timestamp": new Date().toISOString(), open: 2800.50, high: 2825.75, low: 2790.25, close: 2810.30, volume: 28000000 },
-        { symbol: "MSFT", "@timestamp": new Date().toISOString(), open: 320.75, high: 325.50, low: 318.90, close: 323.25, volume: 31000000 },
-        { symbol: "AMZN", "@timestamp": new Date().toISOString(), open: 3350.25, high: 3380.50, low: 3340.75, close: 3365.80, volume: 4200000 },
-        { symbol: "TSLA", "@timestamp": new Date().toISOString(), open: 245.50, high: 252.30, low: 243.75, close: 250.25, volume: 98000000 },
-      ];
-      res.json(mockData);
+      res.status(500).json({ 
+        message: "Failed to fetch stock data from Elasticsearch", 
+        error: error.message 
+      });
     }
   });
 
@@ -411,8 +409,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { Client } = await import('@elastic/elasticsearch');
       
       const cloudId = process.env.ES_CLOUD_ID;
-      const username = process.env.ES_USERNAME;
-      const password = process.env.ES_PASSWORD;
+      const username = process.env.ELASTICSEARCH_USERNAME;
+      const password = process.env.ELASTICSEARCH_PASSWORD;
       
       if (!cloudId || !username || !password) {
         return res.status(500).json({ 
@@ -447,30 +445,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(data);
     } catch (error: any) {
       console.error("Elasticsearch timeseries error:", error);
-      
-      // Return mock timeseries data
-      const symbols = (req.query.symbols as string)?.split(',') || ['AAPL', 'GOOGL', 'MSFT'];
-      const hours = parseInt(req.query.hours as string) || 1;
-      const now = Date.now();
-      const mockData: any[] = [];
-      
-      symbols.forEach(symbol => {
-        for (let i = 0; i < 20; i++) {
-          const timestamp = new Date(now - (hours * 3600000 * i / 20));
-          const basePrice = Math.random() * 1000 + 100;
-          mockData.push({
-            symbol,
-            "@timestamp": timestamp.toISOString(),
-            open: basePrice,
-            high: basePrice + Math.random() * 10,
-            low: basePrice - Math.random() * 10,
-            close: basePrice + (Math.random() - 0.5) * 5,
-            volume: Math.floor(Math.random() * 100000000)
-          });
-        }
+      res.status(500).json({ 
+        message: "Failed to fetch timeseries data from Elasticsearch", 
+        error: error.message 
       });
-      
-      res.json(mockData.sort((a, b) => new Date(a["@timestamp"]).getTime() - new Date(b["@timestamp"]).getTime()));
     }
   });
 
@@ -479,8 +457,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { Client } = await import('@elastic/elasticsearch');
       
       const cloudId = process.env.ES_CLOUD_ID;
-      const username = process.env.ES_USERNAME;
-      const password = process.env.ES_PASSWORD;
+      const username = process.env.ELASTICSEARCH_USERNAME;
+      const password = process.env.ELASTICSEARCH_PASSWORD;
       
       if (!cloudId || !username || !password) {
         return res.status(500).json({ 
@@ -509,10 +487,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(symbols);
     } catch (error: any) {
       console.error("Elasticsearch symbols error:", error);
-      
-      // Return mock symbols
-      const mockSymbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "META", "NVDA", "AMD", "NFLX", "DIS"];
-      res.json(mockSymbols);
+      res.status(500).json({ 
+        message: "Failed to fetch symbols from Elasticsearch", 
+        error: error.message 
+      });
     }
   });
 

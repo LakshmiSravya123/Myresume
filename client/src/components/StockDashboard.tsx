@@ -20,18 +20,18 @@ export default function StockDashboard() {
   const [timeRange, setTimeRange] = useState<number>(1);
 
   // Fetch available symbols
-  const { data: symbols = [] } = useQuery<string[]>({
+  const { data: symbols = [], isLoading: symbolsLoading, error: symbolsError } = useQuery<string[]>({
     queryKey: ["/api/stocks/symbols"],
   });
 
   // Fetch latest stock data
-  const { data: latestData = [] } = useQuery<StockData[]>({
+  const { data: latestData = [], isLoading: latestLoading, error: latestError } = useQuery<StockData[]>({
     queryKey: ["/api/stocks/latest?size=50"],
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
   // Fetch time series data for selected symbol
-  const { data: timeSeriesData = [] } = useQuery<StockData[]>({
+  const { data: timeSeriesData = [], isLoading: timeSeriesLoading } = useQuery<StockData[]>({
     queryKey: [`/api/stocks/timeseries?symbols=${selectedSymbol}&hours=${timeRange}`],
     enabled: !!selectedSymbol,
     refetchInterval: 30000,
@@ -43,6 +43,42 @@ export default function StockDashboard() {
       setSelectedSymbol(symbols[0]);
     }
   }, [symbols, selectedSymbol]);
+
+  // Show loading state
+  if (symbolsLoading || latestLoading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white text-lg">Loading stock data from Elasticsearch...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (symbolsError || latestError) {
+    return (
+      <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-6 text-center">
+        <p className="text-red-400 text-lg font-semibold mb-2">Unable to connect to Elasticsearch</p>
+        <p className="text-red-300 text-sm">
+          {symbolsError?.message || latestError?.message || "Please check your Elasticsearch configuration and credentials."}
+        </p>
+      </div>
+    );
+  }
+
+  // Show empty state
+  if (symbols.length === 0 || latestData.length === 0) {
+    return (
+      <div className="bg-yellow-500/10 border border-yellow-500/50 rounded-lg p-8 text-center">
+        <p className="text-yellow-400 text-lg font-semibold mb-2">No stock data available</p>
+        <p className="text-yellow-300 text-sm">
+          The Elasticsearch index appears to be empty. Please ensure your data ingestion pipeline is running.
+        </p>
+      </div>
+    );
+  }
 
   // Calculate stats
   const stats = latestData.slice(0, 4).map((stock) => ({
