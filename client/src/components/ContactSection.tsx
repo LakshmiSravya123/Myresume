@@ -61,7 +61,7 @@ export default function ContactSection() {
     {
       icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/lakshmi-sravya-vedantham-592ba977/",
+      href: "https://www.linkedin.com/in/lakshmisravyavedantham",
       color: "hover:bg-blue-600",
     },
   ];
