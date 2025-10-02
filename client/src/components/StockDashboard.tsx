@@ -198,55 +198,6 @@ export default function StockDashboard() {
         ))}
       </div>
 
-      {/* Candlestick Chart */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Activity className="w-5 h-5" />
-            {selectedSymbol || "Select a symbol"} - OHLC Chart
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={400}>
-            <ComposedChart data={timeSeriesData.filter(d => d.symbol === selectedSymbol).sort((a, b) => new Date(a["@timestamp"]).getTime() - new Date(b["@timestamp"]).getTime())}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="@timestamp" tickFormatter={(value) => new Date(value).toLocaleTimeString()} />
-              <YAxis domain={['auto', 'auto']} />
-              <Tooltip labelFormatter={(value) => new Date(value).toLocaleString()} />
-              <Legend />
-              <Line type="monotone" dataKey="high" stroke="#10b981" strokeWidth={2} dot={false} name="High" />
-              <Line type="monotone" dataKey="low" stroke="#ef4444" strokeWidth={2} dot={false} name="Low" />
-              <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
-              <Area type="monotone" dataKey="volume" fill="#8b5cf6" fillOpacity={0.1} stroke="#8b5cf6" />
-            </ComposedChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-
-      {/* Line Chart - Price Trends */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Price Trends - {selectedSymbol}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={timeSeriesData.map(d => ({ 
-              timestamp: new Date(d["@timestamp"]).toLocaleTimeString(),
-              close: d.close,
-              open: d.open
-            }))}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="timestamp" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
-              <Line type="monotone" dataKey="open" stroke="#10b981" strokeWidth={2} dot={false} name="Open" />
-            </LineChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-
       {/* Volume Chart */}
       <Card>
         <CardHeader>
@@ -321,6 +272,60 @@ export default function StockDashboard() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Historical Charts Section - Moved to bottom */}
+      {timeSeriesData.length > 0 && (
+        <>
+          {/* Candlestick Chart */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Activity className="w-5 h-5" />
+                {selectedSymbol || "Select a symbol"} - OHLC Chart
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={400}>
+                <ComposedChart data={timeSeriesData.filter(d => d.symbol === selectedSymbol).sort((a, b) => new Date(a["@timestamp"]).getTime() - new Date(b["@timestamp"]).getTime())}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="@timestamp" tickFormatter={(value) => new Date(value).toLocaleTimeString()} />
+                  <YAxis domain={['auto', 'auto']} />
+                  <Tooltip labelFormatter={(value) => new Date(value).toLocaleString()} />
+                  <Legend />
+                  <Line type="monotone" dataKey="high" stroke="#10b981" strokeWidth={2} dot={false} name="High" />
+                  <Line type="monotone" dataKey="low" stroke="#ef4444" strokeWidth={2} dot={false} name="Low" />
+                  <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
+                  <Area type="monotone" dataKey="volume" fill="#8b5cf6" fillOpacity={0.1} stroke="#8b5cf6" />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          {/* Line Chart - Price Trends */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Price Trends - {selectedSymbol}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={timeSeriesData.map(d => ({ 
+                  timestamp: new Date(d["@timestamp"]).toLocaleTimeString(),
+                  close: d.close,
+                  open: d.open
+                }))}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="timestamp" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
+                  <Line type="monotone" dataKey="open" stroke="#10b981" strokeWidth={2} dot={false} name="Open" />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </>
+      )}
     </div>
   );
 }
