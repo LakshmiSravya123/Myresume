@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Database, Activity } from "lucide-react";
+import StockDashboard from "./StockDashboard";
 
 export default function ElasticsearchSection() {
-  // TODO: Replace this URL with your deployed Streamlit app URL
-  const streamlitUrl = "YOUR_STREAMLIT_APP_URL_HERE";
   
   return (
     <section id="elasticsearch" className="py-20 bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 relative overflow-hidden">
@@ -63,41 +62,8 @@ export default function ElasticsearchSection() {
           </div>
 
           {/* Dashboard Content */}
-          <div className="relative bg-white" style={{ height: '800px' }}>
-            {streamlitUrl === "YOUR_STREAMLIT_APP_URL_HERE" ? (
-              <div className="h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-gray-50">
-                <div className="text-center p-8 max-w-lg">
-                  <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Database className="w-8 h-8 text-slate-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Streamlit Dashboard Setup Required</h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    Deploy your Streamlit app and update the URL in ElasticsearchSection.tsx to display your
-                    interactive stock market dashboard here.
-                  </p>
-                  <div className="text-xs text-gray-500 bg-gray-100 p-4 rounded-lg text-left">
-                    <strong>Setup Instructions:</strong>
-                    <ol className="mt-2 space-y-1 list-decimal list-inside">
-                      <li>Deploy your Streamlit app (Streamlit Cloud, Heroku, etc.)</li>
-                      <li>Update <code className="bg-gray-200 px-1 rounded">streamlitUrl</code> in ElasticsearchSection.tsx</li>
-                      <li>Ensure your Streamlit app allows iframe embedding</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <iframe
-                src={streamlitUrl}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  border: 'none',
-                }}
-                title="Elasticsearch Stock Dashboard"
-                data-testid="elasticsearch-dashboard-iframe"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
-            )}
+          <div className="relative bg-white p-6">
+            <StockDashboard />
           </div>
 
           {/* Dashboard Footer */}

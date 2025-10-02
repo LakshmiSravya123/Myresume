@@ -361,23 +361,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const response = await es.search({
         index,
-        body: {
-          query: { match_all: {} },
-          aggs: {
-            by_symbol: {
-              terms: { field: "symbol.keyword", size },
-              aggs: {
-                latest_doc: {
-                  top_hits: {
-                    sort: [{ "@timestamp": { order: "desc" } }],
-                    size: 1
-                  }
+        query: { match_all: {} },
+        aggs: {
+          by_symbol: {
+            terms: { field: "symbol.keyword", size },
+            aggs: {
+              latest_doc: {
+                top_hits: {
+                  sort: [{ "@timestamp": { order: "desc" } }],
+                  size: 1
                 }
               }
             }
-          },
-          size: 0
-        }
+          }
+        },
+        size: 0
       });
 
       const buckets = (response.aggregations as any).by_symbol.buckets;
@@ -407,18 +405,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const response = await es.search({
         index,
-        body: {
-          query: {
-            bool: {
-              filter: [
-                { terms: { "symbol.keyword": symbols } },
-                { range: { "@timestamp": { gte: `now-${hours}h` } } }
-              ]
-            }
-          },
-          sort: [{ "@timestamp": { order: "asc" } }],
-          size: 1000
-        }
+        query: {
+          bool: {
+            filter: [
+              { terms: { "symbol.keyword": symbols } },
+              { range: { "@timestamp": { gte: `now-${hours}h` } } }
+            ]
+          }
+        },
+        sort: [{ "@timestamp": { order: "asc" } }],
+        size: 1000
       });
 
       const data = response.hits.hits.map((hit: any) => hit._source);
@@ -444,14 +440,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const response = await es.search({
         index,
-        body: {
-          aggs: {
-            symbols: {
-              terms: { field: "symbol.keyword", size: 1000 }
-            }
-          },
-          size: 0
-        }
+        aggs: {
+          symbols: {
+            terms: { field: "symbol.keyword", size: 1000 }
+          }
+        },
+        size: 0
       });
 
       const symbols = (response.aggregations as any).symbols.buckets.map((b: any) => b.key);
