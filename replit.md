@@ -41,13 +41,18 @@ Local AI processing using Ollama for privacy-focused intelligent responses:
 The portfolio features comprehensive analytics dashboards:
 
 - **Grafana Analytics**: Embedded Grafana Cloud dashboard with public snapshot access for general portfolio analytics
-- **Stock Market Dashboard**: Real-time Elasticsearch-powered stock analytics with interactive visualizations
-  - Backend API endpoints for Elasticsearch queries (/api/stocks/latest, /api/stocks/timeseries, /api/stocks/symbols)
-  - React components using Recharts library for data visualization
-  - Multiple chart types: OHLC charts, line charts, bar charts, scatter plots
-  - Mock data fallback ensures visualizations work even when Elasticsearch is unavailable
-  - Stock symbol selector and time range controls for interactive analysis
-- **Navigation**: Direct links to analytics dashboards from the main navigation header
+- **Stock Market Dashboard**: Dedicated page (`/stocks`) with real-time Elasticsearch-powered stock analytics
+  - **Dedicated Page**: Beautiful dark-themed standalone page with gradient backgrounds and animated elements
+  - **Backend API**: Three Elasticsearch endpoints (/api/stocks/latest, /api/stocks/timeseries, /api/stocks/symbols)
+  - **Visualizations**: Interactive Recharts components - OHLC charts, line charts, bar charts, scatter plots
+  - **Real Data Only**: Displays actual Elasticsearch data with proper loading, error, and empty state handling
+  - **Smart State Management**: Shows appropriate messages when Elasticsearch is unavailable or has no data
+  - **Interactive Controls**: Stock symbol selector and time range controls for dynamic analysis
+  - **Auto-refresh**: Data automatically updates every 30 seconds for real-time monitoring
+- **Navigation**: 
+  - Main navigation includes "Stock Dashboard" link routing to `/stocks`
+  - Home page features gradient CTA section with "View Live Stock Dashboard" button
+  - Stock page has "Back to Portfolio" link for easy navigation
 
 ### Authentication and File Handling
 - **File Upload**: Secure file upload with validation for PDF, DOCX, and TXT formats
