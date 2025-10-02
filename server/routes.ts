@@ -425,19 +425,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const index = process.env.ELASTIC_INDEX || 'stocks_real_time';
       const symbols = (req.query.symbols as string)?.split(',') || [];
-      const hours = parseInt(req.query.hours as string) || 1;
+      const hours = parseInt(req.query.hours as string) || 24;
 
+      // Query all data for the selected symbols (don't restrict by time since markets are closed)
       const response = await es.search({
         index,
         query: {
           bool: {
             filter: [
-              { terms: { "symbol": symbols } },
-              { range: { "@timestamp": { gte: `now-${hours}h` } } }
+              { terms: { "symbol": symbols } }
             ]
           }
         },
-        sort: [{ "@timestamp": { order: "asc" } }],
+        sort: [{ "@timestamp": { order: "desc" } }],
         size: 1000
       });
 
