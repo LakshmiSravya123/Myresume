@@ -37,15 +37,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
                 <p>
-                  Hey there! I'm a data scientist and AI enthusiast who loves spinning data into stories that spark connection. Using Python, machine learning, and creative AI tools, I build projects like chatbots and dashboards that make tech feel human and approachable.
+                  I'm a data scientist skilled in building modern data-driven solutions like predictive models and interactive dashboards. With a Master's in Data Analytics (Minor in Applied Machine Learning) from Northeastern University, I focus on delivering clear, impactful insights using cutting-edge tools including Python, R, SQL, and advanced analytics platforms.
                 </p>
                 
                 <p>
-                  Spirituality is my anchor, guiding both my life and work. Meditation keeps me grounded while my indoor plants—my thriving green companions—remind me to nurture growth. Singing, whether mantras or favorite tunes, lets my spirit shine, infusing my projects with authenticity and joy.
+                  My recent work spans developing multimodal brain activity analysis platforms with transformer models, creating production-grade chatbots using Retrieval-Augmented Generation (LangChain, Llama 3.1), and deploying full-stack applications with continuous monitoring via Prometheus and Grafana. As a Sr. Data Modeling Engineer at Co-operators, I led the modernization of legacy systems with microservices architecture and built high-accuracy policy pricing models using TensorFlow, PyTorch, and scikit-learn.
                 </p>
                 
                 <p>
-                  I'm passionate about creating technology that uplifts and connects. Thanks for stopping by—I'm excited to share more of my journey blending AI, spirit, and song!
+                  A spiritual perspective guides both my life and work, bringing clarity and purpose to my analytics. I'm passionate about leveraging data to solve complex problems and drive innovation through technology that makes a meaningful impact.
                 </p>
               </div>
             </div>
