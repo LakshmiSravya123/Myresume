@@ -110,44 +110,46 @@ function generateFallbackResponse(query: string): string {
   const lowerQuery = query.toLowerCase();
   
   if (lowerQuery.includes("experience") || lowerQuery.includes("work") || lowerQuery.includes("job")) {
-    return `Lakshmi has comprehensive experience in data science and software development. She currently works as an AI/App Developer focusing on iOS and Android applications using cutting-edge AI tools like Cursor, Runway, and Luma. 
+    return `Lakshmi has comprehensive experience as a data scientist and software engineer spanning over a decade. Most recently, she served as a Sr. Data Modeling Engineer at Co-operators (October 2022 - February 2025) in Toronto, where she developed interactive applications using D3.js, Plotly, and Streamlit, and led the modernization of legacy systems with microservices architecture using Docker and Kubernetes.
 
-Previously, she served as a Senior Data Modeling & Reporting Analyst at Co-operators where she led AI-driven automation initiatives that resulted in significant operational efficiency improvements. She also has experience as a Software Developer at StackUp Technologies and as a System Engineer at Tata Consultancy Services, giving her a well-rounded technical background.`;
+Previously, she worked as a Software Engineer at StackUp Technologies (2018-2019) developing React.js front-end applications and Flask APIs, and as a Software Development Engineer at Tata Consultancy Services (2015-2018) building enterprise platforms with AngularJS and Spring Boot.
+
+Currently, she's in a relocation transition period, focusing on intensive research and development in Generative AI frameworks, machine learning operations, and brain activity modeling.`;
   }
 
   if (lowerQuery.includes("skill") || lowerQuery.includes("technolog") || lowerQuery.includes("programming")) {
     return `Lakshmi has expertise across multiple technology domains:
 
-**Programming Languages**: Python, R, SQL, JavaScript, Java, C++
-**Data & Analytics**: Tableau, Power BI, MicroStrategy, Pandas, NumPy
-**Machine Learning**: Scikit-learn, TensorFlow, PyTorch, Statistical Modeling
-**Cloud & Databases**: MySQL, PostgreSQL, Azure, Google Cloud
-**Modern AI Tools**: Cursor, Runway, Luma, Stable Diffusion
-**Web Development**: React, AngularJS, Flask, Spring
+**Programming Languages**: Python, R, SQL, C++
+**Data & Analytics**: Tableau, Power BI, Streamlit, D3.js, Plotly, Pandas, NumPy, ETL
+**Machine Learning & AI**: TensorFlow, PyTorch, scikit-learn, Statistical Modeling, LangChain, RAG, Llama 3.1, FAISS, Pinecone, DistilBERT
+**Cloud & Infrastructure**: Docker, Kubernetes, Elasticsearch, Grafana, Prometheus
+**Web Development**: React, AngularJS, Flask, Spring Boot, FastAPI, Next.js
+**Specializations**: Data Modeling, Predictive Modeling, Business Intelligence, Data Governance, Federated Learning
 
-Her diverse skill set spans from traditional data analysis to cutting-edge AI development tools.`;
+Her diverse skill set spans from traditional data analysis to cutting-edge AI and machine learning frameworks.`;
   }
 
   if (lowerQuery.includes("project") || lowerQuery.includes("achievement")) {
-    return `Lakshmi has worked on several impactful projects:
+    return `Lakshmi has worked on several cutting-edge projects:
 
-**AI-Driven Policy Pricing Model (2024)**: Developed an advanced machine learning model for automated insurance policy pricing that significantly improved accuracy and competitive positioning.
+**Multimodal Brain Activity Analysis Platform (2025)**: Developed a platform applying specialized neural data processing tools (NeuroML, MNE-Python) on simulated brainwave data, and integrated transformer models (DistilBERT) and image-text analysis (CLIP) for mood detection.
 
-**React Data Science Dashboard (2019)**: Led the comprehensive redevelopment of a data science project using React, Python, and Flask, focusing on user-centric interfaces and reusable components.
+**RAG Chatbot with LangChain & Llama 3.1 (2025)**: Created a production-grade chatbot using the Retrieval-Augmented Generation pattern with fine-tuned LLM, leveraging vector search libraries (FAISS, Pinecone) for fast, context-aware responses.
 
-**Mobile App Development (2025)**: Currently developing iOS and Android applications using modern AI tools like Cursor, Runway, and Luma, demonstrating her adaptability to emerging technologies.
+**Full-Stack App with Monitoring & Federated Learning (2025)**: Deployed full-stack applications on Vercel with Next.js and FastAPI, setting up continuous monitoring via Prometheus and Grafana, and implementing the Flower framework for federated learning.
 
-Her most notable achievement was leading automation initiatives that resulted in a 70% increase in operational efficiency at Co-operators.`;
+At Co-operators, she built high-accuracy policy pricing models with TensorFlow, PyTorch, and scikit-learn, and mentored teams in building scalable, data-driven applications.`;
   }
 
   if (lowerQuery.includes("education") || lowerQuery.includes("background")) {
-    return `Lakshmi holds a Master of Science in Computer Science from University of Regina (2019-2022) and a Bachelor of Technology in Computer Science from JNTU Hyderabad (2011-2015). Her educational background, combined with 6+ years of hands-on experience, provides her with both theoretical knowledge and practical expertise in data science and machine learning.`;
+    return `Lakshmi holds a Master's in Data Analytics with a Minor in Applied Machine Learning from Northeastern University (2022, GPA: 3.8). Her educational background, combined with over 10 years of hands-on experience across software development and data science, provides her with both deep theoretical knowledge and extensive practical expertise in AI, machine learning, and data-driven solutions.`;
   }
 
   // Default response
-  return `Lakshmi Sravya Vedantham is a highly skilled Data Analyst and Data Scientist with 6+ years of experience. She specializes in machine learning, statistical modeling, and AI-driven solutions. Currently working as an AI/App Developer, she has a proven track record of delivering significant results, including a 70% efficiency improvement through automation initiatives.
+  return `Lakshmi Sravya Vedantham is a highly skilled Data Scientist with over 10 years of experience in software development and data science. She specializes in machine learning, statistical modeling, and AI-driven solutions. She has a Master's in Data Analytics with a Minor in Applied Machine Learning from Northeastern University (GPA: 3.8).
 
-Her expertise spans programming languages like Python, R, and SQL, along with modern AI tools such as Cursor, Runway, and Luma. She has experience across multiple industries and has demonstrated strong leadership skills by mentoring junior analysts and managing teams.
+Her expertise spans programming languages like Python, R, SQL, and C++, along with cutting-edge AI frameworks such as LangChain, RAG, transformers, and federated learning. She has proven experience building production-grade ML models, modernizing legacy systems, and mentoring teams in scalable data-driven application development.
 
 Feel free to ask more specific questions about her experience, skills, or projects!`;
 }
