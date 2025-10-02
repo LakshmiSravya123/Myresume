@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { Menu, X, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "./Logo";
@@ -12,11 +13,11 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "About", id: "about" },
-    { label: "Analytics", id: "analytics" },
-    { label: "Stock Dashboard", id: "elasticsearch" },
-    { label: "Projects", id: "projects" },
-    { label: "Contact", id: "contact" }
+    { label: "About", id: "about", isScroll: true },
+    { label: "Analytics", id: "analytics", isScroll: true },
+    { label: "Stock Dashboard", id: "/stocks", isScroll: false },
+    { label: "Projects", id: "projects", isScroll: true },
+    { label: "Contact", id: "contact", isScroll: true }
   ];
 
   const handleNavClick = (id: string) => {
@@ -40,14 +41,25 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-                data-testid={`nav-${item.id}`}
-              >
-                {item.label}
-              </button>
+              item.isScroll ? (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                  data-testid={`nav-${item.id}`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link key={item.id} href={item.id}>
+                  <a 
+                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                    data-testid={`nav-${item.id.replace('/', '')}`}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              )
             ))}
           </div>
 
