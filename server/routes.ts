@@ -377,7 +377,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         query: { match_all: {} },
         aggs: {
           by_symbol: {
-            terms: { field: "symbol.keyword", size },
+            terms: { field: "symbol", size },
             aggs: {
               latest_doc: {
                 top_hits: {
@@ -432,7 +432,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         query: {
           bool: {
             filter: [
-              { terms: { "symbol.keyword": symbols } },
+              { terms: { "symbol": symbols } },
               { range: { "@timestamp": { gte: `now-${hours}h` } } }
             ]
           }
@@ -477,7 +477,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         index,
         aggs: {
           symbols: {
-            terms: { field: "symbol.keyword", size: 1000 }
+            terms: { field: "symbol", size: 1000 }
           }
         },
         size: 0
