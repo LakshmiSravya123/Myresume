@@ -18,6 +18,7 @@ interface StockData {
 export default function StockDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("");
   const [timeRange, setTimeRange] = useState<number>(1);
+  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
   // Fetch available symbols
   const { data: symbols = [], isLoading: symbolsLoading, error: symbolsError } = useQuery<string[]>({
@@ -36,6 +37,13 @@ export default function StockDashboard() {
     enabled: !!selectedSymbol,
     refetchInterval: 30000,
   });
+
+  // Update last refresh time when data changes
+  useEffect(() => {
+    if (latestData.length > 0) {
+      setLastRefresh(new Date());
+    }
+  }, [latestData]);
 
   // Set default symbol when data loads
   useEffect(() => {
@@ -106,8 +114,31 @@ export default function StockDashboard() {
     volume: d.volume,
   }));
 
+  // Get market close time from latest data
+  const marketCloseTime = latestData[0]?.["@timestamp"] 
+    ? new Date(latestData[0]["@timestamp"]).toLocaleString()
+    : null;
+
   return (
     <div className="space-y-6">
+      {/* Data Refresh Info */}
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+            <span className="text-blue-200">
+              Data last refreshed: <strong className="text-blue-100">{lastRefresh.toLocaleTimeString()}</strong>
+            </span>
+          </div>
+          {marketCloseTime && (
+            <div className="text-blue-200">
+              Market close time: <strong className="text-blue-100">{marketCloseTime}</strong>
+              <span className="ml-2 text-blue-300 text-xs">(timestamps show last trade)</span>
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Controls */}
       <div className="flex flex-wrap gap-4 items-center">
         <div className="flex-1 min-w-[200px]">
