@@ -37,6 +37,18 @@ Local AI processing using Ollama for privacy-focused intelligent responses:
 - **Conversational AI**: Context-aware responses about Lakshmi's experience, skills, and projects
 - **No API Keys**: Completely self-contained solution without external dependencies
 
+### Analytics & Data Visualization
+The portfolio features comprehensive analytics dashboards:
+
+- **Grafana Analytics**: Embedded Grafana Cloud dashboard with public snapshot access for general portfolio analytics
+- **Stock Market Dashboard**: Real-time Elasticsearch-powered stock analytics with interactive visualizations
+  - Backend API endpoints for Elasticsearch queries (/api/stocks/latest, /api/stocks/timeseries, /api/stocks/symbols)
+  - React components using Recharts library for data visualization
+  - Multiple chart types: OHLC charts, line charts, bar charts, scatter plots
+  - Mock data fallback ensures visualizations work even when Elasticsearch is unavailable
+  - Stock symbol selector and time range controls for interactive analysis
+- **Navigation**: Direct links to analytics dashboards from the main navigation header
+
 ### Authentication and File Handling
 - **File Upload**: Secure file upload with validation for PDF, DOCX, and TXT formats
 - **File Size Limits**: 10MB maximum file size to prevent abuse
@@ -47,6 +59,8 @@ Local AI processing using Ollama for privacy-focused intelligent responses:
 ### Core Dependencies
 - **Database**: PostgreSQL (via Neon serverless) with Drizzle ORM for type-safe database operations
 - **AI Services**: Ollama for local LLM processing (no API keys required) with intelligent fallbacks
+- **Analytics & Search**: Elasticsearch (@elastic/elasticsearch) for real-time stock market data analytics
+- **Data Visualization**: Recharts library for interactive charts and graphs
 - **UI Components**: Radix UI primitives for accessible, unstyled components
 - **Styling**: Tailwind CSS for utility-first styling with custom design tokens
 
