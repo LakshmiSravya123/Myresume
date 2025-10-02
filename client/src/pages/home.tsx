@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import AboutSection from "@/components/AboutSection";
 import AnalyticsSection from "@/components/AnalyticsSection";
+import ElasticsearchSection from "@/components/ElasticsearchSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import AIQuestionnaire from "@/components/AIQuestionnaire";
@@ -37,6 +38,7 @@ export default function Home() {
         <AboutSection />
         <AIQuestionnaire />
         <AnalyticsSection />
+        <ElasticsearchSection />
         <ProjectsSection />
         <ContactSection />
       </main>
