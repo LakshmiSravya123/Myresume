@@ -78,7 +78,7 @@ export default function AnalyticsSection() {
                 </p>
                 <div className="flex justify-center">
                   <button
-                    onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/dashboard/snapshot/GZkCR08gQEFF4J06CaeBQkfhvWYNTT46', '_blank')}
+                    onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/cezvqn2s8464gd?orgId=1', '_blank')}
                     className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
                     data-testid="analytics-open-dashboard"
                   >
