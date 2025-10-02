@@ -1,0 +1,271 @@
+import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { LineChart, Line, AreaChart, Area, BarChart, Bar, ScatterChart, Scatter, ComposedChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TrendingUp, TrendingDown, DollarSign, Activity } from "lucide-react";
+
+interface StockData {
+  symbol: string;
+  "@timestamp": string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+export default function StockDashboard() {
+  const [selectedSymbol, setSelectedSymbol] = useState<string>("");
+  const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
+  const [timeRange, setTimeRange] = useState<number>(1);
+
+  // Fetch available symbols
+  const { data: symbols = [] } = useQuery<string[]>({
+    queryKey: ["/api/stocks/symbols"],
+  });
+
+  // Fetch latest stock data
+  const { data: latestData = [] } = useQuery<StockData[]>({
+    queryKey: ["/api/stocks/latest", { size: 50 }],
+    refetchInterval: 30000, // Refetch every 30 seconds
+  });
+
+  // Fetch time series data for selected symbols
+  const { data: timeSeriesData = [] } = useQuery<StockData[]>({
+    queryKey: ["/api/stocks/timeseries", { symbols: selectedSymbols.join(","), hours: timeRange }],
+    enabled: selectedSymbols.length > 0,
+    refetchInterval: 30000,
+  });
+
+  // Set default symbols when data loads
+  useEffect(() => {
+    if (symbols.length > 0 && selectedSymbols.length === 0) {
+      const defaults = symbols.slice(0, 3);
+      setSelectedSymbols(defaults);
+      setSelectedSymbol(defaults[0] || "");
+    }
+  }, [symbols, selectedSymbols.length]);
+
+  // Calculate stats
+  const stats = latestData.slice(0, 4).map((stock) => ({
+    symbol: stock.symbol,
+    price: stock.close,
+    change: stock.close - stock.open,
+    changePercent: ((stock.close - stock.open) / stock.open) * 100,
+  }));
+
+  // Prepare chart data
+  const lineChartData = timeSeriesData.map((d) => ({
+    time: new Date(d["@timestamp"]).getTime(),
+    timestamp: new Date(d["@timestamp"]).toLocaleTimeString(),
+    [d.symbol]: d.close,
+  }));
+
+  const volumeChartData = latestData.slice(0, 10).map((d) => ({
+    symbol: d.symbol,
+    volume: d.volume,
+  }));
+
+  const scatterData = latestData.map((d) => ({
+    symbol: d.symbol,
+    close: d.close,
+    volume: d.volume,
+  }));
+
+  return (
+    <div className="space-y-6">
+      {/* Controls */}
+      <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex-1 min-w-[200px]">
+          <label className="text-sm font-medium text-gray-700 mb-2 block">Select Stocks</label>
+          <Select
+            value={selectedSymbol}
+            onValueChange={(value) => {
+              setSelectedSymbol(value);
+              if (!selectedSymbols.includes(value)) {
+                setSelectedSymbols([value, ...selectedSymbols.slice(0, 2)]);
+              }
+            }}
+          >
+            <SelectTrigger data-testid="select-stock-symbol">
+              <SelectValue placeholder="Select a stock" />
+            </SelectTrigger>
+            <SelectContent>
+              {symbols.map((symbol) => (
+                <SelectItem key={symbol} value={symbol}>
+                  {symbol}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex-1 min-w-[200px]">
+          <label className="text-sm font-medium text-gray-700 mb-2 block">Time Range</label>
+          <Select value={timeRange.toString()} onValueChange={(value) => setTimeRange(parseInt(value))}>
+            <SelectTrigger data-testid="select-time-range">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1">1 Hour</SelectItem>
+              <SelectItem value="6">6 Hours</SelectItem>
+              <SelectItem value="24">24 Hours</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {stats.map((stat) => (
+          <Card key={stat.symbol}>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-gray-600">{stat.symbol}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-2xl font-bold">${stat.price.toFixed(2)}</p>
+                  <p className={`text-sm flex items-center gap-1 ${stat.change >= 0 ? "text-green-600" : "text-red-600"}`}>
+                    {stat.change >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                    {stat.changePercent.toFixed(2)}%
+                  </p>
+                </div>
+                <DollarSign className="w-8 h-8 text-gray-400" />
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Candlestick Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Activity className="w-5 h-5" />
+            {selectedSymbol || "Select a symbol"} - OHLC Chart
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={400}>
+            <ComposedChart data={timeSeriesData.filter(d => d.symbol === selectedSymbol).sort((a, b) => new Date(a["@timestamp"]).getTime() - new Date(b["@timestamp"]).getTime())}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="@timestamp" tickFormatter={(value) => new Date(value).toLocaleTimeString()} />
+              <YAxis domain={['auto', 'auto']} />
+              <Tooltip labelFormatter={(value) => new Date(value).toLocaleString()} />
+              <Legend />
+              <Line type="monotone" dataKey="high" stroke="#10b981" strokeWidth={2} dot={false} name="High" />
+              <Line type="monotone" dataKey="low" stroke="#ef4444" strokeWidth={2} dot={false} name="Low" />
+              <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
+              <Area type="monotone" dataKey="volume" fill="#8b5cf6" fillOpacity={0.1} stroke="#8b5cf6" />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Line Chart - Price Trends */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Price Trends</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={lineChartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="timestamp" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              {selectedSymbols.slice(0, 3).map((symbol, idx) => (
+                <Line
+                  key={symbol}
+                  type="monotone"
+                  dataKey={symbol}
+                  stroke={["#3b82f6", "#10b981", "#f59e0b"][idx]}
+                  strokeWidth={2}
+                  dot={false}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Volume Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Trading Volume (Top 10)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={volumeChartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="symbol" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="volume" fill="#3b82f6" />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Scatter Plot - Price vs Volume */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Price vs Volume</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <ScatterChart>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="close" name="Price" />
+              <YAxis dataKey="volume" name="Volume" />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+              <Scatter data={scatterData} fill="#8b5cf6" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Raw Data Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Latest Stock Data</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left py-2">Symbol</th>
+                  <th className="text-left py-2">Time</th>
+                  <th className="text-right py-2">Open</th>
+                  <th className="text-right py-2">High</th>
+                  <th className="text-right py-2">Low</th>
+                  <th className="text-right py-2">Close</th>
+                  <th className="text-right py-2">Volume</th>
+                </tr>
+              </thead>
+              <tbody>
+                {latestData.slice(0, 20).map((stock, idx) => (
+                  <tr key={idx} className="border-b hover:bg-gray-50">
+                    <td className="py-2 font-medium">{stock.symbol}</td>
+                    <td className="py-2 text-gray-600">
+                      {new Date(stock["@timestamp"]).toLocaleTimeString()}
+                    </td>
+                    <td className="py-2 text-right">${stock.open.toFixed(2)}</td>
+                    <td className="py-2 text-right">${stock.high.toFixed(2)}</td>
+                    <td className="py-2 text-right">${stock.low.toFixed(2)}</td>
+                    <td className="py-2 text-right">${stock.close.toFixed(2)}</td>
+                    <td className="py-2 text-right">{stock.volume.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
