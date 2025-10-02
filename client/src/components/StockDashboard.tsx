@@ -17,7 +17,6 @@ interface StockData {
 
 export default function StockDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("");
-  const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
   const [timeRange, setTimeRange] = useState<number>(1);
 
   // Fetch available symbols
@@ -27,25 +26,23 @@ export default function StockDashboard() {
 
   // Fetch latest stock data
   const { data: latestData = [] } = useQuery<StockData[]>({
-    queryKey: ["/api/stocks/latest", { size: 50 }],
+    queryKey: ["/api/stocks/latest?size=50"],
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
-  // Fetch time series data for selected symbols
+  // Fetch time series data for selected symbol
   const { data: timeSeriesData = [] } = useQuery<StockData[]>({
-    queryKey: ["/api/stocks/timeseries", { symbols: selectedSymbols.join(","), hours: timeRange }],
-    enabled: selectedSymbols.length > 0,
+    queryKey: [`/api/stocks/timeseries?symbols=${selectedSymbol}&hours=${timeRange}`],
+    enabled: !!selectedSymbol,
     refetchInterval: 30000,
   });
 
-  // Set default symbols when data loads
+  // Set default symbol when data loads
   useEffect(() => {
-    if (symbols.length > 0 && selectedSymbols.length === 0) {
-      const defaults = symbols.slice(0, 3);
-      setSelectedSymbols(defaults);
-      setSelectedSymbol(defaults[0] || "");
+    if (symbols.length > 0 && !selectedSymbol) {
+      setSelectedSymbol(symbols[0]);
     }
-  }, [symbols, selectedSymbols.length]);
+  }, [symbols, selectedSymbol]);
 
   // Calculate stats
   const stats = latestData.slice(0, 4).map((stock) => ({
@@ -81,12 +78,7 @@ export default function StockDashboard() {
           <label className="text-sm font-medium text-gray-700 mb-2 block">Select Stocks</label>
           <Select
             value={selectedSymbol}
-            onValueChange={(value) => {
-              setSelectedSymbol(value);
-              if (!selectedSymbols.includes(value)) {
-                setSelectedSymbols([value, ...selectedSymbols.slice(0, 2)]);
-              }
-            }}
+            onValueChange={setSelectedSymbol}
           >
             <SelectTrigger data-testid="select-stock-symbol">
               <SelectValue placeholder="Select a stock" />
@@ -167,26 +159,22 @@ export default function StockDashboard() {
       {/* Line Chart - Price Trends */}
       <Card>
         <CardHeader>
-          <CardTitle>Price Trends</CardTitle>
+          <CardTitle>Price Trends - {selectedSymbol}</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={lineChartData}>
+            <LineChart data={timeSeriesData.map(d => ({ 
+              timestamp: new Date(d["@timestamp"]).toLocaleTimeString(),
+              close: d.close,
+              open: d.open
+            }))}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="timestamp" />
               <YAxis />
               <Tooltip />
               <Legend />
-              {selectedSymbols.slice(0, 3).map((symbol, idx) => (
-                <Line
-                  key={symbol}
-                  type="monotone"
-                  dataKey={symbol}
-                  stroke={["#3b82f6", "#10b981", "#f59e0b"][idx]}
-                  strokeWidth={2}
-                  dot={false}
-                />
-              ))}
+              <Line type="monotone" dataKey="close" stroke="#3b82f6" strokeWidth={2} dot={false} name="Close" />
+              <Line type="monotone" dataKey="open" stroke="#10b981" strokeWidth={2} dot={false} name="Open" />
             </LineChart>
           </ResponsiveContainer>
         </CardContent>
