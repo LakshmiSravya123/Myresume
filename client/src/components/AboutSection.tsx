@@ -36,7 +36,7 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">About Me</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Sravya AI Assistant</h2>
               
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
                 <p>
