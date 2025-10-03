@@ -101,7 +101,7 @@ export default function AIQuestionnaire() {
         >
           <div className="flex items-center justify-center mb-6">
             <Brain className="w-12 h-12 text-blue-600 mr-4" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Know about Me</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Sravya AI Assistant</h2>
           </div>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
