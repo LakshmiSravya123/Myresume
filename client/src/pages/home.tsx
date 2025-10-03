@@ -43,17 +43,6 @@ export default function Home() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/stocks">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
-                  data-testid="button-analytics-dashboard"
-                >
-                  <BarChart3 className="h-6 w-6 mr-3" />
-                  Analytics Dashboard
-                </Button>
-              </Link>
-              
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
@@ -62,6 +51,16 @@ export default function Home() {
               >
                 <Video className="h-6 w-6 mr-3" />
                 AI Video Generator
+              </Button>
+              
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
+                onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/cezvqn2s8464gd?orgId=1', '_blank')}
+                data-testid="button-grafana-dashboard"
+              >
+                <BarChart3 className="h-6 w-6 mr-3" />
+                Grafana Dashboard
               </Button>
             </div>
           </div>
