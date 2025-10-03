@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail, ArrowDown, Sparkles, Database, Brain } from "lucide-react";
+import { Download, Github, Linkedin, Mail, ArrowDown, Sparkles, Database, Brain, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import professionalPhoto from "@assets/stock_images/professional_headsho_563743ba.jpg";
 
@@ -72,18 +72,29 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-col gap-4 mb-12"
             >
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
-                onClick={() => scrollToSection('projects')}
-                data-testid="button-view-work"
-              >
-                <Download className="h-5 w-5 mr-2" />
-                View My Projects
-              </Button>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
+                  onClick={() => scrollToSection('projects')}
+                  data-testid="button-view-work"
+                >
+                  <Download className="h-5 w-5 mr-2" />
+                  View My Projects
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                  onClick={() => window.open('https://video-ai-beryl.vercel.app/index_enhanced.html', '_blank')}
+                  data-testid="button-video-generator"
+                >
+                  <Video className="h-5 w-5 mr-2" />
+                  AI Video Generator
+                </Button>
+              </div>
+              <div className="flex items-center gap-4 justify-center sm:justify-start">
                 <Button
                   variant="outline"
                   size="icon"
