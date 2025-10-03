@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "wouter";
-import { BarChart3, Video } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import professionalPhoto from "@assets/6F3E376A-FD9E-4A42-BAC0-69D9A66F2453_1_201_a_1758236938466.jpeg";
 
 export default function AboutSection() {
@@ -36,7 +33,7 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Sravya AI Assistant</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">About Me</h2>
               
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
                 <p>
@@ -55,35 +52,6 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Project Showcase Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 flex flex-col sm:flex-row gap-6 justify-center items-center"
-        >
-          <Link href="/stocks">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
-              data-testid="button-analytics-dashboard"
-            >
-              <BarChart3 className="h-6 w-6 mr-3" />
-              Analytics Dashboard
-            </Button>
-          </Link>
-          
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
-            onClick={() => window.open('https://video-ai-beryl.vercel.app/index_enhanced.html', '_blank')}
-            data-testid="button-ai-video-generator"
-          >
-            <Video className="h-6 w-6 mr-3" />
-            AI Video Generator
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

@@ -5,7 +5,8 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import AIQuestionnaire from "@/components/AIQuestionnaire";
-import { TrendingUp, ArrowRight, Activity, BarChart3, LineChart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TrendingUp, ArrowRight, Activity, BarChart3, LineChart, Video } from "lucide-react";
 
 export default function Home() {
   const scrollToSection = (sectionId: string) => {
@@ -37,6 +38,34 @@ export default function Home() {
       <main>
         <AboutSection />
         <AIQuestionnaire />
+        
+        {/* Project Showcase Buttons */}
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link href="/stocks">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
+                  data-testid="button-analytics-dashboard"
+                >
+                  <BarChart3 className="h-6 w-6 mr-3" />
+                  Analytics Dashboard
+                </Button>
+              </Link>
+              
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
+                onClick={() => window.open('https://video-ai-beryl.vercel.app/index_enhanced.html', '_blank')}
+                data-testid="button-ai-video-generator"
+              >
+                <Video className="h-6 w-6 mr-3" />
+                AI Video Generator
+              </Button>
+            </div>
+          </div>
+        </section>
         
         {/* Stock Dashboard CTA */}
         <section className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
