@@ -90,8 +90,9 @@ export default function AIQuestionnaire() {
   };
 
   return (
-    <section id="ai-questionnaire" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ai-questionnaire" className="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-100 relative overflow-hidden">
+      <div className="absolute inset-0 pattern-waves opacity-30"></div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,13 +101,14 @@ export default function AIQuestionnaire() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center mb-6">
-            <Brain className="w-12 h-12 text-blue-600 mr-4" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Sravya AI Assistant</h2>
+            <Brain className="w-12 h-12 text-pink-600 mr-4 animate-wiggle" />
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              🤖 Sravya AI Assistant
+            </h2>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Get instant, detailed answers about Lakshmi's professional background, skills, and experience. 
-            Powered by local AI processing with no external dependencies.
+          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
+            Ask me anything! 💬 I'm powered by local AI and ready to share all about Lakshmi's amazing journey! ✨
           </p>
         </motion.div>
 
@@ -116,9 +118,9 @@ export default function AIQuestionnaire() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-white border-0 shadow-xl rounded-2xl overflow-hidden">
+          <Card className="bg-white border-2 border-pink-200 shadow-2xl rounded-3xl overflow-hidden">
             {/* Chat Messages */}
-            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-gray-50 to-white">
+            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-yellow-50 to-pink-50">
               <AnimatePresence>
                 {messages.map((message, index) => (
                   <motion.div
@@ -133,18 +135,18 @@ export default function AIQuestionnaire() {
                   >
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                       message.type === 'user' 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-purple-600 text-white'
+                        ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg' 
+                        : 'bg-gradient-to-r from-yellow-400 to-pink-400 text-white shadow-lg'
                     }`}>
                       {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                     </div>
                     <div className={`flex-1 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg ${
                       message.type === 'user' ? 'text-right' : 'text-left'
                     }`}>
-                      <div className={`inline-block px-4 py-3 rounded-2xl ${
+                      <div className={`inline-block px-4 py-3 rounded-2xl shadow-md ${
                         message.type === 'user'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white border border-gray-200 text-gray-900 shadow-sm'
+                          ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white'
+                          : 'bg-gradient-to-r from-yellow-100 to-pink-100 text-gray-800 border border-pink-200'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>

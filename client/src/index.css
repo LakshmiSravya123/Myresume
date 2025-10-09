@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,27 +8,27 @@
 
 @layer base {
   :root {
-    /* Professional color palette */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cheerful color palette - vibrant and happy! */
+    --background: 45 100% 98%;
+    --foreground: 220 20% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 20% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 20% 20%;
+    --primary: 340 82% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 100% 55%;
+    --secondary-foreground: 220 20% 20%;
+    --muted: 45 100% 96%;
+    --muted-foreground: 220 20% 50%;
+    --accent: 290 60% 65%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    --destructive-foreground: 0 0% 100%;
+    --border: 45 100% 90%;
+    --input: 45 100% 96%;
+    --ring: 340 82% 62%;
+    --radius: 1rem;
   }
   
   .dark {
@@ -56,16 +58,17 @@
   }
   
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', 'Inter', sans-serif;
     font-feature-settings: 'cv11', 'ss01';
     font-variation-settings: 'opsz' 32;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-inter;
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
   
   code, pre {
@@ -105,50 +108,51 @@
 }
 
 :root {
-  --background: hsl(210, 20%, 98%);
-  --foreground: hsl(210, 25%, 7%);
+  /* Cheerful vibrant colors! */
+  --background: hsl(45, 100%, 98%);
+  --foreground: hsl(220, 20%, 20%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(210, 25%, 7%);
+  --card-foreground: hsl(220, 20%, 20%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(210, 25%, 7%);
-  --primary: hsl(221, 83%, 53%);
+  --popover-foreground: hsl(220, 20%, 20%);
+  --primary: hsl(340, 82%, 62%);
   --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(210, 25%, 7%);
-  --secondary-foreground: hsl(0, 0%, 100%);
-  --muted: hsl(210, 13%, 45%);
-  --muted-foreground: hsl(210, 13%, 45%);
-  --accent: hsl(210, 20%, 96%);
-  --accent-foreground: hsl(210, 25%, 7%);
+  --secondary: hsl(45, 100%, 55%);
+  --secondary-foreground: hsl(220, 20%, 20%);
+  --muted: hsl(45, 100%, 96%);
+  --muted-foreground: hsl(220, 20%, 50%);
+  --accent: hsl(290, 60%, 65%);
+  --accent-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(356, 91%, 54%);
   --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(210, 20%, 90%);
-  --input: hsl(210, 20%, 97%);
-  --ring: hsl(221, 83%, 53%);
-  --chart-1: hsl(221, 83%, 53%);
-  --chart-2: hsl(160, 100%, 36%);
-  --chart-3: hsl(42, 93%, 56%);
-  --chart-4: hsl(147, 79%, 42%);
-  --chart-5: hsl(341, 75%, 51%);
+  --border: hsl(45, 100%, 90%);
+  --input: hsl(45, 100%, 96%);
+  --ring: hsl(340, 82%, 62%);
+  --chart-1: hsl(340, 82%, 62%);
+  --chart-2: hsl(160, 100%, 45%);
+  --chart-3: hsl(45, 100%, 55%);
+  --chart-4: hsl(200, 90%, 60%);
+  --chart-5: hsl(290, 60%, 65%);
   --sidebar: hsl(0, 0%, 100%);
-  --sidebar-foreground: hsl(210, 25%, 7%);
-  --sidebar-primary: hsl(221, 83%, 53%);
+  --sidebar-foreground: hsl(220, 20%, 20%);
+  --sidebar-primary: hsl(340, 82%, 62%);
   --sidebar-primary-foreground: hsl(0, 0%, 100%);
-  --sidebar-accent: hsl(210, 20%, 96%);
-  --sidebar-accent-foreground: hsl(210, 25%, 7%);
-  --sidebar-border: hsl(210, 20%, 90%);
-  --sidebar-ring: hsl(221, 83%, 53%);
-  --font-sans: 'Inter', sans-serif;
+  --sidebar-accent: hsl(45, 100%, 96%);
+  --sidebar-accent-foreground: hsl(220, 20%, 20%);
+  --sidebar-border: hsl(45, 100%, 90%);
+  --sidebar-ring: hsl(340, 82%, 62%);
+  --font-sans: 'Poppins', 'Inter', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
-  --radius: 0.75rem;
-  --shadow-2xs: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05);
-  --shadow-xs: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05);
-  --shadow-sm: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05), 0px 1px 3px 0px hsl(0, 0%, 0%, 0.1);
-  --shadow: 0px 1px 3px 0px hsl(0, 0%, 0%, 0.1), 0px 1px 2px 0px hsl(0, 0%, 0%, 0.06);
-  --shadow-md: 0px 4px 6px -1px hsl(0, 0%, 0%, 0.1), 0px 2px 4px -1px hsl(0, 0%, 0%, 0.06);
-  --shadow-lg: 0px 10px 15px -3px hsl(0, 0%, 0%, 0.1), 0px 4px 6px -2px hsl(0, 0%, 0%, 0.05);
-  --shadow-xl: 0px 20px 25px -5px hsl(0, 0%, 0%, 0.1), 0px 10px 10px -5px hsl(0, 0%, 0%, 0.04);
-  --shadow-2xl: 0px 25px 50px -12px hsl(0, 0%, 0%, 0.25);
+  --radius: 1rem;
+  --shadow-2xs: 0px 1px 2px 0px hsl(340, 82%, 62%, 0.1);
+  --shadow-xs: 0px 1px 2px 0px hsl(340, 82%, 62%, 0.1);
+  --shadow-sm: 0px 1px 2px 0px hsl(340, 82%, 62%, 0.1), 0px 1px 3px 0px hsl(340, 82%, 62%, 0.15);
+  --shadow: 0px 1px 3px 0px hsl(340, 82%, 62%, 0.15), 0px 1px 2px 0px hsl(340, 82%, 62%, 0.1);
+  --shadow-md: 0px 4px 6px -1px hsl(340, 82%, 62%, 0.15), 0px 2px 4px -1px hsl(340, 82%, 62%, 0.1);
+  --shadow-lg: 0px 10px 15px -3px hsl(340, 82%, 62%, 0.15), 0px 4px 6px -2px hsl(340, 82%, 62%, 0.1);
+  --shadow-xl: 0px 20px 25px -5px hsl(340, 82%, 62%, 0.15), 0px 10px 10px -5px hsl(340, 82%, 62%, 0.1);
+  --shadow-2xl: 0px 25px 50px -12px hsl(340, 82%, 62%, 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -195,11 +199,11 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', 'Inter', sans-serif;
   }
 }
 
-/* Animation utilities */
+/* Cheerful Animation utilities */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -215,8 +219,74 @@
   }
 }
 
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes rainbow-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
 
 .animation-delay-2000 {
@@ -227,7 +297,52 @@
   animation-delay: 4s;
 }
 
+/* Cheerful patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, hsl(340, 82%, 62%, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-grid {
+  background-image: 
+    linear-gradient(hsl(45, 100%, 55%, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(45, 100%, 55%, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.pattern-waves {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23f472b6' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Cheerful button effects */
+.btn-cheerful {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-cheerful:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px -5px hsl(340, 82%, 62%, 0.4);
+}
+
+.btn-cheerful:active {
+  transform: translateY(0) scale(0.98);
 }
