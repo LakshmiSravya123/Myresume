@@ -90,7 +90,7 @@ export default function AIQuestionnaire() {
   };
 
   return (
-    <section id="ai-questionnaire" className="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-yellow-100 relative overflow-hidden">
+    <section id="ai-questionnaire" className="py-20 bg-gradient-to-br from-purple-100 via-green-100 to-amber-100 relative overflow-hidden">
       <div className="absolute inset-0 pattern-waves opacity-30"></div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -101,12 +101,12 @@ export default function AIQuestionnaire() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center mb-6">
-            <Brain className="w-12 h-12 text-pink-600 mr-4 animate-wiggle" />
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+            <Brain className="w-12 h-12 text-teal-600 mr-4 animate-wiggle" />
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-purple-600 bg-clip-text text-transparent">
               🤖 Sravya AI Assistant
             </h2>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
             Ask me anything! 💬 I'm powered by local AI and ready to share all about Lakshmi's amazing journey! ✨
           </p>
@@ -118,9 +118,9 @@ export default function AIQuestionnaire() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-white border-2 border-pink-200 shadow-2xl rounded-3xl overflow-hidden">
+          <Card className="bg-white border-2 border-green-200 shadow-2xl rounded-3xl overflow-hidden">
             {/* Chat Messages */}
-            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-yellow-50 to-pink-50">
+            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-green-50 to-purple-50">
               <AnimatePresence>
                 {messages.map((message, index) => (
                   <motion.div
@@ -135,8 +135,8 @@ export default function AIQuestionnaire() {
                   >
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                       message.type === 'user' 
-                        ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg' 
-                        : 'bg-gradient-to-r from-yellow-400 to-pink-400 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg' 
+                        : 'bg-gradient-to-r from-purple-400 to-indigo-400 text-white shadow-lg'
                     }`}>
                       {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                     </div>
@@ -145,8 +145,8 @@ export default function AIQuestionnaire() {
                     }`}>
                       <div className={`inline-block px-4 py-3 rounded-2xl shadow-md ${
                         message.type === 'user'
-                          ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white'
-                          : 'bg-gradient-to-r from-yellow-100 to-pink-100 text-gray-800 border border-pink-200'
+                          ? 'bg-gradient-to-r from-green-500 to-teal-500 text-white'
+                          : 'bg-gradient-to-r from-purple-100 to-green-100 text-gray-800 border border-green-200'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
