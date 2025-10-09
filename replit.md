@@ -87,24 +87,28 @@ The portfolio features comprehensive analytics dashboards:
 
 ### Design & Visual Identity
 
-**Nature-Inspired Color Palette (Spiritual & Plant Themes)**
-The website uses a nature-inspired, spiritual color scheme that reflects Lakshmi's personal connection to plants and spirituality:
+**Professional & Cheerful Color Palette**
+The website uses a clean, professional color scheme with cheerful touches:
 
-- **Primary Colors**: Sage green (hsl(150, 40%, 50%)), teal, emerald - representing nature and plants
-- **Secondary Colors**: Lavender/purple (hsl(270, 35%, 70%)) - representing spirituality and mindfulness
-- **Accent Colors**: Soft gold/amber (hsl(45, 85%, 65%)) - warm, natural accents
-- **Typography**: Poppins font for a friendly, approachable feel with rounded characters
-- **Animations**: Gentle animations (bounce, float, wiggle) with accessibility support for reduced motion preferences
+- **Primary Color**: Royal Blue (hsl(221, 83%, 53%)) - professional and trustworthy
+- **Secondary Color**: Purple (hsl(262, 52%, 47%)) - adds cheerful personality
+- **Background**: Clean white and light gray (hsl(210, 40%, 96.1%))
+- **Typography**: Poppins font for a friendly, approachable feel
+- **Design Philosophy**: Uniform, clean, professional with minimal decorative elements
 
 **Color Usage Across Pages:**
-- Navigation: green/purple/amber gradients
-- Home page: green-50 via purple-50 to amber-50 backgrounds
-- About section: green/teal/purple gradients with nature-inspired decorative patterns
-- AI Assistant: green/teal chat bubbles, purple accent colors
-- Stock Dashboard: emerald-900/teal-900/purple-900 dark gradient (maintains data visibility while staying on-brand)
-- Project buttons: purple/indigo and teal/emerald gradients
+- Navigation: Clean white background with blue accents
+- Home page: Gray-50 background for content, white sections
+- About section: White background with clean layout
+- AI Assistant: Blue (user) and purple (bot) chat bubbles on clean gray background
+- Stock Dashboard: Blue-to-purple gradient for visual interest while maintaining data readability
+- Project buttons: Purple and blue solid colors (no gradients)
 
-**IMPORTANT**: NO pink colors anywhere - the color scheme is strictly nature/spiritual focused with greens, teals, purples, and amber tones.
+**Design Principles**:
+- Clean, uniform backgrounds (no excessive gradients or patterns)
+- Professional color palette with blue as primary
+- Cheerful without being overwhelming
+- Consistent spacing and typography
 
 ### About Me Section Content
 **IMPORTANT: NEVER CHANGE THIS CONTENT - Even if resume is updated**
