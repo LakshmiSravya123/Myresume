@@ -85,6 +85,27 @@ The portfolio features comprehensive analytics dashboards:
 
 ## User Preferences
 
+### Design & Visual Identity
+
+**Nature-Inspired Color Palette (Spiritual & Plant Themes)**
+The website uses a nature-inspired, spiritual color scheme that reflects Lakshmi's personal connection to plants and spirituality:
+
+- **Primary Colors**: Sage green (hsl(150, 40%, 50%)), teal, emerald - representing nature and plants
+- **Secondary Colors**: Lavender/purple (hsl(270, 35%, 70%)) - representing spirituality and mindfulness
+- **Accent Colors**: Soft gold/amber (hsl(45, 85%, 65%)) - warm, natural accents
+- **Typography**: Poppins font for a friendly, approachable feel with rounded characters
+- **Animations**: Gentle animations (bounce, float, wiggle) with accessibility support for reduced motion preferences
+
+**Color Usage Across Pages:**
+- Navigation: green/purple/amber gradients
+- Home page: green-50 via purple-50 to amber-50 backgrounds
+- About section: green/teal/purple gradients with nature-inspired decorative patterns
+- AI Assistant: green/teal chat bubbles, purple accent colors
+- Stock Dashboard: emerald-900/teal-900/purple-900 dark gradient (maintains data visibility while staying on-brand)
+- Project buttons: purple/indigo and teal/emerald gradients
+
+**IMPORTANT**: NO pink colors anywhere - the color scheme is strictly nature/spiritual focused with greens, teals, purples, and amber tones.
+
 ### About Me Section Content
 **IMPORTANT: NEVER CHANGE THIS CONTENT - Even if resume is updated**
 
