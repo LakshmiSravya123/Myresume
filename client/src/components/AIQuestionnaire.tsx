@@ -86,7 +86,17 @@ export default function AIQuestionnaire() {
   ];
 
   const handleSuggestedQuestion = (question: string) => {
-    setCurrentQuestion(question);
+    // Add user message
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      type: 'user',
+      content: question,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    askQuestion.mutate(question);
+    setCurrentQuestion("");
   };
 
   return (
@@ -144,7 +154,7 @@ export default function AIQuestionnaire() {
                       <div className={`inline-block px-4 py-3 rounded-lg shadow-sm ${
                         message.type === 'user'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-white text-gray-800 border border-gray-200'
+                          : 'bg-purple-100 text-gray-800 border border-purple-200'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
@@ -165,10 +175,10 @@ export default function AIQuestionnaire() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center">
                     <Bot className="w-4 h-4" />
                   </div>
-                  <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm">
+                  <div className="bg-purple-100 border border-purple-200 rounded-lg px-4 py-3 shadow-sm">
                     <div className="flex items-center space-x-2">
                       <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
-                      <p className="text-sm text-gray-600">Thinking...</p>
+                      <p className="text-sm text-gray-800">Thinking...</p>
                     </div>
                   </div>
                 </motion.div>
