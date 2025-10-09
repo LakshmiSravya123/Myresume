@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-purple-50 to-amber-50">
+    <div className="min-h-screen bg-gray-50">
       <Navigation 
         onSectionClick={scrollToSection}
         onChatToggle={handleChatToggle}
@@ -40,43 +40,37 @@ export default function Home() {
         <AIQuestionnaire />
         
         {/* Project Showcase Buttons */}
-        <section className="py-16 bg-gradient-to-r from-green-100 via-purple-100 to-amber-100 pattern-dots relative">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-green-600 to-purple-600 bg-clip-text text-transparent">
-              ✨ Explore My Projects! ✨
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
+              Featured Projects
             </h2>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
-                className="btn-cheerful bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-10 py-6 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 min-w-[280px]"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-lg shadow-md hover:shadow-lg transition-all min-w-[280px]"
                 onClick={() => window.open('https://video-ai-beryl.vercel.app/index_enhanced.html', '_blank')}
                 data-testid="button-ai-video-generator"
               >
-                <Video className="h-6 w-6 mr-3 animate-bounce-gentle" />
-                🎬 AI Video Magic
+                <Video className="h-6 w-6 mr-3" />
+                AI Video Generator
               </Button>
               
               <Button
                 size="lg"
-                className="btn-cheerful bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white px-10 py-6 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 min-w-[280px]"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-6 text-lg font-semibold rounded-lg shadow-md hover:shadow-lg transition-all min-w-[280px]"
                 onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/cezvqn2s8464gd?orgId=1', '_blank')}
                 data-testid="button-grafana-dashboard"
               >
-                <BarChart3 className="h-6 w-6 mr-3 animate-bounce-gentle" />
-                📊 Grafana Dashboard
+                <BarChart3 className="h-6 w-6 mr-3" />
+                Grafana Dashboard
               </Button>
             </div>
           </div>
         </section>
         
         {/* Stock Dashboard CTA */}
-        <section className="py-20 bg-gradient-to-br from-emerald-400 via-teal-500 to-purple-600 relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-blob"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-300 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-300 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
-          </div>
+        <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 relative overflow-hidden">
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
@@ -116,11 +110,11 @@ export default function Home() {
               {/* CTA Button */}
               <Link href="/stocks">
                 <button 
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-green-700 rounded-full font-bold text-lg hover:bg-amber-100 transition-all transform hover:scale-110 shadow-2xl hover:shadow-white/50 btn-cheerful"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
                   data-testid="button-view-stock-dashboard"
                 >
-                  🎯 View Live Stock Dashboard
-                  <ArrowRight className="w-5 h-5 animate-bounce-gentle" />
+                  View Live Stock Dashboard
+                  <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
               

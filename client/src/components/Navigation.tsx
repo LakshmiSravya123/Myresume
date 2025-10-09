@@ -26,15 +26,15 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-green-50 via-purple-50 to-amber-50 backdrop-blur-md border-b-2 border-green-200 z-50 shadow-md">
+    <nav className="fixed top-0 left-0 right-0 bg-white backdrop-blur-md border-b border-gray-200 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Name */}
           <div className="flex items-center space-x-3">
-            <Logo className="h-10 w-10 animate-bounce-gentle" />
+            <Logo className="h-10 w-10" />
             <div>
-              <h1 className="text-lg font-bold bg-gradient-to-r from-green-600 to-purple-600 bg-clip-text text-transparent">Lakshmi Sravya ✨</h1>
-              <p className="text-xs text-green-700 font-medium">Data Scientist</p>
+              <h1 className="text-lg font-bold text-blue-600">Lakshmi Sravya ✨</h1>
+              <p className="text-xs text-gray-600 font-medium">Data Scientist</p>
             </div>
           </div>
 
@@ -45,7 +45,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-gray-700 hover:text-green-600 transition-all duration-200 font-semibold hover:scale-105"
+                  className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium"
                   data-testid={`nav-${item.id}`}
                 >
                   {item.label}
@@ -53,7 +53,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
               ) : (
                 <Link key={item.id} href={item.id}>
                   <span 
-                    className="text-gray-700 hover:text-green-600 transition-all duration-200 font-semibold cursor-pointer hover:scale-105 inline-block"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium cursor-pointer inline-block"
                     data-testid={`nav-${item.id.replace('/', '')}`}
                   >
                     {item.label}
@@ -69,7 +69,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
               variant="ghost"
               size="icon"
               onClick={onChatToggle}
-              className="text-green-600 hover:text-green-700 hover:bg-green-100"
+              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
               title="Ask AI about my resume"
               data-testid="button-chat-toggle"
             >
@@ -79,7 +79,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
               variant="ghost"
               size="icon"
               onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
-              className="text-purple-600 hover:text-purple-700 hover:bg-purple-100"
+              className="text-gray-600 hover:text-gray-700 hover:bg-gray-50"
               data-testid="button-github"
             >
               <Github className="h-5 w-5" />
@@ -88,18 +88,18 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
               variant="ghost"
               size="icon"
               onClick={() => window.open('https://www.linkedin.com/in/lakshmisravyavedantham', '_blank')}
-              className="text-teal-600 hover:text-teal-700 hover:bg-teal-100"
+              className="text-blue-700 hover:text-blue-800 hover:bg-blue-50"
               data-testid="button-linkedin"
             >
               <Linkedin className="h-5 w-5" />
             </Button>
             <Button
               onClick={() => window.location.href = 'mailto:lakshmisravya.vedantham@gmail.com'}
-              className="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 shadow-sm hover:shadow transition-all"
               data-testid="button-contact"
             >
               <Mail className="h-4 w-4 mr-2" />
-              Let's Chat! 💬
+              Contact Me
             </Button>
           </div>
 
@@ -109,7 +109,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-green-600 hover:text-green-700 hover:bg-green-100"
+              className="text-gray-600 hover:text-blue-600 hover:bg-blue-50"
               data-testid="button-mobile-menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -119,19 +119,19 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden border-t border-green-200 bg-gradient-to-br from-green-50 to-purple-50">
+          <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-green-100 transition-colors duration-200 rounded-lg font-semibold"
+                  className="block w-full text-left px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 rounded-md font-medium"
                   data-testid={`mobile-nav-${item.id}`}
                 >
                   {item.label}
                 </button>
               ))}
-              <div className="flex items-center justify-center space-x-4 pt-4 border-t border-green-200">
+              <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-200">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -139,7 +139,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                     onChatToggle();
                     setIsOpen(false);
                   }}
-                  className="text-green-600 hover:text-green-700 hover:bg-green-100"
+                  className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
                   data-testid="mobile-button-chat"
                 >
                   <MessageCircle className="h-5 w-5" />
@@ -148,7 +148,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                   variant="ghost"
                   size="icon"
                   onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
-                  className="text-purple-600 hover:text-purple-700 hover:bg-purple-100"
+                  className="text-gray-600 hover:text-gray-700 hover:bg-gray-50"
                   data-testid="mobile-button-github"
                 >
                   <Github className="h-5 w-5" />
@@ -157,7 +157,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                   variant="ghost"
                   size="icon"
                   onClick={() => window.open('https://www.linkedin.com/in/lakshmisravyavedantham', '_blank')}
-                  className="text-teal-600 hover:text-teal-700 hover:bg-teal-100"
+                  className="text-blue-700 hover:text-blue-800 hover:bg-blue-50"
                   data-testid="mobile-button-linkedin"
                 >
                   <Linkedin className="h-5 w-5" />
