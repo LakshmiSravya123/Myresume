@@ -82,3 +82,16 @@ The portfolio features comprehensive analytics dashboards:
 - **Date Handling**: date-fns for consistent date manipulation
 - **Form Validation**: Zod for runtime type validation and schema definition
 - **Component Variants**: class-variance-authority for type-safe component styling variants
+
+## User Preferences
+
+### About Me Section Content
+**IMPORTANT: NEVER CHANGE THIS CONTENT - Even if resume is updated**
+
+The "About Me" section (client/src/components/AboutSection.tsx) uses a cheerful, personal tone that reflects Lakshmi's personality:
+
+- First paragraph: Introduction highlighting cheerful data scientist in San Jose, education, technical skills mix, and spiritual vibe
+- Second paragraph: Career journey from Co-operators to current projects with a fun, adventurous tone
+- Third paragraph: Personal interests (indoor plants, singing) and connection to spiritual purpose
+
+This content is intentionally more casual and personal than the resume and should remain unchanged regardless of resume updates.
