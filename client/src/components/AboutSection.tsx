@@ -37,15 +37,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
                 <p>
-                  I'm a data scientist skilled in building modern data-driven solutions like predictive models and interactive dashboards. With a Master's in Data Analytics (Minor in Applied Machine Learning) from Northeastern University, I focus on delivering clear, impactful insights using cutting-edge tools including Python, R, SQL, and advanced analytics platforms.
+                  Hey there! As a cheerful data scientist planted in San Jose, California, I love turning abstract data into exciting, actionable magic with my Master's in Data Analytics and a Minor in Applied Machine Learning from Northeastern University. With a playful mix of Python, R, SQL, TensorFlow, and LangChain, I whip up predictive models and dashboards that bring data to life. My spiritual vibe adds a joyful purpose, making every project—whether decoding brain waves or building scalable systems—a delightful journey of clarity and impact!
                 </p>
                 
                 <p>
-                  My recent work spans developing multimodal brain activity analysis platforms with transformer models, creating production-grade chatbots using Retrieval-Augmented Generation (LangChain, Llama 3.1), and deploying full-stack applications with continuous monitoring via Prometheus and Grafana. As a Sr. Data Modeling Engineer at Co-operators, I led the modernization of legacy systems with microservices architecture and built high-accuracy policy pricing models using TensorFlow, PyTorch, and scikit-learn.
+                  My career's been a fun adventure, from jazzing up legacy systems with microservices and Docker at Co-operators to creating smart chatbots and real-time monitors with Prometheus and Grafana during my relocation transition. I've polished my skills at StackUp Technologies and Tata Consultancy Services, crafting responsive apps, streamlining ETL pipelines, and cheering on teams to unlock data's potential. Each project feels like a happy canvas where I blend tech savvy with a love for solving puzzles, leaving a sprinkle of efficiency and inspiration behind!
                 </p>
                 
                 <p>
-                  A spiritual perspective guides both my life and work, bringing clarity and purpose to my analytics. I'm passionate about leveraging data to solve complex problems and drive innovation through technology that makes a meaningful impact.
+                  In my downtime, I'm all smiles tending to my thriving indoor plants—watching them grow mirrors my own journey—while belting out songs that harmonize with my spiritual side. This balance sparks my passion to use data as a tool for positive change, crafting solutions that shine with innovation and heart. It's a mission that keeps me humming along, connecting code to a bigger, happier purpose!
                 </p>
               </div>
             </div>
