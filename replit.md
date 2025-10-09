@@ -111,12 +111,13 @@ The website uses a clean, professional color scheme with cheerful touches:
 - Consistent spacing and typography
 
 ### About Me Section Content
-**IMPORTANT: NEVER CHANGE THIS CONTENT - Even if resume is updated**
+**IMPORTANT: This content was last updated October 2025**
 
 The "About Me" section (client/src/components/AboutSection.tsx) uses a cheerful, personal tone that reflects Lakshmi's personality:
 
-- First paragraph: Introduction highlighting cheerful data scientist in San Jose, education, technical skills mix, and spiritual vibe
-- Second paragraph: Career journey from Co-operators to current projects with a fun, adventurous tone
-- Third paragraph: Personal interests (indoor plants, singing) and connection to spiritual purpose
+Current text (October 2025):
+- First paragraph: "Hey there! I'm a cheerful data scientist rooted in San Jose, California, turning data into fun, actionable magic with my Master's in Data Analytics (Minor in Applied Machine Learning) from Northeastern University. I love playing with Python, R, SQL, TensorFlow, and LangChain to create lively predictive models and dashboards. My spiritual joy adds purpose, making every project—decoding brain waves or scaling systems—a happy, clear adventure!"
+- Second paragraph: Career journey from Co-operators to current projects - spicing up legacy systems, crafting chatbots, building apps at StackUp and Tata Consultancy Services
+- Third paragraph: Personal interests (nurturing indoor plants, singing) and mission to use data for positive change
 
-This content is intentionally more casual and personal than the resume and should remain unchanged regardless of resume updates.
+This content is intentionally more casual and personal than the resume.

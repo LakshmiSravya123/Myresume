@@ -39,15 +39,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-700 leading-relaxed space-y-4">
                 <p>
-                  Hey there! As a cheerful data scientist planted in San Jose, California, I love turning abstract data into exciting, actionable magic with my Master's in Data Analytics and a Minor in Applied Machine Learning from Northeastern University. With a playful mix of Python, R, SQL, TensorFlow, and LangChain, I whip up predictive models and dashboards that bring data to life. My spiritual vibe adds a joyful purpose, making every project—whether decoding brain waves or building scalable systems—a delightful journey of clarity and impact!
+                  Hey there! I'm a cheerful data scientist rooted in San Jose, California, turning data into fun, actionable magic with my Master's in Data Analytics (Minor in Applied Machine Learning) from Northeastern University. I love playing with Python, R, SQL, TensorFlow, and LangChain to create lively predictive models and dashboards. My spiritual joy adds purpose, making every project—decoding brain waves or scaling systems—a happy, clear adventure!
                 </p>
                 
                 <p>
-                  My career's been a fun adventure, from jazzing up legacy systems with microservices and Docker at Co-operators to creating smart chatbots and real-time monitors with Prometheus and Grafana during my relocation transition. I've polished my skills at StackUp Technologies and Tata Consultancy Services, crafting responsive apps, streamlining ETL pipelines, and cheering on teams to unlock data's potential. Each project feels like a happy canvas where I blend tech savvy with a love for solving puzzles, leaving a sprinkle of efficiency and inspiration behind!
+                  My career's a joyful ride, from spicing up legacy systems with microservices and Docker at Co-operators to crafting smart chatbots and real-time monitors with Prometheus and Grafana during my relocation. I've honed my skills at StackUp Technologies and Tata Consultancy Services, building apps, streamlining ETL pipelines, and cheering teams to unlock data's potential—each project a bright canvas of tech and puzzle-solving fun!
                 </p>
                 
                 <p>
-                  In my downtime, I'm all smiles tending to my thriving indoor plants—watching them grow mirrors my own journey—while belting out songs that harmonize with my spiritual side. This balance sparks my passion to use data as a tool for positive change, crafting solutions that shine with innovation and heart. It's a mission that keeps me humming along, connecting code to a bigger, happier purpose!
+                  In my free time, I grin while nurturing thriving indoor plants (they grow with me!) and singing tunes that match my spiritual vibe. This harmony fuels my mission to use data for positive change, crafting innovative, heartfelt solutions that keep me humming with purpose!
                 </p>
               </div>
             </div>
