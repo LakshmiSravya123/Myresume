@@ -3,10 +3,10 @@ import professionalPhoto from "@assets/6F3E376A-FD9E-4A42-BAC0-69D9A66F2453_1_20
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-32 pb-20 bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 pattern-dots relative">
+    <section id="about" className="pt-32 pb-20 bg-gradient-to-br from-green-100 via-purple-100 to-amber-100 pattern-dots relative">
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-10 w-40 h-40 bg-pink-400 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-60 h-60 bg-yellow-400 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+        <div className="absolute top-10 right-10 w-40 h-40 bg-green-400 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-60 h-60 bg-purple-400 rounded-full blur-3xl animate-float animation-delay-2000"></div>
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -19,7 +19,7 @@ export default function AboutSection() {
             className="relative"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
               <img
                 src={professionalPhoto}
                 alt="Lakshmi Sravya Vedantham"
@@ -38,7 +38,7 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 via-teal-600 to-purple-600 bg-clip-text text-transparent mb-8">
                 ✨ About Me ✨
               </h2>
               
