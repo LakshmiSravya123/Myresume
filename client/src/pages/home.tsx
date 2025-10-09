@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50">
       <Navigation 
         onSectionClick={scrollToSection}
         onChatToggle={handleChatToggle}
@@ -40,54 +40,58 @@ export default function Home() {
         <AIQuestionnaire />
         
         {/* Project Showcase Buttons */}
-        <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 bg-gradient-to-r from-pink-100 via-yellow-100 to-purple-100 pattern-dots relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              ✨ Explore My Projects! ✨
+            </h2>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
+                className="btn-cheerful bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-6 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 min-w-[280px]"
                 onClick={() => window.open('https://video-ai-beryl.vercel.app/index_enhanced.html', '_blank')}
                 data-testid="button-ai-video-generator"
               >
-                <Video className="h-6 w-6 mr-3" />
-                AI Video Generator
+                <Video className="h-6 w-6 mr-3 animate-bounce-gentle" />
+                🎬 AI Video Magic
               </Button>
               
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[280px]"
+                className="btn-cheerful bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-10 py-6 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 min-w-[280px]"
                 onClick={() => window.open('https://lakshmisravyavedantham.grafana.net/goto/cezvqn2s8464gd?orgId=1', '_blank')}
                 data-testid="button-grafana-dashboard"
               >
-                <BarChart3 className="h-6 w-6 mr-3" />
-                Grafana Dashboard
+                <BarChart3 className="h-6 w-6 mr-3 animate-bounce-gentle" />
+                📊 Grafana Dashboard
               </Button>
             </div>
           </div>
         </section>
         
         {/* Stock Dashboard CTA */}
-        <section className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 relative overflow-hidden">
           {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse delay-700"></div>
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-blob"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-300 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl animate-bounce-gentle">
                   <TrendingUp className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
-                  Real-Time Stock Analytics
+                <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+                  📈 Real-Time Stock Analytics
                 </h2>
               </div>
               
-              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                Explore live market data with interactive visualizations powered by Elasticsearch. 
-                Track trends, analyze volume, and monitor real-time stock movements.
+              <p className="text-xl text-white/95 mb-8 max-w-3xl mx-auto font-semibold">
+                Dive into live market data with colorful, interactive charts! 🎨 
+                Powered by Elasticsearch, track trends and watch those stocks soar! 🚀
               </p>
               
               {/* Feature highlights */}
@@ -112,11 +116,11 @@ export default function Home() {
               {/* CTA Button */}
               <Link href="/stocks">
                 <button 
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-purple-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl hover:shadow-white/50"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-pink-600 rounded-full font-bold text-lg hover:bg-yellow-100 transition-all transform hover:scale-110 shadow-2xl hover:shadow-white/50 btn-cheerful"
                   data-testid="button-view-stock-dashboard"
                 >
-                  View Live Stock Dashboard
-                  <ArrowRight className="w-5 h-5" />
+                  🎯 View Live Stock Dashboard
+                  <ArrowRight className="w-5 h-5 animate-bounce-gentle" />
                 </button>
               </Link>
               
