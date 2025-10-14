@@ -116,8 +116,15 @@ The website uses a clean, professional color scheme with cheerful touches:
 The "About Me" section (client/src/components/AboutSection.tsx) uses a cheerful, personal tone that reflects Lakshmi's personality:
 
 Current text (October 2025):
-- First paragraph: "Hey! I'm a cheerful data scientist turning data into fun with my Master's in Data Analytics and a touch of Machine Learning. I love messing around with Python, R, SQL, TensorFlow, and LangChain to create cool models and dashboards. My happy spirit makes every project—like decoding brain waves or boosting systems—a clear, joyful ride!"
-- Second paragraph: "My career's been a total blast! I spruced up old systems with microservices and Docker at Co-operators, built smart chatbots and real-time trackers with Prometheus and Grafana, and had a great time at StackUp Technologies and Tata Consultancy Services making apps, streamlining data pipelines, and firing up teams to make data pop. Every task is like solving a fun puzzle!"
-- Third paragraph: Personal interests (indoor plants, singing) and mission to create data solutions with good vibes
+- First paragraph: "Hiya! I'm a super cheery data scientist, turning data into pure joy with my Master's in Data Analytics and a sprinkle of Machine Learning. I love creating cool models and dazzling dashboards, and my happy heart makes every project—whether it's cracking brain waves or boosting systems—a fun, clear adventure!"
+- Second paragraph: "My career's like a secret, grin-filled party! I've spiced up systems, built chatty bots, and whipped up real-time trackers. I get a kick out of sparking apps, smoothing data flows, and cheering teams to make data shine—each job's a delightful puzzle!"
+- Third paragraph: Personal interests with "leafy buddies" (indoor plants) and singing soulful tunes - creating solutions that spread big smiles and good vibes
 
 This content is intentionally more casual and personal than the resume.
+
+### Featured Projects Layout
+The Featured Projects section displays 4 clickable image cards in a responsive grid:
+1. **Real-Time Stock Analytics** - Links to internal /stocks page with Elasticsearch-powered visualizations
+2. **AI Video Generator** - External link to video-ai-beryl.vercel.app
+3. **Grafana Analytics Dashboard** - External link to Grafana Cloud dashboard
+4. **Tesla Sales Dashboard** - External link to tesla-sales-dashboard.vercel.app
