@@ -60,7 +60,7 @@ export default function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -69,13 +69,9 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="flex items-center justify-center mb-6">
-            <Github className="w-12 h-12 text-gray-900 mr-4" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Latest Projects</h2>
-          </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Recent repositories and open-source contributions directly from GitHub
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Latest from GitHub</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Recent repositories and open-source contributions
           </p>
         </motion.div>
 
