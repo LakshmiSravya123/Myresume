@@ -116,8 +116,8 @@ The website uses a clean, professional color scheme with cheerful touches:
 The "About Me" section (client/src/components/AboutSection.tsx) uses a cheerful, personal tone that reflects Lakshmi's personality:
 
 Current text (October 2025):
-- First paragraph: "Hey there! I'm a cheerful data scientist rooted in San Jose, California, turning data into fun, actionable magic with my Master's in Data Analytics (Minor in Applied Machine Learning) from Northeastern University. I love playing with Python, R, SQL, TensorFlow, and LangChain to create lively predictive models and dashboards. My spiritual joy adds purpose, making every project—decoding brain waves or scaling systems—a happy, clear adventure!"
-- Second paragraph: Career journey from Co-operators to current projects - spicing up legacy systems, crafting chatbots, building apps at StackUp and Tata Consultancy Services
-- Third paragraph: Personal interests (nurturing indoor plants, singing) and mission to use data for positive change
+- First paragraph: "Hey! I'm a cheerful data scientist turning data into fun with my Master's in Data Analytics and a touch of Machine Learning. I love messing around with Python, R, SQL, TensorFlow, and LangChain to create cool models and dashboards. My happy spirit makes every project—like decoding brain waves or boosting systems—a clear, joyful ride!"
+- Second paragraph: "My career's been a total blast! I spruced up old systems with microservices and Docker at Co-operators, built smart chatbots and real-time trackers with Prometheus and Grafana, and had a great time at StackUp Technologies and Tata Consultancy Services making apps, streamlining data pipelines, and firing up teams to make data pop. Every task is like solving a fun puzzle!"
+- Third paragraph: Personal interests (indoor plants, singing) and mission to create data solutions with good vibes
 
 This content is intentionally more casual and personal than the resume.
