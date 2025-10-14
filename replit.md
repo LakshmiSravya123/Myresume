@@ -123,8 +123,7 @@ Current text (October 2025):
 This content is intentionally more casual and personal than the resume.
 
 ### Featured Projects Layout
-The Featured Projects section displays 4 clickable image cards in a responsive grid:
-1. **Real-Time Stock Analytics** - Links to internal /stocks page with Elasticsearch-powered visualizations
-2. **AI Video Generator** - External link to video-ai-beryl.vercel.app
-3. **Grafana Analytics Dashboard** - External link to Grafana Cloud dashboard
-4. **Tesla Sales Dashboard** - External link to tesla-sales-dashboard.vercel.app
+The Featured Projects section displays 3 clickable image cards in a responsive grid:
+1. **AI Video Generator** - External link to video-ai-beryl.vercel.app
+2. **Grafana Analytics Dashboard** - External link to Grafana Cloud dashboard
+3. **Tesla Sales Dashboard** - External link to tesla-sales-dashboard.vercel.app
