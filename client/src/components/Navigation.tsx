@@ -14,8 +14,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
 
   const navItems = [
     { label: "About", id: "about", isScroll: true },
-    { label: "Analytics", id: "analytics", isScroll: true },
-    { label: "Stock Dashboard", id: "/stocks", isScroll: false },
+    { label: "Featured Projects", id: "featured", isScroll: true },
     { label: "Projects", id: "projects", isScroll: true },
     { label: "Contact", id: "contact", isScroll: true }
   ];
