@@ -51,7 +51,34 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Real-Time Stock Analytics */}
+              <Link href="/stocks">
+                <div className="group cursor-pointer" data-testid="link-stock-analytics">
+                  <div className="relative overflow-hidden rounded-lg aspect-[4/3] mb-4 shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                    <img
+                      src={new URL('@assets/stock_images/real-time_stock_mark_d9ff0cf8.jpg', import.meta.url).href}
+                      alt="Real-Time Stock Analytics"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex items-center text-white">
+                          <TrendingUp className="w-5 h-5 mr-2" />
+                          <span className="font-semibold">View Analytics</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    Real-Time Stock Analytics
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Live stock market data with Elasticsearch-powered visualizations
+                  </p>
+                </div>
+              </Link>
+
               {/* AI Video Generator */}
               <a
                 href="https://video-ai-beryl.vercel.app/index_enhanced.html"

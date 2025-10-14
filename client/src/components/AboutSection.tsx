@@ -39,15 +39,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-700 leading-relaxed space-y-4">
                 <p>
-                  Hey! I'm a cheerful data scientist turning data into fun with my Master's in Data Analytics and a touch of Machine Learning. I love messing around with Python, R, SQL, TensorFlow, and LangChain to create cool models and dashboards. My happy spirit makes every project—like decoding brain waves or boosting systems—a clear, joyful ride!
+                  Hiya! I'm a super cheery data scientist, turning data into pure joy with my Master's in Data Analytics and a sprinkle of Machine Learning. I love creating cool models and dazzling dashboards, and my happy heart makes every project—whether it's cracking brain waves or boosting systems—a fun, clear adventure!
                 </p>
                 
                 <p>
-                  My career's been a total blast! I spruced up old systems with microservices and Docker at Co-operators, built smart chatbots and real-time trackers with Prometheus and Grafana, and had a great time at StackUp Technologies and Tata Consultancy Services making apps, streamlining data pipelines, and firing up teams to make data pop. Every task is like solving a fun puzzle!
+                  My career's like a secret, grin-filled party! I've spiced up systems, built chatty bots, and whipped up real-time trackers. I get a kick out of sparking apps, smoothing data flows, and cheering teams to make data shine—each job's a delightful puzzle!
                 </p>
                 
                 <p>
-                  When I'm not geeking out, I'm grinning over my thriving indoor plants (they're like my buddies!) and singing tunes that vibe with my soul. This joy keeps me pumped to create data solutions that spread good vibes and keep me humming with purpose!
+                  When I'm not diving into data, I'm giggling over my thriving indoor plants (my leafy buddies!) and singing soulful tunes that vibe with my soul. This joy keeps me buzzing to create solutions that spread big smiles and good vibes!
                 </p>
               </div>
             </div>
