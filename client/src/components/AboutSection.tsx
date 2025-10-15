@@ -39,15 +39,15 @@ export default function AboutSection() {
               
               <div className="prose prose-lg text-gray-700 leading-relaxed space-y-4">
                 <p>
-                  Hiya! I'm a super cheery data scientist, turning data into pure joy with my Master's in Data Analytics and a sprinkle of Machine Learning. I love creating cool models and dazzling dashboards, and my happy heart makes every project—whether it's cracking brain waves or boosting systems—a fun, clear adventure!
+                  Hey there! I'm a data scientist and AI enthusiast hooked on turning raw data into stories that inspire. With Python and machine learning, I create projects like apps and dashboards that make tech feel approachable and human. You'll find my work on GitHub, Hugging Face, or no-code platforms like Glide, where I blend functionality with a touch of creativity.
                 </p>
                 
                 <p>
-                  My career's like a secret, grin-filled party! I've spiced up systems, built chatty bots, and whipped up real-time trackers. I get a kick out of sparking apps, smoothing data flows, and cheering teams to make data shine—each job's a delightful puzzle!
+                  Spirituality is my compass. Meditation keeps me centered, clearing my mind for sharper insights in both code and life. My indoor plants—my little green crew—teach me patience and growth, mirroring how I nurture data into something meaningful. Singing, from soulful mantras to spontaneous tunes, is my way of letting my spirit soar, infusing my projects with heart.
                 </p>
                 
                 <p>
-                  When I'm not diving into data, I'm giggling over my thriving indoor plants (my leafy buddies!) and singing soulful tunes that vibe with my soul. This joy keeps me buzzing to create solutions that spread big smiles and good vibes!
+                  I'm all about building tech that connects and uplifts, from exploring AI ethics to crafting tools that spark joy. When I'm not coding or tending to my plants, I'm singing or dreaming up ways to make technology and human connection vibe together. Thanks for stopping by—stay tuned for more of my journey with AI, spirit, and song!
                 </p>
               </div>
             </div>
