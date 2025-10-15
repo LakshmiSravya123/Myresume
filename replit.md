@@ -113,14 +113,14 @@ The website uses a clean, professional color scheme with cheerful touches:
 ### About Me Section Content
 **IMPORTANT: This content was last updated October 2025**
 
-The "About Me" section (client/src/components/AboutSection.tsx) uses a cheerful, personal tone that reflects Lakshmi's personality:
+The "About Me" section (client/src/components/AboutSection.tsx) uses a warm, personal tone that reflects Lakshmi's personality and values:
 
 Current text (October 2025):
-- First paragraph: "Hiya! I'm a super cheery data scientist, turning data into pure joy with my Master's in Data Analytics and a sprinkle of Machine Learning. I love creating cool models and dazzling dashboards, and my happy heart makes every project—whether it's cracking brain waves or boosting systems—a fun, clear adventure!"
-- Second paragraph: "My career's like a secret, grin-filled party! I've spiced up systems, built chatty bots, and whipped up real-time trackers. I get a kick out of sparking apps, smoothing data flows, and cheering teams to make data shine—each job's a delightful puzzle!"
-- Third paragraph: Personal interests with "leafy buddies" (indoor plants) and singing soulful tunes - creating solutions that spread big smiles and good vibes
+- First paragraph: "Hey there! I'm a data scientist and AI enthusiast hooked on turning raw data into stories that inspire. With Python and machine learning, I create projects like apps and dashboards that make tech feel approachable and human. You'll find my work on GitHub, Hugging Face, or no-code platforms like Glide, where I blend functionality with a touch of creativity."
+- Second paragraph: "Spirituality is my compass. Meditation keeps me centered, clearing my mind for sharper insights in both code and life. My indoor plants—my little green crew—teach me patience and growth, mirroring how I nurture data into something meaningful. Singing, from soulful mantras to spontaneous tunes, is my way of letting my spirit soar, infusing my projects with heart."
+- Third paragraph: "I'm all about building tech that connects and uplifts, from exploring AI ethics to crafting tools that spark joy. When I'm not coding or tending to my plants, I'm singing or dreaming up ways to make technology and human connection vibe together. Thanks for stopping by—stay tuned for more of my journey with AI, spirit, and song!"
 
-This content is intentionally more casual and personal than the resume.
+This content is intentionally more personal and reflective than the resume, emphasizing spirituality, mindfulness, and the human connection to technology.
 
 ### Featured Projects Layout
 The Featured Projects section displays 4 clickable image cards in a responsive grid:
