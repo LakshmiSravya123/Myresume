@@ -6,7 +6,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import AIQuestionnaire from "@/components/AIQuestionnaire";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, ArrowRight, Activity, BarChart3, LineChart, Video } from "lucide-react";
+import { TrendingUp, ArrowRight, Activity, BarChart3, LineChart, Sparkles } from "lucide-react";
 
 export default function Home() {
   const scrollToSection = (sectionId: string) => {
@@ -79,34 +79,34 @@ export default function Home() {
                 </div>
               </Link>
 
-              {/* AI Video Generator */}
+              {/* Dream Weaver */}
               <a
-                href="https://video-ai-beryl.vercel.app/index_enhanced.html"
+                href="https://dream-weaver-lakshmisravyave.replit.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group cursor-pointer"
-                data-testid="link-ai-video-generator"
+                data-testid="link-dream-weaver"
               >
                 <div className="relative overflow-hidden rounded-lg aspect-[4/3] mb-4 shadow-lg group-hover:shadow-2xl transition-all duration-300">
                   <img
                     src={new URL('@assets/stock_images/professional_data_an_b3a24f87.jpg', import.meta.url).href}
-                    alt="AI Video Generator"
+                    alt="Dream Weaver"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex items-center text-white">
-                        <Video className="w-5 h-5 mr-2" />
+                        <Sparkles className="w-5 h-5 mr-2" />
                         <span className="font-semibold">View Project</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  AI Video Generator
+                  Dream Weaver
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  AI-powered video creation platform with advanced editing features
+                  Creative AI-powered dream interpretation and visualization platform
                 </p>
               </a>
 
