@@ -143,7 +143,7 @@ export default function Home() {
 
               {/* Tesla Sales Dashboard */}
               <a
-                href="https://tesla-sales-dashboard.vercel.app/videos.html"
+                href="https://tesla-sales-dashboard.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group cursor-pointer"
