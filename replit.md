@@ -125,6 +125,6 @@ This content is intentionally more personal and reflective than the resume, emph
 ### Featured Projects Layout
 The Featured Projects section displays 4 clickable image cards in a responsive grid:
 1. **Real-Time Stock Analytics** - Links to internal /stocks page with Elasticsearch-powered visualizations
-2. **Dream Weaver** - External link to dream-weaver-lakshmisravyave.replit.app (AI-powered dream interpretation and visualization platform)
+2. **Dream Weaver** - External link to dream-analysis-git-main-sravyas-projects-f5209810.vercel.app (AI-powered dream interpretation and visualization platform)
 3. **Grafana Analytics Dashboard** - External link to Grafana Cloud dashboard
 4. **Tesla Sales Dashboard** - External link to tesla-sales-dashboard.vercel.app
