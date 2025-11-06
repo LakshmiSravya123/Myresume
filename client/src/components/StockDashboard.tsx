@@ -88,13 +88,20 @@ export default function StockDashboard() {
     );
   }
 
-  // Calculate stats
-  const stats = latestData.slice(0, 4).map((stock) => ({
-    symbol: stock.symbol,
-    price: stock.close,
-    change: stock.close - stock.open,
-    changePercent: ((stock.close - stock.open) / stock.open) * 100,
-  }));
+  // Calculate stats with safe defaults
+  const stats = latestData.slice(0, 4).map((stock) => {
+    const close = stock.close ?? 0;
+    const open = stock.open ?? 0;
+    const change = close - open;
+    const changePercent = open !== 0 ? (change / open) * 100 : 0;
+    
+    return {
+      symbol: stock.symbol,
+      price: close,
+      change,
+      changePercent,
+    };
+  });
 
   // Prepare chart data
   const lineChartData = timeSeriesData.map((d) => ({
@@ -260,11 +267,11 @@ export default function StockDashboard() {
                     <td className="py-2 text-gray-600">
                       {new Date(stock["@timestamp"]).toLocaleTimeString()}
                     </td>
-                    <td className="py-2 text-right">${stock.open.toFixed(2)}</td>
-                    <td className="py-2 text-right">${stock.high.toFixed(2)}</td>
-                    <td className="py-2 text-right">${stock.low.toFixed(2)}</td>
-                    <td className="py-2 text-right">${stock.close.toFixed(2)}</td>
-                    <td className="py-2 text-right">{stock.volume.toLocaleString()}</td>
+                    <td className="py-2 text-right">${(stock.open ?? 0).toFixed(2)}</td>
+                    <td className="py-2 text-right">${(stock.high ?? 0).toFixed(2)}</td>
+                    <td className="py-2 text-right">${(stock.low ?? 0).toFixed(2)}</td>
+                    <td className="py-2 text-right">${(stock.close ?? 0).toFixed(2)}</td>
+                    <td className="py-2 text-right">{(stock.volume ?? 0).toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
