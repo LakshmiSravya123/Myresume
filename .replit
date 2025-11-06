@@ -4,6 +4,7 @@ hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["openssh_hpn"]
 
 [deployment]
 deploymentTarget = "autoscale"
@@ -49,10 +50,6 @@ externalPort = 6800
 [[ports]]
 localPort = 36115
 externalPort = 5173
-
-[[ports]]
-localPort = 39151
-externalPort = 8000
 
 [[ports]]
 localPort = 39697
