@@ -363,14 +363,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     return symbols.map(symbol => ({
       "@timestamp": new Date().toISOString(),
       symbol,
-      current_price: baseData[symbol].price,
+      close: baseData[symbol].price,
       open: baseData[symbol].open,
       high: baseData[symbol].high,
       low: baseData[symbol].low,
-      volume: baseData[symbol].volume,
-      change_percent: ((baseData[symbol].change / baseData[symbol].price) * 100).toFixed(2),
-      change_amount: baseData[symbol].change.toFixed(2),
-      previous_close: (baseData[symbol].price - baseData[symbol].change).toFixed(2)
+      volume: baseData[symbol].volume
     }));
   };
 
