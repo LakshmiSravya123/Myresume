@@ -81,7 +81,7 @@ export default function Home() {
 
               {/* Dream Weaver */}
               <a
-                href="https://dream-weaver-lakshmisravyave.replit.app"
+                href="https://dream-analysis-git-main-sravyas-projects-f5209810.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group cursor-pointer"
