@@ -27,9 +27,10 @@ FROM node:20-slim
 
 WORKDIR /app
 
-# Install production dependencies only
+# Copy package files and install ALL dependencies
+# (needed because esbuild uses --packages=external which doesn't bundle node_modules)
 COPY package*.json ./
-RUN npm ci --production
+RUN npm ci
 
 # Copy built files from build stage
 COPY --from=base /app/dist ./dist
