@@ -268,28 +268,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log("GitHub API failed, using fallback data");
         const fallbackProjects = [
           {
-            name: "AI-Policy-Pricing-Model",
-            description: "Advanced machine learning model for automatic insurance policy pricing",
+            name: "Myresume",
+            description: "This is a personal portfolio website that showcases professional experience, technical skills, projects, and provides an AI-powered chat assistant to answer questions about the resume and career background.",
+            language: "TypeScript",
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/Myresume",
+            updated_at: "2025-11-10T20:48:52Z",
+            topics: ["portfolio", "react", "typescript", "ai-assistant"]
+          },
+          {
+            name: "DreamAnalysis",
+            description: "Neural Dream Workshop is an innovative AI-powered system that integrates Brain-Computer Interface (BCI) technology with advanced machine learning to capture, analyze, and enhance dream experiences.",
+            language: "TypeScript",
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/DreamAnalysis",
+            updated_at: "2025-11-06T23:31:53Z",
+            topics: ["ai", "machine-learning", "bci", "dream-analysis"]
+          },
+          {
+            name: "promptforge",
+            description: "Generate production-ready full-stack applications in 60 seconds from a single prompt.",
             language: "Python",
-            stargazers_count: 18,
-            html_url: "https://github.com/LakshmiSravya123/AI-Policy-Pricing-Model",
-            updated_at: "2024-12-20T00:00:00Z"
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/promptforge",
+            updated_at: "2025-11-05T20:16:21Z",
+            topics: ["ai", "code-generation", "automation"]
           },
           {
-            name: "React-Data-Science-Dashboard", 
-            description: "Comprehensive data science dashboard built with React and Flask",
-            language: "JavaScript",
-            stargazers_count: 32,
-            html_url: "https://github.com/LakshmiSravya123/React-Data-Science-Dashboard",
-            updated_at: "2024-11-25T00:00:00Z"
+            name: "uniforge",
+            description: "Automate repetitive desktop workflows by capturing keyboard patterns and replaying them through a unified desktop experience. UniForge ships as a three-service MVP: a Flask API for todo-like data, a keystroke recorder bridge, and a Vite/Electron frontend that orchestrates automation flows.",
+            language: "Python",
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/uniforge",
+            updated_at: "2025-11-05T02:38:46Z",
+            topics: ["automation", "desktop-app", "electron"]
           },
           {
-            name: "Mobile-AI-Development",
-            description: "iOS and Android applications using modern AI tools",
-            language: "Swift", 
-            stargazers_count: 14,
-            html_url: "https://github.com/LakshmiSravya123/Mobile-AI-Development",
-            updated_at: "2025-01-15T00:00:00Z"
+            name: "Harmony",
+            description: "A Flutter-based spiritual journaling app that combines AI-powered insights, nature scanning, and health data integration to help users reflect, find purpose, and calm their minds.",
+            language: "Dart",
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/Harmony",
+            updated_at: "2025-10-21T21:21:56Z",
+            topics: ["flutter", "mobile-app", "ai", "wellness"]
+          },
+          {
+            name: "airflow",
+            description: "A complete ETL (Extract, Transform, Load) pipeline for processing autonomous vehicle telemetry data using Apache Airflow, with optional streaming capabilities using Kafka and Spark.",
+            language: "Python",
+            stargazers_count: 0,
+            html_url: "https://github.com/LakshmiSravya123/airflow",
+            updated_at: "2025-10-16T20:43:41Z",
+            topics: ["airflow", "etl", "data-engineering", "kafka"]
           }
         ];
         
@@ -327,16 +357,67 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Get GitHub projects error:", error);
       
-      // Return fallback data on any error
+      // Return fallback data on any error (updated with actual current repos)
       const fallbackProjects = [
         {
-          name: "AI-Policy-Pricing-Model",
-          description: "Advanced machine learning model for automatic insurance policy pricing",
+          name: "Myresume",
+          description: "This is a personal portfolio website that showcases professional experience, technical skills, projects, and provides an AI-powered chat assistant to answer questions about the resume and career background.",
+          language: "TypeScript",
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/Myresume",
+          updated_at: "2025-11-10T20:48:52Z",
+          topics: ["portfolio", "react", "typescript", "ai-assistant"]
+        },
+        {
+          name: "DreamAnalysis",
+          description: "Neural Dream Workshop is an innovative AI-powered system that integrates Brain-Computer Interface (BCI) technology with advanced machine learning to capture, analyze, and enhance dream experiences.",
+          language: "TypeScript",
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/DreamAnalysis",
+          updated_at: "2025-11-06T23:31:53Z",
+          topics: ["ai", "machine-learning", "bci", "dream-analysis"]
+        },
+        {
+          name: "promptforge",
+          description: "Generate production-ready full-stack applications in 60 seconds from a single prompt.",
           language: "Python",
-          stars: 18,
-          forks: 4,
-          url: "https://github.com/LakshmiSravya123/AI-Policy-Pricing-Model",
-          updated_at: "2024-12-20T00:00:00Z"
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/promptforge",
+          updated_at: "2025-11-05T20:16:21Z",
+          topics: ["ai", "code-generation", "automation"]
+        },
+        {
+          name: "uniforge",
+          description: "Automate repetitive desktop workflows by capturing keyboard patterns and replaying them through a unified desktop experience.",
+          language: "Python",
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/uniforge",
+          updated_at: "2025-11-05T02:38:46Z",
+          topics: ["automation", "desktop-app", "electron"]
+        },
+        {
+          name: "Harmony",
+          description: "A Flutter-based spiritual journaling app that combines AI-powered insights, nature scanning, and health data integration to help users reflect, find purpose, and calm their minds.",
+          language: "Dart",
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/Harmony",
+          updated_at: "2025-10-21T21:21:56Z",
+          topics: ["flutter", "mobile-app", "ai", "wellness"]
+        },
+        {
+          name: "airflow",
+          description: "A complete ETL pipeline for processing autonomous vehicle telemetry data using Apache Airflow, with streaming capabilities using Kafka and Spark.",
+          language: "Python",
+          stars: 0,
+          forks: 0,
+          url: "https://github.com/LakshmiSravya123/airflow",
+          updated_at: "2025-10-16T20:43:41Z",
+          topics: ["airflow", "etl", "data-engineering", "kafka"]
         }
       ];
       
