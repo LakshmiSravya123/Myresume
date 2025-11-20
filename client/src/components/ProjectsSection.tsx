@@ -19,6 +19,9 @@ interface GitHubProject {
 export default function ProjectsSection() {
   const { data: githubProjects, isLoading } = useQuery<GitHubProject[]>({
     queryKey: ["/api/github/projects"],
+    staleTime: 60_000, // refetch after 1 minute
+    refetchOnWindowFocus: true,
+    refetchInterval: 5 * 60_000,
   });
 
   const formatDate = (dateString: string) => {

@@ -259,9 +259,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const githubUsername = "LakshmiSravya123";
       const githubApiUrl = `https://api.github.com/users/${githubUsername}/repos`;
-      
+
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
+
+      const headers: Record<string, string> = {
+        "User-Agent": "MyresumeApp/1.0",
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+      };
+
+      if (process.env.GITHUB_TOKEN) {
+        headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+      }
+
       // Fetch real repositories from GitHub API
-      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10`);
+      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10`, {
+        headers,
+      });
       
       if (!response.ok) {
         // Fallback to cached data if GitHub API fails
