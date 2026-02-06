@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Map } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import professionalPhoto from "@assets/6F3E376A-FD9E-4A42-BAC0-69D9A66F2453_1_201_a_1758236938466.jpeg";
 
 export default function AboutSection() {
@@ -50,6 +52,16 @@ export default function AboutSection() {
                   I'm all about building tech that connects and uplifts, from exploring AI ethics to crafting tools that spark joy. When I'm not coding or tending to my plants, I'm singing or dreaming up ways to make technology and human connection vibe together. Thanks for stopping by—stay tuned for more of my journey with AI, spirit, and song!
                 </p>
               </div>
+
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg mt-4"
+                onClick={() => window.open('https://lakshmisravya123.github.io/career-path/', '_blank')}
+                data-testid="button-career-journey"
+              >
+                <Map className="h-5 w-5 mr-2" />
+                Career Journey
+              </Button>
             </div>
           </motion.div>
         </div>
