@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail, ArrowDown, Sparkles, Database, Brain, Video } from "lucide-react";
+import { Download, Github, Linkedin, Mail, ArrowDown, Sparkles, Database, Brain, Video, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import professionalPhoto from "@assets/stock_images/professional_headsho_563743ba.jpg";
 
@@ -82,6 +82,16 @@ export default function HeroSection() {
               >
                 <Download className="h-5 w-5 mr-2" />
                 View My Projects
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg"
+                onClick={() => window.open('https://lakshmisravya123.github.io/career-path/', '_blank')}
+                data-testid="button-career-journey"
+              >
+                <Map className="h-5 w-5 mr-2" />
+                Career Journey
               </Button>
               <div className="flex items-center gap-4">
                 <Button
