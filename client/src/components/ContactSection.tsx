@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { API_BASE } from "@/lib/queryClient";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -164,7 +165,7 @@ export default function ContactSection() {
                 onClick={async () => {
                   try {
                     // Trigger the download
-                    const response = await fetch('/api/resume/download');
+                    const response = await fetch(API_BASE + '/api/resume/download');
                     
                     if (!response.ok) {
                       throw new Error('Failed to download resume');

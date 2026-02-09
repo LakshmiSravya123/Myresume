@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest, API_BASE } from "@/lib/queryClient";
 
 interface Message {
   id: string;
@@ -27,7 +27,7 @@ export default function AIQuestionnaire() {
 
   const askQuestion = useMutation({
     mutationFn: async (question: string) => {
-      const response = await fetch('/api/quick-action', {
+      const response = await fetch(API_BASE + '/api/quick-action', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: question })
