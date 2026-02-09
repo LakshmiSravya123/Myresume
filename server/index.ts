@@ -1,9 +1,21 @@
 import express, { type Request, Response, NextFunction } from "express";
+import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { startStockIngestion } from "./stockIngestion";
 
 const app = express();
+
+app.use(cors({
+  origin: [
+    "https://sravyavedantham.com",
+    "https://www.sravyavedantham.com",
+    "http://localhost:5173",
+    "http://localhost:3000",
+  ],
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
