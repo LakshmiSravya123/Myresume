@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Map, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,47 +31,8 @@ function useTypingEffect(words: string[], typingSpeed = 80, deletingSpeed = 50, 
   return text;
 }
 
-function useCounter(target: number, duration = 2000) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
-      { threshold: 0.5 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const interval = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(interval);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-    return () => clearInterval(interval);
-  }, [started, target, duration]);
-
-  return { count, ref };
-}
-
 export default function AboutSection() {
   const typedText = useTypingEffect(["Data Scientist", "ML Engineer", "AI Solutions Architect"]);
-  const yearsExp = useCounter(3);
-  const projects = useCounter(15);
-  const technologies = useCounter(25);
 
   return (
     <section id="about" className="relative pt-32 pb-24 bg-white dark:bg-gray-900 overflow-hidden">
@@ -134,17 +95,6 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* Availability badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300 text-xs font-medium rounded-full"
-            >
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-              Available for opportunities
-            </motion.div>
-
             {/* Name */}
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Lakshmi Sravya Vedantham
@@ -170,22 +120,6 @@ export default function AboutSection() {
               <p>
                 I'm all about building tech that connects and uplifts, from exploring AI ethics to crafting tools that spark joy. Thanks for stopping by—stay tuned for more of my journey with AI, spirit, and song!
               </p>
-            </div>
-
-            {/* Animated stat counters */}
-            <div className="grid grid-cols-3 gap-6 py-4">
-              <div ref={yearsExp.ref} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">{yearsExp.count}+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Years Exp</div>
-              </div>
-              <div ref={projects.ref} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">{projects.count}+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Projects</div>
-              </div>
-              <div ref={technologies.ref} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-indigo-600 dark:text-indigo-400">{technologies.count}+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Technologies</div>
-              </div>
             </div>
 
             {/* Action buttons */}
