@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Code, Database, Brain, Cloud, Wrench, Palette } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { staggerContainer, staggerItem } from "@/lib/animations";
 import type { ResumeData } from "@shared/schema";
 
 export default function SkillsSection() {
@@ -19,67 +20,67 @@ export default function SkillsSection() {
     {
       title: "Programming Languages",
       icon: <Code className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["Python", "R", "SQL", "JavaScript", "Java", "C++"].includes(skill)
       ),
       color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200"
+      bgColor: "bg-blue-50 dark:bg-blue-950/30",
+      borderColor: "border-blue-200 dark:border-blue-800"
     },
     {
       title: "Data & Analytics",
       icon: <Database className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["Tableau", "Power BI", "MicroStrategy", "Pandas", "NumPy", "Excel"].includes(skill)
       ),
       color: "from-green-500 to-green-600",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200"
+      bgColor: "bg-green-50 dark:bg-green-950/30",
+      borderColor: "border-green-200 dark:border-green-800"
     },
     {
       title: "Machine Learning & AI",
       icon: <Brain className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["Scikit-learn", "TensorFlow", "PyTorch", "Streamlit", "Cursor", "Runway", "Luma", "Stable Diffusion"].includes(skill)
       ),
       color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200"
+      bgColor: "bg-purple-50 dark:bg-purple-950/30",
+      borderColor: "border-purple-200 dark:border-purple-800"
     },
     {
       title: "Cloud & Databases",
       icon: <Cloud className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["MySQL", "PostgreSQL", "Azure", "Google Cloud"].includes(skill)
       ),
       color: "from-cyan-500 to-cyan-600",
-      bgColor: "bg-cyan-50",
-      borderColor: "border-cyan-200"
+      bgColor: "bg-cyan-50 dark:bg-cyan-950/30",
+      borderColor: "border-cyan-200 dark:border-cyan-800"
     },
     {
       title: "Development Tools",
       icon: <Wrench className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["Git", "Jupyter", "VS Code"].includes(skill)
       ),
       color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200"
+      bgColor: "bg-orange-50 dark:bg-orange-950/30",
+      borderColor: "border-orange-200 dark:border-orange-800"
     },
     {
       title: "Web Frameworks",
       icon: <Palette className="h-6 w-6" />,
-      skills: skills.filter(skill => 
+      skills: skills.filter(skill =>
         ["React", "AngularJS", "Flask", "Spring"].includes(skill)
       ),
       color: "from-pink-500 to-pink-600",
-      bgColor: "bg-pink-50",
-      borderColor: "border-pink-200"
+      bgColor: "bg-pink-50 dark:bg-pink-950/30",
+      borderColor: "border-pink-200 dark:border-pink-800"
     }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,21 +89,24 @@ export default function SkillsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Technical Skills</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Technical Skills</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Comprehensive expertise across data science, machine learning, and modern development technologies
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              viewport={{ once: true }}
+              variants={staggerItem}
               whileHover={{ y: -5 }}
               className={`${category.bgColor} ${category.borderColor} border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
             >
@@ -112,8 +116,8 @@ export default function SkillsSection() {
                   {category.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">{category.title}</h3>
-                  <p className="text-sm text-gray-600">{category.skills.length} technologies</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">{category.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{category.skills.length} technologies</p>
                 </div>
               </div>
 
@@ -128,9 +132,9 @@ export default function SkillsSection() {
                     viewport={{ once: true }}
                     className="flex items-center justify-between"
                   >
-                    <Badge 
-                      variant="secondary" 
-                      className="bg-white/60 text-gray-700 font-medium px-3 py-1 text-sm border-0"
+                    <Badge
+                      variant="secondary"
+                      className="bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 font-medium px-3 py-1 text-sm border-0"
                     >
                       {skill}
                     </Badge>
@@ -144,12 +148,12 @@ export default function SkillsSection() {
               </div>
 
               {/* Proficiency Indicator */}
-              <div className="mt-6 pt-4 border-t border-white/50">
+              <div className="mt-6 pt-4 border-t border-white/50 dark:border-gray-700/50">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600 font-medium">Proficiency Level</span>
-                  <span className="text-gray-800 font-bold">Expert</span>
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">Proficiency Level</span>
+                  <span className="text-gray-800 dark:text-gray-200 font-bold">Expert</span>
                 </div>
-                <div className="mt-2 w-full bg-white/50 rounded-full h-2">
+                <div className="mt-2 w-full bg-white/50 dark:bg-gray-700/50 rounded-full h-2">
                   <motion.div
                     className={`bg-gradient-to-r ${category.color} h-2 rounded-full`}
                     initial={{ width: 0 }}
@@ -161,7 +165,7 @@ export default function SkillsSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Additional Skills Cloud */}
         <motion.div
@@ -171,7 +175,7 @@ export default function SkillsSection() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">All Technical Skills</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">All Technical Skills</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {skills.map((skill, index) => (
               <motion.div
@@ -184,7 +188,7 @@ export default function SkillsSection() {
               >
                 <Badge
                   variant="outline"
-                  className="px-4 py-2 text-sm font-medium hover:bg-blue-50 hover:border-blue-300 transition-colors duration-200 cursor-pointer"
+                  className="px-4 py-2 text-sm font-medium hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:border-blue-300 dark:hover:border-blue-600 dark:text-gray-300 dark:border-gray-600 transition-colors duration-200 cursor-pointer"
                 >
                   {skill}
                 </Badge>

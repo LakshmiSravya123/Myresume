@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Send, Loader2, Brain, User, Bot } from "lucide-react";
+import { Send, Loader2, Brain, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest, API_BASE } from "@/lib/queryClient";
+import { API_BASE } from "@/lib/queryClient";
+import { buttonHover, buttonTap } from "@/lib/animations";
 
 interface Message {
   id: string;
@@ -32,16 +33,15 @@ export default function AIQuestionnaire() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: question })
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to get AI response');
       }
-      
+
       const data = await response.json();
       return data;
     },
     onSuccess: (data) => {
-      // Add AI response
       setMessages(prev => [...prev, {
         id: Date.now().toString() + '-ai',
         type: 'ai',
@@ -49,7 +49,7 @@ export default function AIQuestionnaire() {
         timestamp: new Date()
       }]);
     },
-    onError: (error) => {
+    onError: () => {
       setMessages(prev => [...prev, {
         id: Date.now().toString() + '-error',
         type: 'ai',
@@ -63,7 +63,6 @@ export default function AIQuestionnaire() {
     e.preventDefault();
     if (!currentQuestion.trim()) return;
 
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
@@ -86,7 +85,6 @@ export default function AIQuestionnaire() {
   ];
 
   const handleSuggestedQuestion = (question: string) => {
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
@@ -100,7 +98,7 @@ export default function AIQuestionnaire() {
   };
 
   return (
-    <section id="ai-questionnaire" className="py-20 bg-gray-50">
+    <section id="ai-questionnaire" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,12 +108,12 @@ export default function AIQuestionnaire() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center mb-6">
-            <Brain className="w-12 h-12 text-blue-600 mr-4" />
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <Brain className="w-12 h-12 text-blue-600 dark:text-blue-400 mr-4" />
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
               AI Assistant
             </h2>
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Ask me anything about Lakshmi's experience, skills, and projects
           </p>
         </motion.div>
@@ -126,11 +124,11 @@ export default function AIQuestionnaire() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-white border border-gray-200 shadow-lg rounded-lg overflow-hidden">
+          <Card className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg overflow-hidden">
             {/* Chat Messages */}
-            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gray-50">
+            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gray-50 dark:bg-gray-800/50">
               <AnimatePresence>
-                {messages.map((message, index) => (
+                {messages.map((message) => (
                   <motion.div
                     key={message.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -142,8 +140,8 @@ export default function AIQuestionnaire() {
                     }`}
                   >
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                      message.type === 'user' 
-                        ? 'bg-blue-600 text-white' 
+                      message.type === 'user'
+                        ? 'bg-blue-600 text-white'
                         : 'bg-purple-600 text-white'
                     }`}>
                       {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -154,11 +152,11 @@ export default function AIQuestionnaire() {
                       <div className={`inline-block px-4 py-3 rounded-lg shadow-sm ${
                         message.type === 'user'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-purple-100 text-gray-800 border border-purple-200'
+                          : 'bg-purple-100 dark:bg-purple-900/30 text-gray-800 dark:text-gray-200 border border-purple-200 dark:border-purple-700'
                       }`}>
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                         {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </p>
                     </div>
@@ -175,10 +173,10 @@ export default function AIQuestionnaire() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center">
                     <Bot className="w-4 h-4" />
                   </div>
-                  <div className="bg-purple-100 border border-purple-200 rounded-lg px-4 py-3 shadow-sm">
+                  <div className="bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700 rounded-lg px-4 py-3 shadow-sm">
                     <div className="flex items-center space-x-2">
-                      <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
-                      <p className="text-sm text-gray-800">Thinking...</p>
+                      <Loader2 className="w-4 h-4 animate-spin text-purple-600 dark:text-purple-400" />
+                      <p className="text-sm text-gray-800 dark:text-gray-200">Thinking...</p>
                     </div>
                   </div>
                 </motion.div>
@@ -186,33 +184,35 @@ export default function AIQuestionnaire() {
             </div>
 
             {/* Input Form */}
-            <div className="border-t border-gray-200 p-6 bg-white">
+            <div className="border-t border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-900">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="flex space-x-4">
                   <Textarea
                     value={currentQuestion}
                     onChange={(e) => setCurrentQuestion(e.target.value)}
                     placeholder="Ask me anything about Lakshmi's background, skills, or experience..."
-                    className="flex-1 min-h-[50px] resize-none border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="flex-1 min-h-[50px] resize-none border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
                     data-testid="input-question"
                   />
-                  <Button 
-                    type="submit" 
-                    disabled={!currentQuestion.trim() || askQuestion.isPending}
-                    className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200"
-                    data-testid="button-ask-question"
-                  >
-                    {askQuestion.isPending ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
-                  </Button>
+                  <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+                    <Button
+                      type="submit"
+                      disabled={!currentQuestion.trim() || askQuestion.isPending}
+                      className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200"
+                      data-testid="button-ask-question"
+                    >
+                      {askQuestion.isPending ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </motion.div>
                 </div>
 
                 {/* Suggested Questions */}
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-gray-700">Suggested Questions:</p>
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Suggested Questions:</p>
                   <div className="flex flex-wrap gap-2">
                     {suggestedQuestions.map((question, index) => (
                       <Button
@@ -221,7 +221,7 @@ export default function AIQuestionnaire() {
                         variant="outline"
                         size="sm"
                         onClick={() => handleSuggestedQuestion(question)}
-                        className="text-xs px-3 py-1 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-colors"
+                        className="text-xs px-3 py-1 border-gray-300 dark:border-gray-600 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-colors"
                         data-testid={`button-suggested-${index}`}
                       >
                         {question}
@@ -241,9 +241,9 @@ export default function AIQuestionnaire() {
           viewport={{ once: true }}
           className="text-center mt-8"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-full shadow-sm">
-            <Brain className="w-4 h-4 text-purple-600 mr-2" />
-            <span className="text-sm text-gray-600">
+          <div className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
+            <Brain className="w-4 h-4 text-purple-600 dark:text-purple-400 mr-2" />
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               Powered by local AI processing - No API keys required
             </span>
           </div>
