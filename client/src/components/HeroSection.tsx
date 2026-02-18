@@ -98,7 +98,7 @@ export default function HeroSection() {
                   variant="outline"
                   size="icon"
                   className="hover:bg-gray-100"
-                  onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
+                  onClick={() => window.open('https://github.com/LakshmiSravyaVedantham/', '_blank')}
                   data-testid="hero-button-github"
                 >
                   <Github className="h-5 w-5" />

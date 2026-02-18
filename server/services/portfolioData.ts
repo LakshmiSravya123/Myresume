@@ -7,7 +7,7 @@ export const portfolioData: ResumeData = {
     title: "Data Scientist",
     email: "lakshmisravya.vedantham@gmail.com",
     phone: "9592228822",
-    github: "https://github.com/LakshmiSravya123/",
+    github: "https://github.com/LakshmiSravyaVedantham/",
     linkedin: "https://www.linkedin.com/in/lakshmisravyavedantham",
     location: "San Jose, California",
     summary: "Data scientist skilled in building modern data-driven solutions like predictive models and interactive dashboards. Focused on delivering clear, impactful insights using cutting-edge tools, guided by a spiritual perspective that brings clarity and purpose to analytics."
@@ -59,21 +59,21 @@ export const portfolioData: ResumeData = {
       description: "Developed a multimodal brain activity analysis platform, applying specialized neural data processing tools (NeuroML, MNE-Python) on simulated brainwave data, and integrated a transformer model (DistilBERT) and image-text analysis (CLIP) for mood detection",
       technologies: ["Python", "NeuroML", "MNE-Python", "DistilBERT", "CLIP", "NLP", "Transformers"],
       year: "2025",
-      url: "https://github.com/LakshmiSravya123/BrainActivityAnalysis"
+      url: "https://github.com/LakshmiSravyaVedantham/BrainActivityAnalysis"
     },
     {
       name: "RAG Chatbot with LangChain & Llama 3.1",
       description: "Created a production-grade chatbot using the Retrieval-Augmented Generation pattern (LangChain) and a fine-tuned Large Language Model (Llama 3.1), leveraging vector search libraries (FAISS, Pinecone) for fast, context-aware responses",
       technologies: ["Python", "LangChain", "Llama 3.1", "FAISS", "Pinecone", "RAG", "NLP"],
       year: "2025",
-      url: "https://github.com/LakshmiSravya123/RAG-Chatbot"
+      url: "https://github.com/LakshmiSravyaVedantham/RAG-Chatbot"
     },
     {
       name: "Full-Stack App with Monitoring & Federated Learning",
       description: "Deployed full-stack applications on Vercel with Next.js and FastAPI, setting up continuous monitoring via Prometheus and Grafana, and implementing the Flower framework to privately update models through a federated learning approach",
       technologies: ["Next.js", "FastAPI", "Vercel", "Prometheus", "Grafana", "Flower", "Federated Learning"],
       year: "2025",
-      url: "https://github.com/LakshmiSravya123/FullStack-Monitoring"
+      url: "https://github.com/LakshmiSravyaVedantham/FullStack-Monitoring"
     }
   ],
   skills: [

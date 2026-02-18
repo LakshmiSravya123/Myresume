@@ -126,7 +126,7 @@ If flyctl keeps failing, you can deploy directly from GitHub:
 
 4. **Choose "Deploy from GitHub"**
 
-5. **Connect your repository**: `LakshmiSravya123/Myresume`
+5. **Connect your repository**: `LakshmiSravyaVedantham/Myresume`
 
 6. **Add environment variables** in the dashboard:
    - `NODE_ENV` = `production`

@@ -77,7 +77,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
+              onClick={() => window.open('https://github.com/LakshmiSravyaVedantham/', '_blank')}
               className="text-gray-600 hover:text-gray-700 hover:bg-gray-50"
               data-testid="button-github"
             >
@@ -146,7 +146,7 @@ export default function Navigation({ onSectionClick, onChatToggle }: NavigationP
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => window.open('https://github.com/LakshmiSravya123/', '_blank')}
+                  onClick={() => window.open('https://github.com/LakshmiSravyaVedantham/', '_blank')}
                   className="text-gray-600 hover:text-gray-700 hover:bg-gray-50"
                   data-testid="mobile-button-github"
                 >

@@ -56,7 +56,7 @@ export default function ContactSection() {
     {
       icon: <Github className="h-5 w-5" />,
       label: "GitHub",
-      href: "https://github.com/LakshmiSravya123/",
+      href: "https://github.com/LakshmiSravyaVedantham/",
       color: "hover:bg-gray-800",
     },
     {
