@@ -275,7 +275,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Fetch real repositories from GitHub API
-      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10&visibility=public`, {
+      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10&type=public`, {
         headers,
       });
       
