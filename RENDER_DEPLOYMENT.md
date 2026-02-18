@@ -18,7 +18,7 @@ Render.com is the simplest Railway alternative. No CLI needed, no Docker knowled
 
 1. Click **"New +"** → **"Web Service"**
 2. Click **"Connect account"** to authorize GitHub access
-3. Select repository: **`LakshmiSravya123/Myresume`**
+3. Select repository: **`LakshmiSravyaVedantham/Myresume`**
 4. Click **"Connect"**
 
 ---

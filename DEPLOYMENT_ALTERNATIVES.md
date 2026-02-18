@@ -27,7 +27,7 @@ Besides Railway and Fly.io, here are excellent alternatives for deploying your f
 1. **Go to**: https://render.com
 2. **Sign up** with GitHub
 3. **Click "New +" → "Web Service"**
-4. **Connect repository**: `LakshmiSravya123/Myresume`
+4. **Connect repository**: `LakshmiSravyaVedantham/Myresume`
 5. **Configure:**
    - Name: `lakshmi-portfolio`
    - Build Command: `npm install && npm run build`
@@ -66,7 +66,7 @@ Besides Railway and Fly.io, here are excellent alternatives for deploying your f
 
 1. **Go to**: https://cyclic.sh
 2. **Click "Deploy Now"**
-3. **Connect GitHub** and select `LakshmiSravya123/Myresume`
+3. **Connect GitHub** and select `LakshmiSravyaVedantham/Myresume`
 4. **Add Environment Variables** in dashboard
 5. **Done!**
 
@@ -232,7 +232,7 @@ Make sure these files are in your GitHub repo:
 ### **Step 3: Create Web Service**
 
 1. Click "New +" → "Web Service"
-2. Connect GitHub repository: `LakshmiSravya123/Myresume`
+2. Connect GitHub repository: `LakshmiSravyaVedantham/Myresume`
 3. Configure:
    - **Name**: `lakshmi-portfolio`
    - **Environment**: `Node`

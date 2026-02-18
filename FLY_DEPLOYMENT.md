@@ -6,7 +6,7 @@ Fly.io offers global edge deployment with excellent performance and a generous f
 
 ## 📋 Prerequisites
 
-- ✅ GitHub repository: `https://github.com/LakshmiSravya123/Myresume`
+- ✅ GitHub repository: `https://github.com/LakshmiSravyaVedantham/Myresume`
 - ✅ Fly.io account (sign up at https://fly.io)
 - ✅ flyctl CLI installed on your computer
 - ✅ Environment variables ready
@@ -56,7 +56,7 @@ This opens your browser to authenticate.
 
 **Option A: If you haven't cloned locally yet:**
 ```bash
-git clone https://github.com/LakshmiSravya123/Myresume.git
+git clone https://github.com/LakshmiSravyaVedantham/Myresume.git
 cd Myresume
 ```
 

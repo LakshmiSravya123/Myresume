@@ -12,7 +12,7 @@ Railway is perfect for your full-stack portfolio because it supports:
 ## 📋 Prerequisites
 
 Make sure you have:
-- ✅ GitHub repository: `https://github.com/LakshmiSravya123/Myresume`
+- ✅ GitHub repository: `https://github.com/LakshmiSravyaVedantham/Myresume`
 - ✅ Railway account (sign up with GitHub at https://railway.app)
 - ✅ Environment variables ready:
   - `ES_CLOUD_ID`
@@ -38,7 +38,7 @@ Make sure you have:
 3. If this is your first time:
    - Click **"Configure GitHub App"**
    - Select your repositories or give access to all
-4. Choose your repository: **`LakshmiSravya123/Myresume`**
+4. Choose your repository: **`LakshmiSravyaVedantham/Myresume`**
 
 ### **Step 3: Railway Auto-Detection**
 

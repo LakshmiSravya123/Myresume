@@ -27,7 +27,7 @@ Deploy just the static frontend to Vercel. The AI assistant and other features w
 2. **Go to Vercel**:
    - Visit [vercel.com](https://vercel.com)
    - Click **"Add New Project"**
-   - Import your GitHub repository: `LakshmiSravya123/Myresume`
+   - Import your GitHub repository: `LakshmiSravyaVedantham/Myresume`
 
 3. **Configure Build Settings**:
    - **Framework Preset**: Vite
@@ -61,7 +61,7 @@ Deploy the complete app (frontend + backend + services) to a platform that suppo
 1. Go to [railway.app](https://railway.app)
 2. Click **"Start a New Project"**
 3. Select **"Deploy from GitHub repo"**
-4. Choose `LakshmiSravya123/Myresume`
+4. Choose `LakshmiSravyaVedantham/Myresume`
 5. Railway auto-detects Node.js
 6. Add environment variables:
    - `ES_CLOUD_ID`
@@ -77,7 +77,7 @@ Deploy the complete app (frontend + backend + services) to a platform that suppo
 
 1. Go to [render.com](https://render.com)
 2. Click **"New +"** → **"Web Service"**
-3. Connect GitHub: `LakshmiSravya123/Myresume`
+3. Connect GitHub: `LakshmiSravyaVedantham/Myresume`
 4. Settings:
    - **Build Command**: `npm run build`
    - **Start Command**: `npm start`
@@ -94,7 +94,7 @@ If you want to proceed with Vercel right now:
 
 1. **Ensure code is on GitHub**
 2. **Go to**: https://vercel.com/new
-3. **Import**: `LakshmiSravya123/Myresume`
+3. **Import**: `LakshmiSravyaVedantham/Myresume`
 4. **Click Deploy** (Vercel auto-configures everything)
 
 That's it! Your frontend will be live in 2-3 minutes.
