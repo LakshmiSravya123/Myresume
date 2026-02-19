@@ -128,7 +128,7 @@ export default function AboutSection() {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
-                  onClick={() => window.open('https://lakshmisravyavedantham.github.io/career-path/', '_blank')}
+                  onClick={() => window.open('/career-path.html', '_blank')}
                   data-testid="button-career-journey"
                 >
                   <Map className="h-5 w-5 mr-2" />
