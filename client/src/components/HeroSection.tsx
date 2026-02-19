@@ -224,7 +224,7 @@ export default function HeroSection() {
                   size="lg"
                   variant="outline"
                   className="border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 py-3 text-lg"
-                  onClick={() => window.open('https://lakshmisravyavedantham.github.io/career-path/', '_blank')}
+                  onClick={() => window.open('/career-path.html', '_blank')}
                   data-testid="button-career-journey"
                 >
                   <Map className="h-5 w-5 mr-2" />
