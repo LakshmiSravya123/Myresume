@@ -263,3 +263,14 @@ body {
 .font-display {
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
+
+/* ─── Scrollbar Hide (for horizontal tab scroll) ──────── */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

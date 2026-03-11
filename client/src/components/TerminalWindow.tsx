@@ -186,57 +186,62 @@ export default function TerminalWindow({
 
       {/* Title bar */}
       <div
-        className="flex items-center h-10 px-4 rounded-t-xl shrink-0"
+        className="shrink-0 rounded-t-xl"
         style={{
           background: 'rgba(30, 30, 40, 0.95)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
         }}
       >
-        {/* Traffic lights */}
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="w-3 h-3 rounded-full" style={{ background: '#ff5f57' }} />
-          <div className="w-3 h-3 rounded-full" style={{ background: '#febc2e' }} />
-          <div className="w-3 h-3 rounded-full" style={{ background: '#28c840' }} />
+        {/* Top row: traffic lights + neural metrics */}
+        <div className="flex items-center justify-between h-8 px-3 sm:px-4">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full" style={{ background: '#ff5f57' }} />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full" style={{ background: '#febc2e' }} />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full" style={{ background: '#28c840' }} />
+          </div>
+          <NeuralMetrics />
         </div>
 
-        {/* Tabs */}
-        <div className="flex-1 flex items-center justify-center gap-1">
-          {tabs.map((tab) => {
-            const isActive = tab === activeTab;
-            return (
-              <button
-                key={tab}
-                onClick={() => onTabChange(tab)}
-                className="relative px-3 py-1 text-xs transition-colors duration-200"
-                style={{
-                  color: isActive ? '#00d4ff' : '#6b7280',
-                }}
-              >
-                <span className="relative z-10">{tab}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="terminal-tab-indicator"
-                    className="absolute bottom-0 left-1 right-1 h-[2px]"
-                    style={{ background: '#00d4ff' }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 400,
-                      damping: 30,
-                    }}
-                  />
-                )}
-              </button>
-            );
-          })}
+        {/* Tabs row — horizontally scrollable on mobile */}
+        <div
+          className="flex items-center px-2 sm:px-4 pb-1 overflow-x-auto scrollbar-hide"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          <div className="flex items-center gap-0 sm:gap-1 mx-auto">
+            {tabs.map((tab) => {
+              const isActive = tab === activeTab;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => onTabChange(tab)}
+                  className="relative px-2 sm:px-3 py-1 text-[10px] sm:text-xs whitespace-nowrap transition-colors duration-200"
+                  style={{
+                    color: isActive ? '#00d4ff' : '#6b7280',
+                  }}
+                >
+                  <span className="relative z-10">{tab}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="terminal-tab-indicator"
+                      className="absolute bottom-0 left-1 right-1 h-[2px]"
+                      style={{ background: '#00d4ff' }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
-
-        {/* Neural metrics */}
-        <NeuralMetrics />
       </div>
 
       {/* Content area */}
       <div
-        className="flex-1 overflow-hidden p-6 relative"
+        className="flex-1 overflow-hidden p-3 sm:p-6 relative"
         style={{
           background: 'rgba(10, 10, 20, 0.92)',
           backdropFilter: 'blur(12px)',
@@ -301,18 +306,18 @@ export default function TerminalWindow({
       <form
         onSubmit={handleSubmit}
         onClick={() => inputRef.current?.focus()}
-        className="flex items-center gap-2 h-10 px-4 rounded-b-xl shrink-0 cursor-text"
+        className="flex items-center gap-1.5 sm:gap-2 h-9 sm:h-10 px-2 sm:px-4 rounded-b-xl shrink-0 cursor-text"
         style={{
           background: 'rgba(20, 20, 30, 0.95)',
           borderTop: '1px solid rgba(255, 255, 255, 0.05)',
         }}
       >
-        <span className="text-xs shrink-0" style={{ color: '#4ade80' }}>
-          visitor@neural_os
+        <span className="text-[10px] sm:text-xs shrink-0" style={{ color: '#4ade80' }}>
+          <span className="hidden sm:inline">visitor@</span>neural_os
         </span>
-        <span className="text-xs shrink-0" style={{ color: '#6b7280' }}>:</span>
-        <span className="text-xs shrink-0" style={{ color: '#00d4ff' }}>~</span>
-        <span className="text-xs shrink-0" style={{ color: '#6b7280' }}>$</span>
+        <span className="text-[10px] sm:text-xs shrink-0" style={{ color: '#6b7280' }}>:</span>
+        <span className="text-[10px] sm:text-xs shrink-0" style={{ color: '#00d4ff' }}>~</span>
+        <span className="text-[10px] sm:text-xs shrink-0" style={{ color: '#6b7280' }}>$</span>
         <input
           ref={inputRef}
           type="text"
@@ -320,7 +325,7 @@ export default function TerminalWindow({
           onChange={(e) => setCmdInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={HINTS[hintIdx]}
-          className="flex-1 bg-transparent text-xs text-white placeholder:text-white/15 font-mono outline-none"
+          className="flex-1 bg-transparent text-[10px] sm:text-xs text-white placeholder:text-white/15 font-mono outline-none"
           autoComplete="off"
           spellCheck={false}
         />
