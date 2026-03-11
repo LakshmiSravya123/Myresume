@@ -279,11 +279,14 @@ var portfolioData = {
 };
 
 // server/services/openai.ts
-var openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+function getOpenAIClient() {
+  if (!process.env.OPENAI_API_KEY) return null;
+  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+}
 async function generateChatResponseWithOpenAI(messages2) {
   try {
+    const openai = getOpenAIClient();
+    if (!openai) return generateFallbackResponse(messages2[messages2.length - 1]?.content || "");
     console.log(`Processing query with OpenAI`);
     const userMessage = messages2[messages2.length - 1]?.content || "";
     const completion = await openai.chat.completions.create({
@@ -321,6 +324,8 @@ Instructions:
 }
 async function analyzeResumeWithOpenAI(resumeText) {
   try {
+    const openai = getOpenAIClient();
+    if (!openai) return { analysis: { completeness: 80, strengths: ["Professional experience"], improvements: ["Add metrics"] } };
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
@@ -744,7 +749,7 @@ async function registerRoutes(app2) {
       if (process.env.GITHUB_PERSONAL_ACCESS_TOKEN) {
         headers.Authorization = `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`;
       }
-      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10`, {
+      const response = await fetch(`${githubApiUrl}?sort=updated&direction=desc&per_page=10&type=public`, {
         headers
       });
       if (!response.ok) {

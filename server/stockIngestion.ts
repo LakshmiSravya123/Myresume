@@ -24,16 +24,19 @@ interface StockDocument {
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 const SYMBOLS = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NVDA', 'AMD', 'NFLX', 'DIS'];
 
-// Elasticsearch client
-const esClient = new Client({
-  cloud: {
-    id: process.env.ES_CLOUD_ID || process.env.ELASTIC_CLOUD_ID || '',
-  },
-  auth: {
-    username: process.env.ELASTICSEARCH_USERNAME || process.env.ES_USERNAME || '',
-    password: process.env.ELASTICSEARCH_PASSWORD || process.env.ES_PASSWORD || '',
-  },
-});
+// Elasticsearch client (lazy — only created when credentials exist)
+function getEsClient(): Client | null {
+  const cloudId = process.env.ES_CLOUD_ID || process.env.ELASTIC_CLOUD_ID;
+  if (!cloudId) return null;
+  return new Client({
+    cloud: { id: cloudId },
+    auth: {
+      username: process.env.ELASTICSEARCH_USERNAME || process.env.ES_USERNAME || '',
+      password: process.env.ELASTICSEARCH_PASSWORD || process.env.ES_PASSWORD || '',
+    },
+  });
+}
+let esClient: Client | null = null;
 
 const INDEX_NAME = process.env.ELASTIC_INDEX || process.env.ES_INDEX || 'stocks_real_time';
 
@@ -73,11 +76,11 @@ async function fetchQuote(symbol: string): Promise<StockDocument | null> {
 
 async function ensureIndexExists() {
   try {
-    const exists = await esClient.indices.exists({ index: INDEX_NAME });
+    const exists = await esClient!.indices.exists({ index: INDEX_NAME });
     
     if (!exists) {
       console.log(`Index ${INDEX_NAME} does not exist, creating...`);
-      await esClient.indices.create({
+      await esClient!.indices.create({
         index: INDEX_NAME,
         settings: {
           number_of_shards: 1,
@@ -107,11 +110,11 @@ async function ensureIndexExists() {
     if (error?.message?.includes('data stream')) {
       console.log('Attempting to delete conflicting data stream...');
       try {
-        await esClient.indices.delete({ index: INDEX_NAME });
+        await esClient!.indices.delete({ index: INDEX_NAME });
         console.log('Deleted conflicting index/data stream');
         
         // Retry creation
-        await esClient.indices.create({
+        await esClient!.indices.create({
           index: INDEX_NAME,
           settings: {
             number_of_shards: 1,
@@ -148,7 +151,7 @@ async function bulkIndexStocks(stocks: StockDocument[]) {
   ]);
 
   try {
-    const response = await esClient.bulk({ body, refresh: true });
+    const response = await esClient!.bulk({ body, refresh: true });
     
     if (response.errors) {
       const erroredDocuments: any[] = [];
@@ -185,9 +188,15 @@ export async function startStockIngestion() {
     return;
   }
 
+  esClient = getEsClient();
+  if (!esClient) {
+    console.log('Elasticsearch not configured, skipping stock ingestion');
+    return;
+  }
+
   isRunning = true;
   console.log('Starting stock ingestion service...');
-  
+
   // Ensure index exists
   await ensureIndexExists();
 

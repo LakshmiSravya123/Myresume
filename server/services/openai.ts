@@ -1,17 +1,19 @@
 import OpenAI from 'openai';
 import { portfolioData } from "./portfolioData";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+function getOpenAIClient(): OpenAI | null {
+  if (!process.env.OPENAI_API_KEY) return null;
+  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+}
 
 export async function generateChatResponseWithOpenAI(messages: Array<{role: "user" | "assistant" | "system"; content: string}>): Promise<string> {
   try {
+    const openai = getOpenAIClient();
+    if (!openai) return generateFallbackResponse(messages[messages.length - 1]?.content || "");
+
     console.log(`Processing query with OpenAI`);
-    
-    // Get the latest user message
     const userMessage = messages[messages.length - 1]?.content || "";
-    
+
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
@@ -51,6 +53,9 @@ Instructions:
 
 export async function analyzeResumeWithOpenAI(resumeText: string): Promise<any> {
   try {
+    const openai = getOpenAIClient();
+    if (!openai) return { analysis: { completeness: 80, strengths: ["Professional experience"], improvements: ["Add metrics"] } };
+
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
@@ -157,6 +162,8 @@ Feel free to ask more specific questions about her experience, skills, or projec
 // Check if OpenAI is available
 export async function checkOpenAIAvailability(): Promise<boolean> {
   try {
+    const openai = getOpenAIClient();
+    if (!openai) return false;
     await openai.models.list();
     return true;
   } catch (error) {
