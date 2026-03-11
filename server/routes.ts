@@ -232,7 +232,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const path = await import('path');
       
       // Use the most recent resume file
-      const resumePath = path.resolve(process.cwd(), 'attached_assets/Sravya 2025 Resume October_1759863399934.pdf');
+      const resumePath = path.resolve(process.cwd(), 'public/resume.pdf');
       
       // Check if file exists
       try {

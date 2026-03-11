@@ -71,7 +71,7 @@ Local AI processing using Ollama for privacy-focused intelligent responses:
 ### Development Dependencies
 - **Build Tools**: Vite for fast development and production builds, esbuild for server bundling
 - **Type Safety**: TypeScript across the entire stack with strict configuration
-- **Development Experience**: Replit-specific plugins for enhanced development workflow
+- **Development Experience**: Vite hot reload for fast development workflow
 
 ### File Processing
 - **Multer**: Server-side file upload handling with memory storage

@@ -714,7 +714,7 @@ async function registerRoutes(app2) {
     try {
       const fs = await import("fs/promises");
       const path = await import("path");
-      const resumePath = path.resolve(process.cwd(), "attached_assets/Sravya 2025 Resume October_1759863399934.pdf");
+      const resumePath = path.resolve(process.cwd(), "public/resume.pdf");
       try {
         await fs.access(resumePath);
       } catch {

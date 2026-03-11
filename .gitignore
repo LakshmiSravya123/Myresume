@@ -8,5 +8,12 @@ vite.config.ts.*
 *.tar.gz
 .vercel
 .env*.local
+.env
 monitoring/health-log.json
 monitoring/alert.json
+
+# Prevent accidental screenshot/debug image commits
+*.png
+*.jpeg
+*.jpg
+!public/**
