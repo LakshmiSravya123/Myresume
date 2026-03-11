@@ -14,6 +14,20 @@ export const portfolioData: ResumeData = {
   },
   workExperience: [
     {
+      company: "Independent — AI Research & Development",
+      position: "AI Engineer & Founder (Stealth)",
+      duration: "March 2025 - Present",
+      location: "San Jose, California",
+      description: [
+        "Architecting agentic AI systems — autonomous agents that reason, plan, and execute complex multi-step workflows with tool use and memory",
+        "Researching AI video generation pipelines and multimodal intelligence for creative applications",
+        "Building production-grade RAG systems, multi-agent orchestration frameworks, and LLM-powered developer tools",
+        "Developing open-source AI tools: privacy scanners, prompt compressors, hallucination detectors, and developer DNA analyzers",
+        "Shipped 10+ projects across Python CLIs, full-stack web apps, and AI infrastructure"
+      ],
+      technologies: ["Agentic AI", "Multi-Agent Systems", "LLM Orchestration", "Video Generation", "RAG", "LangChain", "Python", "TypeScript", "Next.js", "Vercel"]
+    },
+    {
       company: "Co-operators",
       position: "Sr. Data Modeling Engineer",
       duration: "October 2022 - February 2025",
@@ -93,13 +107,7 @@ export const portfolioData: ResumeData = {
       year: "2022"
     }
   ],
-  achievements: [
-    {
-      title: "Relocation & Immigration Transition",
-      duration: "March 2025 - Present",
-      description: "Proactively utilized a 7-month work authorization waiting period (H4 EAD) during relocation for intensive, self-directed research and development into the latest Generative AI frameworks, machine learning operations, and brain activity modeling. Developed multimodal brain activity analysis platform, production-grade RAG chatbot, and full-stack applications with continuous monitoring."
-    }
-  ],
+  achievements: [],
   analysis: {
     completeness: 95,
     strengths: [

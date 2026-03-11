@@ -1,224 +1,207 @@
-import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import Card3D from "@/components/Card3D";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
+import type { ResumeData } from '@shared/schema';
 
-interface Project {
-  name: string;
-  description: string;
-  technologies: string[];
-  year: string;
-  url: string;
-}
+const CYAN = '#00d4ff';
+const GRAY = '#6b7280';
+const GREEN = '#4ade80';
 
 interface GitHubProject {
   name: string;
   description: string;
   language: string;
   stars: number;
-  forks: number;
   url: string;
   updated_at: string;
-  topics?: string[];
 }
 
-interface ResumeData {
-  projects: Project[];
-}
-
-const languageColors: Record<string, string> = {
-  Python: "#3572A5",
-  TypeScript: "#2b7489",
-  JavaScript: "#f1e05a",
-  Rust: "#dea584",
-  Go: "#00ADD8",
-  Java: "#b07219",
-  "C++": "#f34b7d",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-  Shell: "#89e051",
-  Vue: "#41b883",
+const langColors: Record<string, string> = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f7df1e',
+  Python: '#3776ab',
+  Dart: '#0175c2',
+  Rust: '#dea584',
+  Go: '#00add8',
+  Java: '#b07219',
+  Unknown: '#6b7280',
 };
 
-const staggerContainer = {
+function shortHash(): string {
+  return Math.random().toString(16).slice(2, 9);
+}
+
+const stagger = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
-const cardVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+const fadeIn = {
+  hidden: { opacity: 0, y: 6 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 
-function ArrowIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      className="w-4 h-4"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M7 17L17 7M17 7H7M17 7v10"
-      />
-    </svg>
-  );
-}
-
 export default function ProjectsTab() {
-  const { data: portfolioData } = useQuery<ResumeData>({
-    queryKey: ["portfolio"],
-    queryFn: async () => { const res = await apiRequest("GET", "/api/portfolio"); return res.json(); },
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const { data: portfolio } = useQuery<ResumeData>({
+    queryKey: ['/api/portfolio'],
   });
 
   const { data: githubProjects } = useQuery<GitHubProject[]>({
-    queryKey: ["github-projects"],
-    queryFn: async () => { const res = await apiRequest("GET", "/api/github/projects"); return res.json(); },
+    queryKey: ['/api/github/projects'],
   });
 
-  const featured = portfolioData?.projects?.slice(0, 3) ?? [];
-  const githubItems = githubProjects?.slice(0, 4) ?? [];
+  const featured = portfolio?.projects ?? [];
+  const repos = githubProjects ?? [];
 
   return (
     <motion.div
       key="projects"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.3 } }}
-      transition={{ duration: 0.6 }}
-      className="relative z-10 flex flex-col items-center justify-center h-screen px-8 select-none"
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      className="h-full flex flex-col font-mono select-none overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto flex flex-col gap-6">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl font-display font-bold gradient-text-cyan">
-            Projects
-          </h2>
-          <p className="font-mono text-xs text-cyan-400/50 mt-1">
-            // featured work
-          </p>
-        </div>
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col gap-4 h-full"
+      >
+        {/* Featured projects header */}
+        <motion.div variants={fadeIn}>
+          <div className="flex items-center gap-2 text-sm">
+            <span style={{ color: CYAN }}>$</span>
+            <span className="text-white">ls -la ~/projects/featured/</span>
+          </div>
+        </motion.div>
 
-        {/* Featured Projects */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
-        >
+        {/* Featured listing */}
+        <motion.div variants={fadeIn} className="ml-2">
           {featured.map((project) => (
-            <motion.div key={project.name} variants={cardVariant}>
-              <Card3D>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block p-5 h-full"
+            <div key={project.name}>
+              <button
+                onClick={() =>
+                  setExpanded(expanded === project.name ? null : project.name)
+                }
+                className="w-full text-left text-sm py-0.5 hover:bg-white/[0.02] transition-colors flex items-center gap-2"
+              >
+                <span style={{ color: GRAY }} className="text-xs w-[110px] shrink-0">
+                  drwxr-xr-x
+                </span>
+                <span style={{ color: GRAY }} className="text-xs w-[52px] shrink-0">
+                  sravya
+                </span>
+                <span style={{ color: GRAY }} className="text-xs w-[36px] shrink-0">
+                  {project.year ?? '2025'}
+                </span>
+                <span className="text-white truncate">{project.name}</span>
+                <span
+                  className="ml-auto text-xs transition-transform duration-200"
+                  style={{
+                    color: CYAN,
+                    transform: expanded === project.name ? 'rotate(90deg)' : 'rotate(0deg)',
+                  }}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-white font-bold text-base leading-tight">
-                      {project.name}
-                    </h3>
-                    <span className="font-mono text-xs text-cyan-400 shrink-0 ml-2">
-                      {project.year}
-                    </span>
-                  </div>
+                  &gt;
+                </span>
+              </button>
 
-                  <p className="text-sm text-[#94a3b8] leading-relaxed mb-3 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.technologies.slice(0, 5).map((tech) => (
-                      <span
-                        key={tech}
-                        className="glass text-[10px] font-mono text-cyan-300/70 px-2 py-0.5 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center text-[#475569] text-xs group-hover:text-cyan-400 transition-colors duration-300">
-                    <span className="mr-1">View project</span>
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <ArrowIcon />
-                    </span>
-                  </div>
-                </a>
-              </Card3D>
-            </motion.div>
+              <AnimatePresence>
+                {expanded === project.name && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="ml-6 py-2 text-sm">
+                      <div className="flex items-center gap-2 text-xs mb-1" style={{ color: CYAN }}>
+                        $ cat projects/{project.name.toLowerCase().replace(/\s+/g, '-')}/README.md
+                      </div>
+                      <div className="ml-2">
+                        <div className="flex gap-1">
+                          <span style={{ color: GRAY }}>&gt;</span>
+                          <span className="text-white/70 text-xs leading-relaxed">
+                            {project.description}
+                          </span>
+                        </div>
+                        <div className="flex gap-1 mt-1">
+                          <span style={{ color: GRAY }}>&gt;</span>
+                          <span className="text-xs">
+                            <span style={{ color: GREEN }}>tech:</span>{' '}
+                            <span className="text-white/60">
+                              {project.technologies.join(', ')}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </motion.div>
 
-        {/* GitHub Section */}
-        <div>
-          <p className="font-mono text-xs text-cyan-400/50 mb-3 text-center">
-            // latest from github
-          </p>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-3"
-          >
-            {githubItems.map((repo) => (
-              <motion.a
-                key={repo.name}
-                href={repo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={cardVariant}
-                whileHover={{ scale: 1.03, y: -2 }}
-                className="glass rounded-lg p-3 group transition-all duration-300 hover:border-cyan-400/20 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]"
-              >
-                <div className="flex items-center gap-2 mb-1.5">
-                  <h4 className="text-white text-sm font-semibold truncate">
-                    {repo.name}
-                  </h4>
-                </div>
+        {/* Divider */}
+        <motion.div variants={fadeIn} className="border-t border-white/5 my-1" />
 
-                <p className="text-[11px] text-[#64748b] leading-relaxed line-clamp-2 mb-2">
-                  {repo.description}
-                </p>
+        {/* GitHub repos */}
+        <motion.div variants={fadeIn}>
+          <div className="flex items-center gap-2 text-sm">
+            <span style={{ color: CYAN }}>$</span>
+            <span className="text-white">git log --oneline ~/github/</span>
+            <span className="text-xs" style={{ color: GREEN }}>
+              (LIVE)
+            </span>
+          </div>
+        </motion.div>
 
-                <div className="flex items-center gap-3 text-[10px] text-[#475569]">
-                  {repo.language && (
-                    <span className="flex items-center gap-1">
-                      <span
-                        className="w-2 h-2 rounded-full"
-                        style={{
-                          backgroundColor:
-                            languageColors[repo.language] ?? "#6e7681",
-                        }}
-                      />
-                      {repo.language}
-                    </span>
-                  )}
-                  {repo.stars > 0 && (
-                    <span className="flex items-center gap-0.5">
-                      <svg
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        className="w-3 h-3"
-                      >
-                        <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
-                      </svg>
-                      {repo.stars}
-                    </span>
-                  )}
-                </div>
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
-      </div>
+        <motion.div
+          variants={stagger}
+          className="ml-2 flex-1 overflow-y-auto min-h-0 pr-2"
+        >
+          {repos.map((repo) => (
+            <motion.a
+              key={repo.name}
+              variants={fadeIn}
+              href={repo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 py-1 text-sm hover:bg-white/[0.02] transition-colors group"
+            >
+              <span className="text-xs text-white/30 w-[60px] shrink-0 font-mono">
+                {shortHash()}
+              </span>
+              <span
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{
+                  background: langColors[repo.language] ?? langColors.Unknown,
+                }}
+              />
+              <span className="text-white group-hover:text-[#00d4ff] transition-colors truncate">
+                {repo.name}
+              </span>
+              <span className="text-white/40 text-xs hidden sm:inline truncate flex-1 min-w-0">
+                {repo.description?.length > 50
+                  ? repo.description.slice(0, 50) + '...'
+                  : repo.description}
+              </span>
+              {repo.stars > 0 && (
+                <span className="text-xs shrink-0" style={{ color: '#fbbf24' }}>
+                  {'*'.repeat(Math.min(repo.stars, 5))}
+                </span>
+              )}
+            </motion.a>
+          ))}
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }
