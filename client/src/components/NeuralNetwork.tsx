@@ -9,7 +9,17 @@ interface Node {
   opacity: number;
 }
 
-export default function NeuralNetwork() {
+// Tab-specific accent colors for the neural network
+const TAB_COLORS: Record<string, { primary: string; secondary: string }> = {
+  identity: { primary: '0, 212, 255', secondary: '168, 85, 247' },     // cyan + purple
+  interface: { primary: '74, 222, 128', secondary: '0, 212, 255' },    // green + cyan
+  projects: { primary: '0, 212, 255', secondary: '99, 102, 241' },     // cyan + indigo
+  experience: { primary: '251, 191, 36', secondary: '168, 85, 247' },  // yellow + purple
+  presence: { primary: '74, 222, 128', secondary: '168, 85, 247' },    // green + purple
+  studio: { primary: '168, 85, 247', secondary: '236, 72, 153' },      // purple + pink
+};
+
+export default function NeuralNetwork({ activeTab = 'identity' }: { activeTab?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
   const nodesRef = useRef<Node[]>([]);
@@ -66,6 +76,7 @@ export default function NeuralNetwork() {
       const height = window.innerHeight;
       const mouse = mouseRef.current;
       const nodes = nodesRef.current;
+      const colors = TAB_COLORS[activeTab] || TAB_COLORS.identity;
 
       ctx.clearRect(0, 0, width, height);
 
@@ -126,8 +137,8 @@ export default function NeuralNetwork() {
               nodes[j].x,
               nodes[j].y,
             );
-            gradient.addColorStop(0, `rgba(0, 212, 255, ${alpha})`);
-            gradient.addColorStop(1, `rgba(168, 85, 247, ${alpha})`);
+            gradient.addColorStop(0, `rgba(${colors.primary}, ${alpha})`);
+            gradient.addColorStop(1, `rgba(${colors.secondary}, ${alpha})`);
 
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -150,7 +161,7 @@ export default function NeuralNetwork() {
           ctx.beginPath();
           ctx.moveTo(mouse.x, mouse.y);
           ctx.lineTo(node.x, node.y);
-          ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+          ctx.strokeStyle = `rgba(${colors.primary}, ${alpha})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
@@ -178,9 +189,9 @@ export default function NeuralNetwork() {
             node.y,
             drawRadius * 4,
           );
-          glow.addColorStop(0, `rgba(0, 212, 255, ${drawOpacity * 0.6})`);
-          glow.addColorStop(0.5, `rgba(0, 212, 255, ${drawOpacity * 0.2})`);
-          glow.addColorStop(1, 'rgba(0, 212, 255, 0)');
+          glow.addColorStop(0, `rgba(${colors.primary}, ${drawOpacity * 0.6})`);
+          glow.addColorStop(0.5, `rgba(${colors.primary}, ${drawOpacity * 0.2})`);
+          glow.addColorStop(1, `rgba(${colors.primary}, 0)`);
 
           ctx.beginPath();
           ctx.arc(node.x, node.y, drawRadius * 4, 0, Math.PI * 2);
@@ -191,8 +202,8 @@ export default function NeuralNetwork() {
         ctx.beginPath();
         ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
         ctx.fillStyle = isNearCursor
-          ? `rgba(0, 212, 255, ${drawOpacity})`
-          : `rgba(168, 85, 247, ${drawOpacity * 0.6})`;
+          ? `rgba(${colors.primary}, ${drawOpacity})`
+          : `rgba(${colors.secondary}, ${drawOpacity * 0.6})`;
         ctx.fill();
       }
 
@@ -207,7 +218,7 @@ export default function NeuralNetwork() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [initNodes]);
+  }, [initNodes, activeTab]);
 
   return (
     <canvas

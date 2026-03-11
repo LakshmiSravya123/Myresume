@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { useState, useCallback, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import NeuralNetwork from '@/components/NeuralNetwork';
 import CursorGlow from '@/components/CursorGlow';
 import BootSequence from '@/components/BootSequence';
@@ -73,9 +73,53 @@ const HELP_TEXT = `Available commands:
   matrix        — ???
   hack          — !!!`;
 
+// Brief "thinking" flash between tab switches
+function NeuralFlash() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+      className="absolute inset-0 flex items-center justify-center z-20"
+    >
+      <div className="flex items-center gap-2">
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 0.4, repeat: 1 }}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: '#00d4ff' }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 0.4, repeat: 1, delay: 0.1 }}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: '#a855f7' }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 0.4, repeat: 1, delay: 0.2 }}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: '#00d4ff' }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [booted, setBooted] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>('identity');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const switchTab = useCallback((tab: TabName) => {
+    if (tab === activeTab) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveTab(tab);
+      setIsTransitioning(false);
+    }, 300);
+  }, [activeTab]);
 
   const handleCommand = useCallback(
     (raw: string): string | null => {
@@ -84,7 +128,7 @@ export default function Home() {
       // Tab navigation commands
       const tab = TAB_ALIASES[cmd];
       if (tab) {
-        setActiveTab(tab);
+        switchTab(tab);
         return `> navigating to ${tab}...`;
       }
 
@@ -96,7 +140,7 @@ export default function Home() {
           return HELP_TEXT;
 
         case 'clear':
-          setActiveTab('identity');
+          switchTab('identity');
           return null;
 
         case 'resume':
@@ -187,7 +231,7 @@ export default function Home() {
           return `> command not found: ${cmd}. Type "help" for available commands.`;
       }
     },
-    []
+    [switchTab]
   );
 
   const ActiveComponent = TAB_COMPONENTS[activeTab];
@@ -212,18 +256,22 @@ export default function Home() {
       className="h-screen w-screen overflow-hidden relative"
       style={{ background: 'var(--neural-bg)' }}
     >
-      <NeuralNetwork />
+      <NeuralNetwork activeTab={activeTab} />
       <CursorGlow />
 
       <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
         <TerminalWindow
           tabs={[...TAB_NAMES]}
           activeTab={activeTab}
-          onTabChange={(tab) => setActiveTab(tab as TabName)}
+          onTabChange={(tab) => switchTab(tab as TabName)}
           onCommand={handleCommand}
         >
           <AnimatePresence mode="wait">
-            <ActiveComponent key={activeTab} />
+            {isTransitioning ? (
+              <NeuralFlash key="flash" />
+            ) : (
+              <ActiveComponent key={activeTab} />
+            )}
           </AnimatePresence>
         </TerminalWindow>
       </div>
