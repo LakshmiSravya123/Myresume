@@ -9,8 +9,6 @@ interface DevToArticle {
   id: number;
   title: string;
   url: string;
-  positive_reactions_count: number;
-  reading_time_minutes: number;
   published_at: string;
 }
 
@@ -18,7 +16,6 @@ interface GitHubProject {
   name: string;
   description: string;
   language: string;
-  stars: number;
   url: string;
 }
 
@@ -71,7 +68,6 @@ export default function PresenceTab() {
   });
 
   const repos = githubProjects ?? [];
-  const totalStars = repos.reduce((sum, r) => sum + (r.stars || 0), 0);
   const posts = articles ?? [];
 
   return (
@@ -98,20 +94,8 @@ export default function PresenceTab() {
           </div>
         </motion.div>
 
-        {/* Articles table */}
+        {/* Articles list */}
         <motion.div variants={fadeIn} className="ml-2">
-          {/* Table header */}
-          <div className="flex items-center gap-2 text-xs mb-1">
-            <span className="flex-1 min-w-0 text-white/50">TITLE</span>
-            <span className="w-[70px] text-right text-white/50 shrink-0">
-              REACTIONS
-            </span>
-            <span className="w-[40px] text-right text-white/50 shrink-0">READ</span>
-          </div>
-          <div className="text-xs mb-2" style={{ color: GRAY }}>
-            {'\u2500'.repeat(72)}
-          </div>
-
           {articlesLoading ? (
             <motion.div
               animate={{ opacity: [0.3, 1, 0.3] }}
@@ -122,23 +106,18 @@ export default function PresenceTab() {
               fetching...
             </motion.div>
           ) : (
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-1">
               {posts.map((article) => (
                 <a
                   key={article.id}
                   href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs py-0.5 hover:bg-white/[0.02] transition-colors group"
+                  className="text-xs py-0.5 hover:bg-white/[0.02] transition-colors group flex items-center gap-2"
                 >
-                  <span className="flex-1 min-w-0 text-white/70 truncate group-hover:text-[#00d4ff] transition-colors">
-                    {truncate(article.title, 55)}
-                  </span>
-                  <span className="w-[70px] text-right shrink-0" style={{ color: GREEN }}>
-                    {article.positive_reactions_count}
-                  </span>
-                  <span className="w-[40px] text-right shrink-0" style={{ color: GRAY }}>
-                    {article.reading_time_minutes}m
+                  <span style={{ color: GRAY }}>&gt;</span>
+                  <span className="text-white/70 group-hover:text-[#00d4ff] transition-colors truncate">
+                    {truncate(article.title, 65)}
                   </span>
                 </a>
               ))}
@@ -155,17 +134,13 @@ export default function PresenceTab() {
             <span style={{ color: CYAN }}>$</span>
             <span className="text-white">gh api user/repos --json stats</span>
           </div>
-          <div className="ml-4 mt-2 flex gap-8 text-sm">
+          <div className="ml-4 mt-2 flex gap-6 text-sm">
             <div>
-              <span style={{ color: GRAY }}>Public repos: </span>
+              <span style={{ color: GRAY }}>Repos: </span>
               <span style={{ color: GREEN }}>{repos.length}</span>
             </div>
             <div>
-              <span style={{ color: GRAY }}>Total stars: </span>
-              <span style={{ color: GREEN }}>{totalStars}</span>
-            </div>
-            <div>
-              <span style={{ color: GRAY }}>Top language: </span>
+              <span style={{ color: GRAY }}>Primary: </span>
               <span style={{ color: GREEN }}>Python</span>
             </div>
           </div>
