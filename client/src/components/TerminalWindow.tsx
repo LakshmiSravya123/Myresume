@@ -118,11 +118,19 @@ export default function TerminalWindow({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Clear output after 3 seconds
+  // Clear output on click outside
+  const outputRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!cmdOutput) return;
-    const t = setTimeout(() => setCmdOutput(null), 3000);
-    return () => clearTimeout(t);
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (outputRef.current && !outputRef.current.contains(target)) {
+        setCmdOutput(null);
+      }
+    };
+    if (cmdOutput) {
+      document.addEventListener('mousedown', handleClick);
+    }
+    return () => document.removeEventListener('mousedown', handleClick);
   }, [cmdOutput]);
 
   const handleSubmit = useCallback(
@@ -268,10 +276,11 @@ export default function TerminalWindow({
         {children}
       </div>
 
-      {/* Command output flash */}
+      {/* Command output */}
       <AnimatePresence>
         {cmdOutput && (
           <motion.div
+            ref={outputRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
