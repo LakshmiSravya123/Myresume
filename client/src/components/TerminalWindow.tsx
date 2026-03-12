@@ -80,6 +80,7 @@ export default function TerminalWindow({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [hintIdx, setHintIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const suggestionsRef = useRef<HTMLDivElement>(null);
 
   // Rotate placeholder hints
   useEffect(() => {
@@ -92,12 +93,29 @@ export default function TerminalWindow({
   const suggestions = useMemo(() => {
     if (cmdInput.length < 1) return [];
     const lower = cmdInput.toLowerCase();
-    return COMMANDS.filter((c) => c.startsWith(lower) && c !== lower).slice(0, 4);
+    return COMMANDS.filter((c) => c.startsWith(lower)).slice(0, 5);
   }, [cmdInput]);
 
+  // Show suggestions when typing, hide on click outside
   useEffect(() => {
-    setShowSuggestions(suggestions.length > 0 && cmdInput.length > 0);
+    if (suggestions.length > 0 && cmdInput.length > 0) {
+      setShowSuggestions(true);
+    }
   }, [suggestions, cmdInput]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (
+        inputRef.current && !inputRef.current.contains(target) &&
+        suggestionsRef.current && !suggestionsRef.current.contains(target)
+      ) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Clear output after 3 seconds
   useEffect(() => {
@@ -128,7 +146,6 @@ export default function TerminalWindow({
 
   const acceptSuggestion = useCallback((cmd: string) => {
     setCmdInput(cmd);
-    setShowSuggestions(false);
     inputRef.current?.focus();
   }, []);
 
@@ -137,7 +154,6 @@ export default function TerminalWindow({
       if (e.key === 'Tab' && suggestions.length > 0) {
         e.preventDefault();
         setCmdInput(suggestions[0]);
-        setShowSuggestions(false);
         return;
       }
       if (e.key === 'ArrowUp') {
@@ -273,8 +289,9 @@ export default function TerminalWindow({
 
       {/* Autocomplete suggestions */}
       <AnimatePresence>
-        {showSuggestions && (
+        {showSuggestions && suggestions.length > 0 && (
           <motion.div
+            ref={suggestionsRef}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 4 }}
