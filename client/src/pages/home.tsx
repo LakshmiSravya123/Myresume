@@ -10,6 +10,7 @@ import ExperienceTab from '@/components/tabs/ExperienceTab';
 import PresenceTab from '@/components/tabs/PresenceTab';
 import InterfaceTab from '@/components/tabs/InterfaceTab';
 import StudioTab from '@/components/tabs/StudioTab';
+import TronGame from '@/components/TronGame';
 
 const TAB_NAMES = [
   'identity',
@@ -71,7 +72,8 @@ const HELP_TEXT = `Available commands:
   open linkedin — open LinkedIn profile
   sudo          — try it ;)
   matrix        — ???
-  hack          — !!!`;
+  hack          — !!!
+  tron          — survive the grid`;
 
 // ═══════════════════════════════════════════════════════
 // MATRIX — full immersive experience
@@ -518,7 +520,7 @@ export default function Home() {
   const [booted, setBooted] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>('identity');
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [overlay, setOverlay] = useState<'matrix' | 'hack' | null>(null);
+  const [overlay, setOverlay] = useState<'matrix' | 'hack' | 'tron' | null>(null);
 
   const switchTab = useCallback((tab: TabName) => {
     if (tab === activeTab) return;
@@ -592,6 +594,12 @@ export default function Home() {
         case 'hack nasa':
         case 'hack pentagon':
           setOverlay('hack');
+          return null;
+
+        case 'tron':
+        case 'game':
+        case 'play':
+          setOverlay('tron');
           return null;
 
         case 'ls':
@@ -695,6 +703,9 @@ export default function Home() {
         )}
         {overlay === 'hack' && (
           <HackOverlay key="hack" onDone={() => setOverlay(null)} />
+        )}
+        {overlay === 'tron' && (
+          <TronGame key="tron" onDone={() => setOverlay(null)} />
         )}
       </AnimatePresence>
     </div>

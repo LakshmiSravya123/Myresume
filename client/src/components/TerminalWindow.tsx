@@ -8,6 +8,7 @@ const COMMANDS = [
   'clear', 'resume', 'ls', 'pwd', 'date', 'uptime', 'ping',
   'open github', 'open linkedin', 'open email',
   'sudo', 'matrix', 'hack', 'coffee', 'exit',
+  'tron', 'game', 'play',
   'git log', 'ls projects', 'dev.to',
 ];
 
