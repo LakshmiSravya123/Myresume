@@ -6,12 +6,18 @@ import TerminalWindow from '@/components/TerminalWindow';
 import IdentityTab from '@/components/tabs/IdentityTab';
 import ProjectsTab from '@/components/tabs/ProjectsTab';
 import ExperienceTab from '@/components/tabs/ExperienceTab';
+import PresenceTab from '@/components/tabs/PresenceTab';
+import InterfaceTab from '@/components/tabs/InterfaceTab';
+import StudioTab from '@/components/tabs/StudioTab';
 import TronGame from '@/components/TronGame';
 
 const TAB_NAMES = [
   'identity',
+  'interface',
   'projects',
   'experience',
+  'presence',
+  'studio',
 ] as const;
 
 type TabName = (typeof TAB_NAMES)[number];
@@ -20,6 +26,9 @@ const TAB_COMPONENTS: Record<TabName, () => JSX.Element> = {
   identity: IdentityTab,
   projects: ProjectsTab,
   experience: ExperienceTab,
+  presence: PresenceTab,
+  interface: InterfaceTab,
+  studio: StudioTab,
 };
 
 // Command aliases that map to tab names
@@ -34,6 +43,18 @@ const TAB_ALIASES: Record<string, TabName> = {
   experience: 'experience',
   work: 'experience',
   career: 'experience',
+  blog: 'presence',
+  presence: 'presence',
+  articles: 'presence',
+  'dev.to': 'presence',
+  chat: 'interface',
+  ask: 'interface',
+  ai: 'interface',
+  studio: 'studio',
+  youtube: 'studio',
+  dumdumhum: 'studio',
+  videogen: 'studio',
+  videos: 'studio',
 };
 
 const HELP_TEXT = `Available commands:
@@ -41,6 +62,9 @@ const HELP_TEXT = `Available commands:
   whoami        — identity / about me
   projects      — featured projects & GitHub repos
   experience    — work history (git log style)
+  presence      — blog posts & online presence
+  chat          — ask the AI about me
+  studio        — video gen & YouTube channel
   clear         — reset terminal
   resume        — download resume
   open github   — open GitHub profile
@@ -578,7 +602,7 @@ export default function Home() {
           return null;
 
         case 'ls':
-          return 'identity/  projects/  experience/';
+          return 'identity/  interface/  projects/  experience/  presence/  studio/';
 
         case 'pwd':
           return '/home/sravya/portfolio';
