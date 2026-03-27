@@ -4,8 +4,6 @@ import { TypeWriter, ScrambleText } from '@/components/TextEffects';
 const CYAN = '#00d4ff';
 const GREEN = '#4ade80';
 const GRAY = '#6b7280';
-const PURPLE = '#a855f7';
-const YELLOW = '#fbbf24';
 
 const links = [
   { name: 'github.md', href: 'https://github.com/LakshmiSravyaVedantham' },
@@ -16,10 +14,10 @@ const links = [
 
 const domains = [
   { label: 'Agentic AI', color: CYAN, glow: true },
-  { label: 'Video Generation', color: PURPLE, glow: false },
-  { label: 'RAG Pipelines', color: GREEN, glow: false },
-  { label: 'Multi-Agent Systems', color: CYAN, glow: true },
-  { label: 'LLM Orchestration', color: PURPLE, glow: false },
+  { label: 'Video Generation', color: GREEN, glow: false },
+  { label: 'RAG Pipelines', color: CYAN, glow: false },
+  { label: 'Multi-Agent Systems', color: GREEN, glow: false },
+  { label: 'LLM Orchestration', color: CYAN, glow: false },
   { label: 'ML Infrastructure', color: GREEN, glow: false },
 ];
 
@@ -62,7 +60,7 @@ export default function IdentityTab() {
               className="text-[9px] sm:text-[11px] md:text-xs leading-none font-bold"
               style={{
                 lineHeight: 1.15,
-                background: 'linear-gradient(90deg, #00d4ff, #a855f7, #00d4ff)',
+                background: 'linear-gradient(90deg, #00d4ff, #4ade80, #00d4ff)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundSize: '200% 100%',
@@ -90,19 +88,19 @@ export default function IdentityTab() {
           </div>
           <div className="ml-4 mt-1.5 flex flex-col gap-1">
             <div className="flex items-center gap-2">
-              <span style={{ color: YELLOW }} className="text-xs">[ROLE]</span>
+              <span style={{ color: CYAN }} className="text-xs">[ROLE]</span>
               <span className="text-white text-base font-semibold">
                 AI & Data Science Engineer
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span style={{ color: YELLOW }} className="text-xs">[LOCATION]</span>
+              <span style={{ color: CYAN }} className="text-xs">[LOCATION]</span>
               <span style={{ color: GRAY }} className="text-sm">
                 San Jose, California
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span style={{ color: YELLOW }} className="text-xs">[STATUS]</span>
+              <span style={{ color: CYAN }} className="text-xs">[STATUS]</span>
               <span className="flex items-center gap-1.5">
                 <motion.span
                   animate={{ opacity: [1, 0.3, 1] }}
@@ -118,7 +116,7 @@ export default function IdentityTab() {
           </div>
         </motion.div>
 
-        {/* core domains — the hero section */}
+        {/* core domains */}
         <motion.div variants={fadeIn}>
           <div className="flex items-center gap-2 text-sm">
             <span style={{ color: CYAN }}>$</span>
@@ -154,13 +152,13 @@ export default function IdentityTab() {
           <div
             className="ml-4 mt-2 p-3 rounded text-sm"
             style={{
-              border: '1px solid rgba(168, 85, 247, 0.15)',
-              background: 'rgba(168, 85, 247, 0.04)',
+              border: `1px solid ${CYAN}1a`,
+              background: `${CYAN}05`,
             }}
           >
             <div className="flex flex-col gap-1.5">
               <div>
-                <span style={{ color: PURPLE }}>{'>'}</span>{' '}
+                <span style={{ color: CYAN }}>{'>'}</span>{' '}
                 <span className="text-white/80">
                   Building{' '}
                   <span style={{ color: CYAN }} className="font-semibold">
@@ -170,17 +168,17 @@ export default function IdentityTab() {
                 </span>
               </div>
               <div>
-                <span style={{ color: PURPLE }}>{'>'}</span>{' '}
+                <span style={{ color: CYAN }}>{'>'}</span>{' '}
                 <span className="text-white/80">
                   Researching{' '}
-                  <span style={{ color: PURPLE }} className="font-semibold">
+                  <span style={{ color: GREEN }} className="font-semibold">
                     AI video generation
                   </span>{' '}
                   & multimodal intelligence
                 </span>
               </div>
               <div>
-                <span style={{ color: PURPLE }}>{'>'}</span>{' '}
+                <span style={{ color: CYAN }}>{'>'}</span>{' '}
                 <span className="text-white/80">
                   Shipping products at the intersection of{' '}
                   <span style={{ color: GREEN }}>AI + creativity</span>
@@ -207,9 +205,9 @@ export default function IdentityTab() {
           <div className="ml-4 mt-2 flex gap-6 text-xs">
             {[
               { label: 'UPTIME', value: '8+ yrs', color: GREEN },
-              { label: 'MODULES', value: '30+', color: CYAN },
-              { label: 'PROJECTS', value: '10+', color: PURPLE },
-              { label: 'AGENTS', value: 'ACTIVE', color: GREEN },
+              { label: 'REPOS', value: '50+', color: CYAN },
+              { label: 'ARTICLES', value: '33', color: GREEN },
+              { label: 'AGENTS', value: 'ACTIVE', color: CYAN },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
